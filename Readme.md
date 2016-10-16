@@ -11,7 +11,7 @@
 Easiest is to install the NuGet package.
 
 ```PowerShell
-PM> Install-Package Virtlink.Utilib -Pre
+PM> Install-Package Virtlink.Utilib
 ```
 
 ## License
