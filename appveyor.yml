@@ -2,18 +2,31 @@ version: "#{build}"
 os: Visual Studio 2015
 configuration: Release
 
+environment:
+  matrix:
+    - FRAMEWORK: netcoreapp1.0
+      LIBFRAMEWORK: netstandard1.6
+    - FRAMEWORK: netcoreapp1.0
+      LIBFRAMEWORK: netstandard1.5
+    - FRAMEWORK: net45
+      LIBFRAMEWORK: net45
+
 before_build:
 - ps: dotnet --info
 - ps: dotnet restore --verbosity detailed
 
+build_script:
+- ps: dotnet build -c $env:CONFIGURATION -f $env:LIBFRAMEWORK src/Virtlink.Utilib/
+- ps: dotnet build -c $env:CONFIGURATION -f $env:FRAMEWORK test/Virtlink.Utilib.Tests/
+
 test_script:
-- cmd: dotnet test .\test\Virtlink.Utilib.Tests
+- ps: dotnet test -c $env:CONFIGURATION -f $env:FRAMEWORK ./test/Virtlink.Utilib.Tests
 
 after_test:
-- cmd: dotnet pack -c Release src\Virtlink.Utilib\
+- ps: dotnet pack -c $env:CONFIGURATION src/Virtlink.Utilib/
 
 artifacts:
-- path: 'src\Virtlink.Utilib\bin\Release\*.nupkg'
+- path: 'src/Virtlink.Utilib/bin/Release/*.nupkg'
   name: NuGet Packages
 
 deploy:
