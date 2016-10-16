@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9FAA8C2C-995E-4675-BD3C-D01855AD70E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{55EF4449-0DA8-4F08-9D15-E583EB48AAF1}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Virtlink.Utilib", "src\Virtlink.Utilib\Virtlink.Utilib.xproj", "{C09681F7-8763-4481-A25C-3CD2F5906DF9}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Virtlink.Utilib.Tests", "test\Virtlink.Utilib.Tests\Virtlink.Utilib.Tests.xproj", "{4401D1EC-2854-4C0A-A4D4-DCD20D009F33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E5668FCD-2308-4C6D-82DE-47775B5594B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C09681F7-8763-4481-A25C-3CD2F5906DF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C09681F7-8763-4481-A25C-3CD2F5906DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C09681F7-8763-4481-A25C-3CD2F5906DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C09681F7-8763-4481-A25C-3CD2F5906DF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4401D1EC-2854-4C0A-A4D4-DCD20D009F33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4401D1EC-2854-4C0A-A4D4-DCD20D009F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4401D1EC-2854-4C0A-A4D4-DCD20D009F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4401D1EC-2854-4C0A-A4D4-DCD20D009F33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C09681F7-8763-4481-A25C-3CD2F5906DF9} = {9FAA8C2C-995E-4675-BD3C-D01855AD70E3}
+		{4401D1EC-2854-4C0A-A4D4-DCD20D009F33} = {E5668FCD-2308-4C6D-82DE-47775B5594B3}
+	EndGlobalSection
+EndGlobal
