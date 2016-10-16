@@ -7,6 +7,13 @@
 # Utilib
 **Utilib** is a utility library for .Net. It contains all those little utility classes and functions that are missing from the standard .Net libraries.
 
+## Installation
+Easiest is to install the NuGet package.
+
+```PowerShell
+PM> Install-Package Virtlink.Utilib -Pre
+```
+
 ## License
 Copyright 2016 - Daniel Pelsmaeker
 
