@@ -1,3 +1,6 @@
+[![AppVeyor](https://img.shields.io/appveyor/ci/Virtlink/utilib.svg)](https://ci.appveyor.com/project/Virtlink/utilib)
+
+
 # Utilib
 **Utilib** is a utility library for .Net. It contains all those little utility classes and functions that are missing from the standard .Net libraries.
 
