@@ -1,5 +1,10 @@
 {
   "version": "1.0.0-*",
+  "packOptions": {
+    "licenseUrl": "https://github.com/Virtlink/utilib/blob/master/License.md",
+    "projectUrl": "https://github.com/Virtlink/utilib/",
+  }
+  
   "testRunner": "xunit",
 
   "dependencies": {
