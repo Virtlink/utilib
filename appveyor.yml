@@ -1,9 +1,25 @@
 version: 1.0.{build}
+os: Visual Studio 2015
 configuration: Release
+
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+assembly_file_version: '{version}'
+
 before_build:
-- ps: >-
-    dotnet restore
+- ps: dotnet --info
+- ps: dotnet restore
+
 build:
   verbosity: minimal
+
 test_script:
 - cmd: dotnet test .\test\Virtlink.Utilib.Tests
+
+after_test:
+- cmd: dotnet pack -c Release src\Virtlink.Utilib\
+
+artifacts:
+  path: 'src\Virtlink.Utilib\bin\Release\*.nupkg'
