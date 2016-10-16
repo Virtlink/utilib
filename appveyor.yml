@@ -7,7 +7,7 @@ before_build:
 - ps: dotnet restore --verbosity detailed
 
 test_script:
-- ps: dotnet test -c $env:CONFIGURATION -f $env:FRAMEWORK ./test/Virtlink.Utilib.Tests
+- ps: dotnet test -c $env:CONFIGURATION ./test/Virtlink.Utilib.Tests
 
 after_test:
 - ps: dotnet pack -c $env:CONFIGURATION src/Virtlink.Utilib/
