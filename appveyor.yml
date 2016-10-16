@@ -6,4 +6,4 @@ before_build:
 build:
   verbosity: minimal
 test_script:
-- cmd: dotnet test
+- cmd: dotnet test .\test\Virtlink.Utilib.Tests
