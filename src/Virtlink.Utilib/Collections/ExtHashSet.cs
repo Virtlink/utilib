@@ -102,17 +102,15 @@ namespace Virtlink.Utilib.Collections
         public bool TryGet(T obj, out T element)
         {
             var comparer = (CustomComparer)this.innerSet.Comparer;
+
+            bool contained = this.innerSet.Contains(obj);
+            element = contained ? comparer.EqualKey : default(T);
+
+            // Reset here to ensure we don't keep the object unintentionally alive
+            // with our reference in the comparer.
             comparer.Reset();
-            if (this.innerSet.Contains(obj))
-            {
-                element = comparer.EqualKey;
-                return true;
-            }
-            else
-            {
-                element = default(T);
-                return false;
-            }
+
+            return contained;
         }
 
         /// <inheritdoc />
