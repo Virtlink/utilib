@@ -1,5 +1,8 @@
 [![AppVeyor](https://img.shields.io/appveyor/ci/Virtlink/utilib.svg)](https://ci.appveyor.com/project/Virtlink/utilib)
 [![GitHub release](https://img.shields.io/github/release/Virtlink/utilib.svg)](https://github.com/Virtlink/utilib/releases)
+[![NuGet](https://img.shields.io/nuget/v/Virtlink.Utilib.svg)](https://www.nuget.org/packages/Virtlink.Utilib/)
+[![GitHub license](https://img.shields.io/github/license/Virtlink/utilib.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Maintenance](https://img.shields.io/maintenance/yes/2016.svg)](https://github.com/Virtlink/utilib/commits/master)
 
 # Utilib
 **Utilib** is a utility library for .Net. It contains all those little utility classes and functions that are missing from the standard .Net libraries.
