@@ -1,8 +1,17 @@
 {
   "version": "1.4.0-*",
   "packOptions": {
+    "summary": "A utility library for .Net. It contains all those little utility classes and functions that are missing from the standard .Net libraries.",
+    "tags": [ "virtlink", "utility", "library" ],
+    "owners": [ "Daniel Pelsmaeker" ],
+    "iconUrl": "https://raw.githubusercontent.com/Virtlink/utilib/master/doc/Icon.png",
+    "projectUrl": "https://github.com/Virtlink/utilib/",
     "licenseUrl": "https://github.com/Virtlink/utilib/blob/master/License.md",
-    "projectUrl": "https://github.com/Virtlink/utilib/"
+
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/Virtlink/utilib"
+    }
   },
 
   "dependencies": {
@@ -29,6 +38,6 @@
         "System.Runtime.Extensions": "4.1.0"
       }
     },
-    "net45": { }
+    "net45": {}
   }
 }
