@@ -22,6 +22,19 @@ namespace Virtlink.Utilib.Collections
                 // Assert
                 Assert.Equal(new String[0], result);
             }
+
+            [Fact]
+            public void ReturnedArrayIsImmutable()
+            {
+                // Arrange
+                var result = Arrays.Empty<string>();
+
+                // Act/Assert
+                Assert.Throws<NotSupportedException>(() =>
+                {
+                    ((ICollection<string>)result).Add("str");
+                });
+            }
         }
     }
 }

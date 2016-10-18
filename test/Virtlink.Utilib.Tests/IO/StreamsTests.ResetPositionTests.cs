@@ -51,6 +51,19 @@ namespace Virtlink.Utilib.IO
                 // Cleanup
                 stream.Dispose();
             }
+
+            [Fact]
+            public void ThrowsWhenStreamIsNull()
+            {
+                // Arrange
+                Stream sut = null;
+
+                // Act/Assert
+                Assert.Throws<ArgumentNullException>(() =>
+                {
+                    sut.ResetPosition();
+                });
+            }
         }
     }
 }

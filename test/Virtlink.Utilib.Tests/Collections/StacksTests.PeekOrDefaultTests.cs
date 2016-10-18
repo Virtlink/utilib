@@ -38,6 +38,19 @@ namespace Virtlink.Utilib.Collections
                 // Assert
                 Assert.Null(element);
             }
+
+            [Fact]
+            public void ThrowsWhenStackIsNull()
+            {
+                // Arrange
+                Stack<String> sut = null;
+
+                // Act/Assert
+                Assert.Throws<ArgumentNullException>(() =>
+                {
+                    sut.PeekOrDefault();
+                });
+            }
         }
     }
 }

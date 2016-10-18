@@ -52,6 +52,19 @@ namespace Virtlink.Utilib.Collections
                 // Assert
                 Assert.Null(result);
             }
+
+            [Fact]
+            public void ThrowsIfEnumerableIsNull()
+            {
+                // Arrange
+                IReadOnlyCollection<String> enumerable = null;
+
+                // Act/Assert
+                Assert.Throws<ArgumentNullException>(() =>
+                {
+                    Enumerables.TryGetCount(enumerable);
+                });
+            }
         }
     }
 }

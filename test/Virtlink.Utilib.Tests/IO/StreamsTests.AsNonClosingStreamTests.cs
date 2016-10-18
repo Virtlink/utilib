@@ -91,6 +91,32 @@ namespace Virtlink.Utilib.IO
                 stream.Dispose();
             }
 
+            [Fact]
+            public void ReturnsSameStreamWhenStreamIsAlreadyNonClosing()
+            {
+                // Arrange
+                var stream = new MemoryStream().AsNonClosingStream();
+
+                // Act
+                var result = stream.AsNonClosingStream();
+
+                // Assert
+                Assert.Same(stream, result);
+            }
+
+            [Fact]
+            public void ThrowsWhenStreamIsNull()
+            {
+                // Arrange
+                Stream sut = null;
+
+                // Act/Assert
+                Assert.Throws<ArgumentNullException>(() =>
+                {
+                    sut.AsNonClosingStream();
+                });
+            }
+
             private string GetString(MemoryStream stream)
             {
                 stream.Position = 0;

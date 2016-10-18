@@ -52,6 +52,19 @@ namespace Virtlink.Utilib.IO
                 stream.Dispose();
             }
 
+            [Fact]
+            public void ThrowsWhenStreamIsNull()
+            {
+                // Arrange
+                Stream sut = null;
+
+                // Act/Assert
+                Assert.Throws<ArgumentNullException>(() =>
+                {
+                    sut.WriteText();
+                });
+            }
+
             private string GetString(MemoryStream stream)
             {
                 stream.Position = 0;

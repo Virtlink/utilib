@@ -40,6 +40,19 @@ namespace Virtlink.Utilib.Collections
                 // Assert
                 Assert.Equal(new [] { "a", "b", "c", "d" }, queue);
             }
+
+            [Fact]
+            public void ThrowsWhenQueueIsNull()
+            {
+                // Arrange
+                Queue<String> sut = null;
+
+                // Act/Assert
+                Assert.Throws<ArgumentNullException>(() =>
+                {
+                    sut.EnqueueRange(new String[0]);
+                });
+            }
         }
     }
 }

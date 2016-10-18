@@ -56,6 +56,34 @@ namespace Virtlink.Utilib.Collections
             }
 
             [Fact]
+            public void EmptySetsAreEqual()
+            {
+                // Arrange
+                var set0 = new int[0];
+                var set1 = new List<int>();
+                var sut = new MultiSetComparer<int>();
+
+                // Act
+                bool result = sut.Equals(set0, set1);
+
+                // Assert
+                Assert.True(result);
+            }
+
+            [Fact]
+            public void NullsAreEqual()
+            {
+                // Arrange
+                var sut = new MultiSetComparer<int>();
+
+                // Act
+                bool result = sut.Equals(null, null);
+
+                // Assert
+                Assert.True(result);
+            }
+
+            [Fact]
             public void CollectionsWithDifferentElementsAreNotEqual()
             {
                 // Arrange
@@ -95,6 +123,35 @@ namespace Virtlink.Utilib.Collections
 
                 // Assert
                 Assert.False(result);
+            }
+
+            [Fact]
+            public void SetsAndNullAreNotEqual()
+            {
+                // Arrange
+                var set0 = new int[0];
+                var sut = new MultiSetComparer<int>();
+
+                // Act
+                bool result = sut.Equals(set0, null);
+
+                // Assert
+                Assert.False(result);
+            }
+
+            [Fact]
+            public void ComparerIsUsedForComparison()
+            {
+                // Arrange
+                var set0 = new[] { "B", "D", "g", "g", "A", "C", "E", "e", "E" };
+                var set1 = new[] { "b", "d", "G", "G", "A", "C", "e", "e", "e" };
+                var sut = new MultiSetComparer<string>(StringComparer.OrdinalIgnoreCase);
+
+                // Act
+                bool result = sut.Equals(set0, set1);
+
+                // Assert
+                Assert.True(result);
             }
         }
     }
