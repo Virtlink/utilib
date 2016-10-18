@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xunit;
+using NUnit.Framework;
 
 namespace Virtlink.Utilib.IO
 {
@@ -13,9 +13,10 @@ namespace Virtlink.Utilib.IO
         /// <summary>
         /// Tests the <see cref="Streams.ResetPosition"/> function.
         /// </summary>
+        [TestFixture]
         public sealed class ResetPositionTests
         {
-            [Fact]
+            [Test]
             public void ResetsThePositionToZero()
             {
                 // Arrange
@@ -29,14 +30,14 @@ namespace Virtlink.Utilib.IO
                 long newPosition = stream.Position;
 
                 // Assert
-                Assert.Equal(4, oldPosition);
-                Assert.Equal(0, newPosition);
+                Assert.That(oldPosition, Is.EqualTo(4));
+                Assert.That(newPosition, Is.EqualTo(0));
 
                 // Cleanup
                 stream.Dispose();
             }
 
-            [Fact]
+            [Test]
             public void ReturnsTheInputStream()
             {
                 // Arrange
@@ -46,23 +47,23 @@ namespace Virtlink.Utilib.IO
                 var result = stream.ResetPosition();
 
                 // Assert
-                Assert.Same(stream, result);
+                Assert.That(result, Is.SameAs(stream));
 
                 // Cleanup
                 stream.Dispose();
             }
 
-            [Fact]
+            [Test]
             public void ThrowsWhenStreamIsNull()
             {
                 // Arrange
                 Stream sut = null;
 
                 // Act/Assert
-                Assert.Throws<ArgumentNullException>(() =>
+                Assert.That(() =>
                 {
                     sut.ResetPosition();
-                });
+                }, Throws.ArgumentNullException);
             }
         }
     }

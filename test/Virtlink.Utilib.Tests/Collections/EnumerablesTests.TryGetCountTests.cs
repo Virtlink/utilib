@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Threading.Tasks;
-using Xunit;
+using NUnit.Framework;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -12,9 +12,10 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="Enumerables.TryGetCount"/> method.
         /// </summary>
+        [TestFixture]
         public sealed class TryGetCountTests
         {
-            [Fact]
+            [Test]
             public void ReturnsCountOfICollection_T()
             {
                 // Arrange
@@ -24,10 +25,10 @@ namespace Virtlink.Utilib.Collections
                 int? result = Enumerables.TryGetCount(collection);
 
                 // Assert
-                Assert.Equal(3, result);
+                Assert.That(result, Is.EqualTo(3));
             }
 
-            [Fact]
+            [Test]
             public void ReturnsCountOfICollection()
             {
                 // Arrange
@@ -37,10 +38,10 @@ namespace Virtlink.Utilib.Collections
                 int? result = Enumerables.TryGetCount(collection);
 
                 // Assert
-                Assert.Equal(3, result);
+                Assert.That(result, Is.EqualTo(3));
             }
 
-            [Fact]
+            [Test]
             public void ReturnsNullForNonCollection()
             {
                 // Arrange
@@ -50,20 +51,20 @@ namespace Virtlink.Utilib.Collections
                 int? result = Enumerables.TryGetCount(enumerable);
 
                 // Assert
-                Assert.Null(result);
+                Assert.That(result, Is.Null);
             }
 
-            [Fact]
+            [Test]
             public void ThrowsIfEnumerableIsNull()
             {
                 // Arrange
                 IReadOnlyCollection<String> enumerable = null;
 
                 // Act/Assert
-                Assert.Throws<ArgumentNullException>(() =>
+                Assert.That(() =>
                 {
                     Enumerables.TryGetCount(enumerable);
-                });
+                }, Throws.ArgumentNullException);
             }
         }
     }

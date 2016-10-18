@@ -5,22 +5,23 @@
     "projectUrl": "https://github.com/Virtlink/utilib/"
   },
 
-  "testRunner": "xunit",
+  "testRunner": "nunit",
 
   "dependencies": {
-    "xunit": "2.2.0-beta3-build3402",
-    "dotnet-test-xunit": "2.2.0-preview2-build1029",
     "Virtlink.Utilib": "1.3.0-*",
     "System.Collections.NonGeneric": "4.0.1",
-    "System.Linq": "4.1.0"
+    "System.Linq": "4.1.0",
+    "NUnit": "3.4.1",
+    "dotnet-test-nunit": "3.4.0-beta-2"
   },
 
   "frameworks": {
     "netcoreapp1.0": {
+      "imports": "portable-net45+win8",
       "dependencies": {
         "Microsoft.NETCore.App": {
-          "type": "platform",
-          "version": "1.0.1"
+          "version": "1.0.0-*",
+          "type": "platform"
         }
       }
     }

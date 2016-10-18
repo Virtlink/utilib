@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xunit;
+using NUnit.Framework;
 
 namespace Virtlink.Utilib.IO
 {
@@ -13,9 +13,10 @@ namespace Virtlink.Utilib.IO
         /// <summary>
         /// Tests the <see cref="Streams.AsNonClosingStream"/> function.
         /// </summary>
+        [TestFixture]
         public sealed class AsNonClosingStreamTests
         {
-            [Fact]
+            [Test]
             public void ReturnedStreamAllowsReading()
             {
                 // Arrange
@@ -28,14 +29,14 @@ namespace Virtlink.Utilib.IO
                 var result = reader.ReadToEnd();
 
                 // Assert
-                Assert.Equal(input, result);
+                Assert.That(result, Is.EqualTo(input));
 
                 // Cleanup
                 reader.Dispose();
                 stream.Dispose();
             }
 
-            [Fact]
+            [Test]
             public void ReturnedStreamAllowsWriting()
             {
                 // Arrange
@@ -49,14 +50,14 @@ namespace Virtlink.Utilib.IO
                 writer.Flush();
 
                 // Assert
-                Assert.Equal(input, GetString(stream));
+                Assert.That(GetString(stream), Is.EqualTo(input));
 
                 // Cleanup
                 writer.Dispose();
                 stream.Dispose();
             }
 
-            [Fact]
+            [Test]
             public void ReturnedStreamAllowsSeeking()
             {
                 // Arrange
@@ -68,13 +69,13 @@ namespace Virtlink.Utilib.IO
                 nonClosingStream.Seek(2, SeekOrigin.Begin);
 
                 // Assert
-                Assert.Equal(2, stream.Position);
+                Assert.That(stream.Position, Is.EqualTo(2));
 
                 // Cleanup
                 stream.Dispose();
             }
 
-            [Fact]
+            [Test]
             public void UnderlyingStreamIsNotClosed()
             {
                 // Arrange
@@ -85,13 +86,16 @@ namespace Virtlink.Utilib.IO
                 nonClosingStream.Dispose();
 
                 // Assert
-                long p = stream.Position;       // Should not throw ObjectDisposedException
+                Assert.That(() =>
+                {
+                    long p = stream.Position;
+                }, Throws.Nothing);
 
                 // Cleanup
                 stream.Dispose();
             }
 
-            [Fact]
+            [Test]
             public void ReturnsSameStreamWhenStreamIsAlreadyNonClosing()
             {
                 // Arrange
@@ -101,20 +105,20 @@ namespace Virtlink.Utilib.IO
                 var result = stream.AsNonClosingStream();
 
                 // Assert
-                Assert.Same(stream, result);
+                Assert.That(result, Is.SameAs(stream));
             }
 
-            [Fact]
+            [Test]
             public void ThrowsWhenStreamIsNull()
             {
                 // Arrange
                 Stream sut = null;
 
                 // Act/Assert
-                Assert.Throws<ArgumentNullException>(() =>
+                Assert.That(() =>
                 {
                     sut.AsNonClosingStream();
-                });
+                }, Throws.ArgumentNullException);
             }
 
             private string GetString(MemoryStream stream)

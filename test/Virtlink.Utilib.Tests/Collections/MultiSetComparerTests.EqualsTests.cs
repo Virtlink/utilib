@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Xunit;
+using NUnit.Framework;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,9 +11,10 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="MultiSetComparer{T}.Equals"/> method.
         /// </summary>
+        [TestFixture]
         public sealed class EqualsTests
         {
-            [Fact]
+            [Test]
             public void SameCollectionsAreEqual()
             {
                 // Arrange
@@ -24,10 +25,10 @@ namespace Virtlink.Utilib.Collections
                 bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.True(result);
+                Assert.That(result, Is.True);
             }
 
-            [Fact]
+            [Test]
             public void EqualCollectionsAreEqual()
             {
                 // Arrange
@@ -38,10 +39,10 @@ namespace Virtlink.Utilib.Collections
                 bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.True(result);
+                Assert.That(result, Is.True);
             }
 
-            [Fact]
+            [Test]
             public void EquivalentCollectionsAreEqual()
             {
                 // Arrange
@@ -52,10 +53,10 @@ namespace Virtlink.Utilib.Collections
                 bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.True(result);
+                Assert.That(result, Is.True);
             }
 
-            [Fact]
+            [Test]
             public void EmptySetsAreEqual()
             {
                 // Arrange
@@ -67,10 +68,10 @@ namespace Virtlink.Utilib.Collections
                 bool result = sut.Equals(set0, set1);
 
                 // Assert
-                Assert.True(result);
+                Assert.That(result, Is.True);
             }
 
-            [Fact]
+            [Test]
             public void NullsAreEqual()
             {
                 // Arrange
@@ -80,10 +81,10 @@ namespace Virtlink.Utilib.Collections
                 bool result = sut.Equals(null, null);
 
                 // Assert
-                Assert.True(result);
+                Assert.That(result, Is.True);
             }
 
-            [Fact]
+            [Test]
             public void CollectionsWithDifferentElementsAreNotEqual()
             {
                 // Arrange
@@ -94,10 +95,10 @@ namespace Virtlink.Utilib.Collections
                 bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.False(result);
+                Assert.That(result, Is.False);
             }
 
-            [Fact]
+            [Test]
             public void CollectionsWithDifferentMultiplesOfElementsAreNotEqual()
             {
                 // Arrange
@@ -108,10 +109,10 @@ namespace Virtlink.Utilib.Collections
                 bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.False(result);
+                Assert.That(result, Is.False);
             }
 
-            [Fact]
+            [Test]
             public void CollectionsWithDifferentCountsAreNotEqual()
             {
                 // Arrange
@@ -122,10 +123,10 @@ namespace Virtlink.Utilib.Collections
                 bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.False(result);
+                Assert.That(result, Is.False);
             }
 
-            [Fact]
+            [Test]
             public void SetsAndNullAreNotEqual()
             {
                 // Arrange
@@ -136,10 +137,10 @@ namespace Virtlink.Utilib.Collections
                 bool result = sut.Equals(set0, null);
 
                 // Assert
-                Assert.False(result);
+                Assert.That(result, Is.False);
             }
 
-            [Fact]
+            [Test]
             public void ComparerIsUsedForComparison()
             {
                 // Arrange
@@ -151,7 +152,7 @@ namespace Virtlink.Utilib.Collections
                 bool result = sut.Equals(set0, set1);
 
                 // Assert
-                Assert.True(result);
+                Assert.That(result, Is.True);
             }
         }
     }

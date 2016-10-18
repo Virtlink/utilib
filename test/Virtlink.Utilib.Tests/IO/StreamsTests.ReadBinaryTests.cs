@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xunit;
+using NUnit.Framework;
 
 namespace Virtlink.Utilib.IO
 {
@@ -13,9 +13,10 @@ namespace Virtlink.Utilib.IO
         /// <summary>
         /// Tests the <see cref="Streams.ReadBinary"/> function.
         /// </summary>
+        [TestFixture]
         public sealed class ReadBinaryTests
         {
-            [Fact]
+            [Test]
             public void ReturnsABinaryReader()
             {
                 // Arrange
@@ -26,14 +27,14 @@ namespace Virtlink.Utilib.IO
                 var reader = stream.ReadBinary();
 
                 // Assert
-                Assert.Equal(input, reader.ReadBytes(input.Length));
+                Assert.That(reader.ReadBytes(input.Length), Is.EqualTo(input));
 
                 // Cleanup
                 reader.Dispose();
                 stream.Dispose();
             }
 
-            [Fact]
+            [Test]
             public void ClosingReaderDoesNotCloseStream()
             {
                 // Arrange
@@ -44,23 +45,26 @@ namespace Virtlink.Utilib.IO
                 reader.Dispose();
 
                 // Assert
-                long p = stream.Position;       // Should not throw ObjectDisposedException
+                Assert.That(() =>
+                {
+                    long p = stream.Position;
+                }, Throws.Nothing);
 
                 // Cleanup
                 stream.Dispose();
             }
 
-            [Fact]
+            [Test]
             public void ThrowsWhenStreamIsNull()
             {
                 // Arrange
                 Stream sut = null;
 
                 // Act/Assert
-                Assert.Throws<ArgumentNullException>(() =>
+                Assert.That(() =>
                 {
                     sut.ReadBinary();
-                });
+                }, Throws.ArgumentNullException);
             }
         }
     }

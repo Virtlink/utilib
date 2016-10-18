@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Xunit;
+using NUnit.Framework;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,9 +11,10 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="PeekOrDefault"/> method.
         /// </summary>
+        [TestFixture]
         public sealed class PeekOrDefaultTests
         {
-            [Fact]
+            [Test]
             public void OnANonEmptyQueueReturnsTheTopElement()
             {
                 // Arrange
@@ -23,10 +24,10 @@ namespace Virtlink.Utilib.Collections
                 var element = queue.PeekOrDefault();
 
                 // Assert
-                Assert.Equal("a", element);
+                Assert.That(element, Is.EqualTo("a"));
             }
 
-            [Fact]
+            [Test]
             public void OnAnEmptyQueueReturnsDefault()
             {
                 // Arrange
@@ -36,20 +37,20 @@ namespace Virtlink.Utilib.Collections
                 var element = queue.PeekOrDefault();
 
                 // Assert
-                Assert.Null(element);
+                Assert.That(element, Is.Null);
             }
 
-            [Fact]
+            [Test]
             public void ThrowsWhenQueueIsNull()
             {
                 // Arrange
                 Queue<String> sut = null;
 
                 // Act/Assert
-                Assert.Throws<ArgumentNullException>(() =>
+                Assert.That(() =>
                 {
                     sut.PeekOrDefault();
-                });
+                }, Throws.ArgumentNullException);
             }
         }
     }

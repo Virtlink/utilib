@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xunit;
+using NUnit.Framework;
 
 namespace Virtlink.Utilib.IO
 {
@@ -13,9 +13,10 @@ namespace Virtlink.Utilib.IO
         /// <summary>
         /// Tests the <see cref="Streams.WriteText"/> function.
         /// </summary>
+        [TestFixture]
         public sealed class WriteTextTests
         {
-            [Fact]
+            [Test]
             public void ReturnsATextWriter()
             {
                 // Arrange
@@ -28,14 +29,14 @@ namespace Virtlink.Utilib.IO
                 writer.Flush();
 
                 // Assert
-                Assert.Equal(input, GetString(stream));
+                Assert.That(GetString(stream), Is.EqualTo(input));
 
                 // Cleanup
                 writer.Dispose();
                 stream.Dispose();
             }
 
-            [Fact]
+            [Test]
             public void ClosingWriterDoesNotCloseStream()
             {
                 // Arrange
@@ -46,23 +47,26 @@ namespace Virtlink.Utilib.IO
                 writer.Dispose();
 
                 // Assert
-                long p = stream.Position;       // Should not throw ObjectDisposedException
+                Assert.That(() =>
+                {
+                    long p = stream.Position;
+                }, Throws.Nothing);
 
                 // Cleanup
                 stream.Dispose();
             }
 
-            [Fact]
+            [Test]
             public void ThrowsWhenStreamIsNull()
             {
                 // Arrange
                 Stream sut = null;
 
                 // Act/Assert
-                Assert.Throws<ArgumentNullException>(() =>
+                Assert.That(() =>
                 {
                     sut.WriteText();
-                });
+                }, Throws.ArgumentNullException);
             }
 
             private string GetString(MemoryStream stream)

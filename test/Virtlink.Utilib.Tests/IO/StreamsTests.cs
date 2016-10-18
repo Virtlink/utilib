@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Xunit;
+using NUnit.Framework;
 
 namespace Virtlink.Utilib.IO
 {
     /// <summary>
     /// Tests the <see cref="Streams"/> class.
     /// </summary>
+    [TestFixture]
     public partial class StreamsTests
     {
         /// <summary>
@@ -18,7 +19,7 @@ namespace Virtlink.Utilib.IO
 		/// 
 		/// This fact is used in several tests.
 		/// </summary>
-		[Fact]
+		[Test]
         public void DisposedMemoryStreamThrowsExceptionOnGetPosition()
         {
             // Arrange
@@ -26,9 +27,9 @@ namespace Virtlink.Utilib.IO
             stream.Dispose();
 
             // Act/Assert
-            Assert.Throws<ObjectDisposedException>(() => {
+            Assert.That(() => {
                 long v = stream.Position;
-            });
+            }, Throws.InstanceOf<ObjectDisposedException>());
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Xunit;
+using NUnit.Framework;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,9 +11,10 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="MultiSetComparer{T}.GetHashCode"/> method.
         /// </summary>
+        [TestFixture]
         public sealed class GetHashCodeTests
         {
-            [Fact]
+            [Test]
             public void SameCollectionsHaveSameHashCode()
             {
                 // Arrange
@@ -25,10 +26,10 @@ namespace Virtlink.Utilib.Collections
                 int h2 = MultiSetComparer<String>.Default.GetHashCode(c2);
 
                 // Assert
-                Assert.Equal(h1, h2);
+                Assert.That(h1, Is.EqualTo(h2));
             }
 
-            [Fact]
+            [Test]
             public void EqualCollectionsHaveSameHashCode()
             {
                 // Arrange
@@ -40,10 +41,10 @@ namespace Virtlink.Utilib.Collections
                 int h2 = MultiSetComparer<String>.Default.GetHashCode(c2);
 
                 // Assert
-                Assert.Equal(h1, h2);
+                Assert.That(h1, Is.EqualTo(h2));
             }
 
-            [Fact]
+            [Test]
             public void EquivalentCollectionsHaveSameHashCode()
             {
                 // Arrange
@@ -55,7 +56,7 @@ namespace Virtlink.Utilib.Collections
                 int h2 = MultiSetComparer<String>.Default.GetHashCode(c2);
 
                 // Assert
-                Assert.Equal(h1, h2);
+                Assert.That(h1, Is.EqualTo(h2));
             }
         }
     }

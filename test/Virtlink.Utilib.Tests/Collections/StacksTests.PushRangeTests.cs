@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Xunit;
+using NUnit.Framework;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,9 +11,10 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="PushRange"/> method.
         /// </summary>
+        [TestFixture]
         public sealed class PushRangeTests
         {
-            [Fact]
+            [Test]
             public void EmptyRangePushesNothing()
             {
                 // Arrange
@@ -24,10 +25,10 @@ namespace Virtlink.Utilib.Collections
                 stack.PushRange(input);
 
                 // Assert
-                Assert.Equal(new[] { "a" }, stack);
+                Assert.That(stack, Is.EqualTo(new[] { "a" }));
             }
 
-            [Fact]
+            [Test]
             public void SomeRangePushesFirstToLast()
             {
                 // Arrange
@@ -38,20 +39,20 @@ namespace Virtlink.Utilib.Collections
                 stack.PushRange(input);
 
                 // Assert
-                Assert.Equal(new [] { "d", "c", "b", "a" }, stack);
+                Assert.That(stack, Is.EqualTo(new[] { "d", "c", "b", "a" }));
             }
 
-            [Fact]
+            [Test]
             public void ThrowsWhenStackIsNull()
             {
                 // Arrange
                 Stack<String> sut = null;
 
                 // Act/Assert
-                Assert.Throws<ArgumentNullException>(() =>
+                Assert.That(() =>
                 {
                     sut.PushRange(new String[0]);
-                });
+                }, Throws.ArgumentNullException);
             }
         }
     }

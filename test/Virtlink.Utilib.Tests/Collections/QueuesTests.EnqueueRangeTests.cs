@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Xunit;
+using NUnit.Framework;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,9 +11,10 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="EnqueueRange"/> method.
         /// </summary>
+        [TestFixture]
         public sealed class EnqueueRangeTests
         {
-            [Fact]
+            [Test]
             public void EmptyRangeEnqueuesNothing()
             {
                 // Arrange
@@ -24,10 +25,10 @@ namespace Virtlink.Utilib.Collections
                 queue.EnqueueRange(input);
 
                 // Assert
-                Assert.Equal(new[] { "a" }, queue);
+                Assert.That(queue, Is.EqualTo(new[] { "a" }));
             }
 
-            [Fact]
+            [Test]
             public void SomeRangeEnqueuesFirstToLast()
             {
                 // Arrange
@@ -38,20 +39,20 @@ namespace Virtlink.Utilib.Collections
                 queue.EnqueueRange(input);
 
                 // Assert
-                Assert.Equal(new [] { "a", "b", "c", "d" }, queue);
+                Assert.That(queue, Is.EqualTo(new[] { "a", "b", "c", "d" }));
             }
 
-            [Fact]
+            [Test]
             public void ThrowsWhenQueueIsNull()
             {
                 // Arrange
                 Queue<String> sut = null;
 
                 // Act/Assert
-                Assert.Throws<ArgumentNullException>(() =>
+                Assert.That(() =>
                 {
                     sut.EnqueueRange(new String[0]);
-                });
+                }, Throws.ArgumentNullException);
             }
         }
     }
