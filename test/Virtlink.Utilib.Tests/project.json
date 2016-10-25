@@ -1,14 +1,10 @@
 {
-  "version": "1.4.1-*",
-  "packOptions": {
-    "licenseUrl": "https://github.com/Virtlink/utilib/blob/master/License.md",
-    "projectUrl": "https://github.com/Virtlink/utilib/"
-  },
+  "version": "1.5.0-*",
 
   "testRunner": "nunit",
 
   "dependencies": {
-    "Virtlink.Utilib": "1.4.1-*",
+    "Virtlink.Utilib": "1.5.0-*",
     "System.Collections.NonGeneric": "4.0.1",
     "System.Linq": "4.1.0",
     "NUnit": "3.4.1",
