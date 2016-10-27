@@ -9,7 +9,7 @@ namespace Virtlink.Utilib.Collections
     /// An extended hash set.
     /// </summary>
     /// <typeparam name="T">The type of elements in the set.</typeparam>
-    public sealed class ExtHashSet<T> : ISet<T>, IReadOnlyCollection<T>
+    public sealed class ExtHashSet<T> : ISet<T>, IReadOnlySet<T>
     {
         private readonly HashSet<T> innerSet;
 
