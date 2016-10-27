@@ -23,24 +23,10 @@
   },
 
   "frameworks": {
-    "netstandard1.6": {
+    "netstandard1.0": {
       "imports": "dnxcore50",
       "dependencies": {
-        "System.Collections": "4.0.11",
-        "System.Diagnostics.Debug": "4.0.11",
-        "System.IO": "4.1.0",
-        "System.Text.Encoding.Extensions": "4.0.11",
-        "System.Runtime.Extensions": "4.1.0"
-      }
-    },
-    "netstandard1.5": {
-      "imports": "dnxcore50",
-      "dependencies": {
-        "System.Collections": "4.0.11",
-        "System.Diagnostics.Debug": "4.0.11",
-        "System.IO": "4.1.0",
-        "System.Text.Encoding.Extensions": "4.0.11",
-        "System.Runtime.Extensions": "4.1.0"
+        "NETStandard.Library": "1.6.0"
       }
     },
     "net45": {}
