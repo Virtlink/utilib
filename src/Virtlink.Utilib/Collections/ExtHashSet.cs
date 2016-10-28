@@ -19,6 +19,12 @@ namespace Virtlink.Utilib.Collections
         /// <inheritdoc />
         bool ICollection<T>.IsReadOnly => ((ICollection<T>)this.innerSet).IsReadOnly;
 
+        /// <summary>
+        /// Gets the comparer used to compare elements of the set.
+        /// </summary>
+        /// <value>The equality comparer.</value>
+        public IEqualityComparer<T> Comparer => this.innerSet.Comparer;
+
         #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="ExtHashSet{T}"/> class.
@@ -92,16 +98,16 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Attempts to retrieve an equal element from the set.
         /// </summary>
-        /// <param name="obj">The object to compare to.</param>
+        /// <param name="item">The object to compare to.</param>
         /// <param name="element">The equal element that was in the set;
         /// or the default of <typeparamref name="T"/> if not found.</param>
         /// <returns><see langword="true"/> if the element was found in the set;
         /// otherwise, <see langword="false"/>.</returns>
-        public bool TryGet(T obj, out T element)
+        public bool TryGet(T item, out T element)
         {
             var comparer = (CustomComparer)this.innerSet.Comparer;
 
-            bool contained = this.innerSet.Contains(obj);
+            bool contained = this.innerSet.Contains(item);
             element = contained ? comparer.EqualKey : default(T);
 
             // Reset here to ensure we don't keep the object unintentionally alive
