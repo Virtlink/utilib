@@ -11,7 +11,7 @@ namespace Virtlink.Utilib
     /// Tests the <see cref="EnumArgumentException"/> class.
     /// </summary>
     [TestFixture]
-    public class InvalidEnumArgumentExceptionTests
+    public class EnumArgumentExceptionTests
     {
         [Test]
         public void DefaultMessage()
