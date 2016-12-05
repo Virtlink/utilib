@@ -17,7 +17,7 @@ namespace Virtlink.Utilib.Collections.Graphs
 
 			#region Constructors
 			/// <summary>
-			/// Initializes a new instance of the <see cref="LambdaTraversal{T}"/> class.
+			/// Initializes a new instance of the <see cref="DepthFirstTraversal.LambdaTraversal{T}"/> class.
 			/// </summary>
 			/// <param name="childrenGetter">Function that returns the children of a node.</param>
 			public LambdaTraversal(Func<T, IReadOnlyCollection<T>> childrenGetter)

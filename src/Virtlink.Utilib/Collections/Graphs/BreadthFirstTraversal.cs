@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Virtlink.Utilib.Collections.Graphs
 {
@@ -11,16 +9,6 @@ namespace Virtlink.Utilib.Collections.Graphs
 	/// </summary>
 	public abstract class BreadthFirstTraversal<T> : Traversal<T>
 	{
-		#region Constructors
-		/// <summary>
-		/// Initializes a new instance of the <see cref="BreadthFirstTraversal{T}"/> class.
-		/// </summary>
-		protected BreadthFirstTraversal()
-		{
-			// Nothing to do.
-		}
-		#endregion
-
 		/// <inheritdoc />
 		public override IEnumerable<T> Traverse(T root)
 		{
@@ -97,7 +85,7 @@ namespace Virtlink.Utilib.Collections.Graphs
 				throw new ArgumentNullException(nameof(childrenGetter));
 			#endregion
 
-			return new BreadthFirstTraversal.LambdaTraversal<T>(childrenGetter).Traverse(root);
+			return new LambdaTraversal<T>(childrenGetter).Traverse(root);
 		}
 	}
 }

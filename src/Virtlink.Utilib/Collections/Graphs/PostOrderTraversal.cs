@@ -10,16 +10,6 @@ namespace Virtlink.Utilib.Collections.Graphs
 	/// </summary>
 	public abstract class PostOrderTraversal<T> : Traversal<T>
 	{
-		#region Constructors
-		/// <summary>
-		/// Initializes a new instance of the <see cref="PostOrderTraversal{T}"/> class.
-		/// </summary>
-		protected PostOrderTraversal()
-		{
-			// Nothing to do.
-		}
-		#endregion
-
 		/// <inheritdoc />
 		public override IEnumerable<T> Traverse(T root)
 		{
@@ -111,7 +101,7 @@ namespace Virtlink.Utilib.Collections.Graphs
 				throw new ArgumentNullException(nameof(childrenGetter));
 			#endregion
 
-			return new PostOrderTraversal.LambdaTraversal<T>(childrenGetter).Traverse(root);
+			return new LambdaTraversal<T>(childrenGetter).Traverse(root);
 		}
 	}
 }

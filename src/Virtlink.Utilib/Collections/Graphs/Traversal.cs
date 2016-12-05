@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Virtlink.Utilib.Collections.Graphs
 {
@@ -10,16 +7,6 @@ namespace Virtlink.Utilib.Collections.Graphs
 	/// </summary>
 	public abstract class Traversal<T> : ITraversal<T>
 	{
-		#region Constructors
-		/// <summary>
-		/// Initializes a new instance of the <see cref="Traversal{T}"/> class.
-		/// </summary>
-		protected Traversal()
-		{
-			// Nothing to do.
-		}
-		#endregion
-
 		/// <inheritdoc />
 		public abstract IEnumerable<T> Traverse(T root);
 		

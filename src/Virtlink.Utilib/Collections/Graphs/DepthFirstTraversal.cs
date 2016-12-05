@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Virtlink.Utilib.Collections.Graphs
 {
@@ -11,16 +10,6 @@ namespace Virtlink.Utilib.Collections.Graphs
 	/// </summary>
 	public abstract class DepthFirstTraversal<T> : Traversal<T>
 	{
-		#region Constructors
-		/// <summary>
-		/// Initializes a new instance of the <see cref="DepthFirstTraversal{T}"/> class.
-		/// </summary>
-		protected DepthFirstTraversal()
-		{
-			// Nothing to do.
-		}
-		#endregion
-
 		/// <inheritdoc />
 		public override IEnumerable<T> Traverse(T root)
 		{
@@ -93,7 +82,7 @@ namespace Virtlink.Utilib.Collections.Graphs
 				throw new ArgumentNullException(nameof(childrenGetter));
 			#endregion
 
-			return new DepthFirstTraversal.LambdaTraversal<T>(childrenGetter).Traverse(root);
+			return new LambdaTraversal<T>(childrenGetter).Traverse(root);
 		}
 	}
 }

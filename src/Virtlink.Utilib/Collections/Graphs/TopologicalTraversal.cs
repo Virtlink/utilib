@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Virtlink.Utilib.Collections.Graphs
 {
@@ -11,16 +9,6 @@ namespace Virtlink.Utilib.Collections.Graphs
 	/// </summary>
 	public abstract class TopologicalTraversal<T> : Traversal<T>
 	{
-		#region Constructors
-		/// <summary>
-		/// Initializes a new instance of the <see cref="TopologicalTraversal{T}"/> class.
-		/// </summary>
-		protected TopologicalTraversal()
-		{
-			// Nothing to do.
-		}
-		#endregion
-
 		/// <inheritdoc />
 		public override IEnumerable<T> Traverse(T root)
 		{
@@ -102,7 +90,7 @@ namespace Virtlink.Utilib.Collections.Graphs
 				throw new ArgumentNullException(nameof(childrenGetter));
 			#endregion
 
-			return new TopologicalTraversal.LambdaTraversal<T>(childrenGetter).Traverse(root);
+			return new LambdaTraversal<T>(childrenGetter).Traverse(root);
 		}
 	}
 }

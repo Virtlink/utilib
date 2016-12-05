@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Virtlink.Utilib.Collections.Graphs
 {
@@ -15,12 +13,12 @@ namespace Virtlink.Utilib.Collections.Graphs
 		{
 			private readonly Func<T, IReadOnlyCollection<T>> childrenGetter;
 
-            #region Constructors
-            /// <summary>
-            /// Initializes a new instance of the <see cref="LambdaTraversal{T}"/> class.
-            /// </summary>
-            /// <param name="childrenGetter">Function that returns the children of a node.</param>
-            public LambdaTraversal(Func<T, IReadOnlyCollection<T>> childrenGetter)
+			#region Constructors
+			/// <summary>
+			/// Initializes a new instance of the <see cref="BreadthFirstTraversal.LambdaTraversal{T}"/> class.
+			/// </summary>
+			/// <param name="childrenGetter">Function that returns the children of a node.</param>
+			public LambdaTraversal(Func<T, IReadOnlyCollection<T>> childrenGetter)
 			{
 				#region Contract
 				if (childrenGetter == null)
