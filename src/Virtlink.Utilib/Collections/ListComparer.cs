@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Virtlink.Utilib.Collections
 {
     /// <summary>
-	/// Compares two lists (ordered collections which may contain duplicates)
-	/// for equality.
-	/// </summary>
-	/// <typeparam name="T">The type of elements in the lists.</typeparam>
-	public sealed class ListComparer<T> : IEqualityComparer<IEnumerable<T>>
+    /// Compares two lists (ordered collections which may contain duplicates)
+    /// for equality.
+    /// </summary>
+    /// <typeparam name="T">The type of elements in the lists.</typeparam>
+    public sealed class ListComparer<T> : IEqualityComparer<IEnumerable<T>>
     {
         private static volatile ListComparer<T> defaultComparer;
+
+        /// <summary>
+        /// The comparer to use to compare elements.
+        /// </summary>
+        private readonly IEqualityComparer<T> elementComparer;
 
         /// <summary>
         /// Returns a default instance of the <see cref="ListComparer{T}"/>.
@@ -29,18 +33,15 @@ namespace Virtlink.Utilib.Collections
             }
         }
 
-        /// <summary>
-        /// The comparer to use to compare elements.
-        /// </summary>
-        private readonly IEqualityComparer<T> elementComparer;
-
         #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="ListComparer{T}"/> class.
         /// </summary>
         public ListComparer()
             : this(EqualityComparer<T>.Default)
-        { /* Nothing to do. */ }
+        {
+            /* Nothing to do. */
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ListComparer{T}"/> class.
@@ -57,7 +58,7 @@ namespace Virtlink.Utilib.Collections
         }
         #endregion
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public bool Equals(IEnumerable<T> x, IEnumerable<T> y)
         {
             if (x == null)
@@ -72,7 +73,7 @@ namespace Virtlink.Utilib.Collections
             return x.SequenceEqual(y, this.elementComparer);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public int GetHashCode(IEnumerable<T> enumerable)
         {
             #region Contract

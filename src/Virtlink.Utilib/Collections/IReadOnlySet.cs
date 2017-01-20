@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Virtlink.Utilib.Collections
 {
     /// <summary>
-	/// A read-only set.
-	/// </summary>
-	/// <typeparam name="T">The type of elements in the set.</typeparam>
-	public interface IReadOnlySet<T> : IReadOnlyCollection<T>
+    /// A read-only set.
+    /// </summary>
+    /// <typeparam name="T">The type of elements in the set.</typeparam>
+    public interface IReadOnlySet<T> : IReadOnlyCollection<T>
     {
         /// <summary>
         /// Determines whether the specified item is contained in the set.

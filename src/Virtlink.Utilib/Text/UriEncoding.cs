@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Virtlink.Utilib.Text
+﻿namespace Virtlink.Utilib.Text
 {
     /// <summary>
-	/// URI encoding.
-	/// </summary>
-	public class UriEncoding : PathEncoding
+    /// URI encoding.
+    /// </summary>
+    public class UriEncoding : PathEncoding
     {
         /// <summary>
         /// Determines whether the specified character is allowed unencoded.
@@ -19,7 +14,7 @@ namespace Virtlink.Utilib.Text
         protected override bool IsAllowedCharacter(char c)
         {
             return base.IsAllowedCharacter(c)
-                && c < 128;
+                   && c < 128;
         }
     }
 }

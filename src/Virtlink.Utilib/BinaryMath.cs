@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Virtlink.Utilib
 {
     /// <summary>
-	/// Binary and bit-wise math operations,
-	/// and operations that use powers of two.
-	/// </summary>
-	public static class BinaryMath
+    /// Binary and bit-wise math operations,
+    /// and operations that use powers of two.
+    /// </summary>
+    public static class BinaryMath
     {
         /// <summary>
         /// Rounds the specified value to the next power of two.
@@ -25,10 +23,7 @@ namespace Virtlink.Utilib
         /// </exception>
         public static int RoundToNextPowerOfTwo(int value)
         {
-            if (value == 0)
-                return 1;
-            else
-                return RoundToNextPowerOfTwoOrZero(value);
+            return value != 0 ? RoundToNextPowerOfTwoOrZero(value) : 1;
         }
 
         /// <summary>
@@ -79,10 +74,7 @@ namespace Virtlink.Utilib
         /// </exception>
         public static long RoundToNextPowerOfTwo(long value)
         {
-            if (value == 0)
-                return 1;
-            else
-                return RoundToNextPowerOfTwoOrZero(value);
+            return value != 0 ? RoundToNextPowerOfTwoOrZero(value) : 1;
         }
 
         /// <summary>
@@ -132,10 +124,7 @@ namespace Virtlink.Utilib
         /// </exception>
         public static uint RoundToNextPowerOfTwo(uint value)
         {
-            if (value == 0)
-                return 1;
-            else
-                return RoundToNextPowerOfTwoOrZero(value);
+            return value != 0 ? RoundToNextPowerOfTwoOrZero(value) : 1;
         }
 
         /// <summary>
@@ -188,10 +177,7 @@ namespace Virtlink.Utilib
         /// </exception>
         public static ulong RoundToNextPowerOfTwo(ulong value)
         {
-            if (value == 0)
-                return 1;
-            else
-                return RoundToNextPowerOfTwoOrZero(value);
+            return value != 0 ? RoundToNextPowerOfTwoOrZero(value) : 1;
         }
 
         /// <summary>
@@ -242,41 +228,6 @@ namespace Virtlink.Utilib
             return (value & (value - 1)) == 0;
         }
 
-        #region IsPowerOfTwoOrZero() Overloads
-        /// <summary>
-        /// Determines whether a value is a positive power of two, or zero.
-        /// </summary>
-        /// <param name="value">The value to test.</param>
-        /// <returns><see langword="true"/> when <paramref name="value"/> is a positive power of two,
-        /// or zero; otherwise, <see langword="false"/>.</returns>
-        public static bool IsPowerOfTwoOrZero(long value)
-        {
-            return value >= 0 && BinaryMath.IsPowerOfTwoOrZero(unchecked((ulong)value));
-        }
-
-        /// <summary>
-        /// Determines whether a value is a power of two, or zero.
-        /// </summary>
-        /// <param name="value">The value to test.</param>
-        /// <returns><see langword="true"/> when <paramref name="value"/> is a power of two,
-        /// or zero; otherwise, <see langword="false"/>.</returns>
-        public static bool IsPowerOfTwoOrZero(uint value)
-        {
-            return BinaryMath.IsPowerOfTwoOrZero((ulong)value);
-        }
-
-        /// <summary>
-        /// Determines whether a value is a positive power of two, or zero.
-        /// </summary>
-        /// <param name="value">The value to test.</param>
-        /// <returns><see langword="true"/> when <paramref name="value"/> is a positive power of two,
-        /// or zero; otherwise, <see langword="false"/>.</returns>
-        public static bool IsPowerOfTwoOrZero(int value)
-        {
-            return BinaryMath.IsPowerOfTwoOrZero((long)value);
-        }
-        #endregion
-
         /// <summary>
         /// Determines whether a value is a power of two.
         /// </summary>
@@ -287,43 +238,6 @@ namespace Virtlink.Utilib
         {
             return value != 0 && BinaryMath.IsPowerOfTwoOrZero(value);
         }
-
-        #region IsPowerOfTwo() Overloads
-        /// <summary>
-        /// Determines whether a value is a positive power of two.
-        /// </summary>
-        /// <param name="value">The value to test.</param>
-        /// <returns><see langword="true"/> when <paramref name="value"/> is a positive power of two;
-        /// otherwise, <see langword="false"/>.</returns>
-        public static bool IsPowerOfTwo(long value)
-        {
-            return value > 0 && BinaryMath.IsPowerOfTwoOrZero(unchecked((ulong)value));
-        }
-
-        /// <summary>
-        /// Determines whether a value is a power of two.
-        /// </summary>
-        /// <param name="value">The value to test.</param>
-        /// <returns><see langword="true"/> when <paramref name="value"/> is a power of two;
-        /// otherwise, <see langword="false"/>.</returns>
-        public static bool IsPowerOfTwo(uint value)
-        {
-            return BinaryMath.IsPowerOfTwo((ulong)value);
-        }
-
-        /// <summary>
-        /// Determines whether a value is a positive power of two.
-        /// </summary>
-        /// <param name="value">The value to test.</param>
-        /// <returns><see langword="true"/> when <paramref name="value"/> is a positive power of two;
-        /// otherwise, <see langword="false"/>.</returns>
-        public static bool IsPowerOfTwo(int value)
-        {
-            return BinaryMath.IsPowerOfTwo((long)value);
-        }
-        #endregion
-
-
 
 
         /// <summary>
@@ -370,64 +284,6 @@ namespace Virtlink.Utilib
 
             return n - (n >> 1);
         }
-
-        #region SetMostSignificantBit() Overloads
-        /// <summary>
-        /// Gets an integer with the most significant set bit set to 1 and all other bits set to 0.
-        /// </summary>
-        /// <param name="value">The value to test.</param>
-        /// <returns>An integer that has the most significant bit set in <paramref name="value"/> set to 1,
-        /// and the other bits to 0.</returns>
-        /// <remarks>
-        /// The sign of <paramref name="value"/> is ignored.
-        /// </remarks>
-        public static int SetMostSignificantBit(int value)
-        {
-            if (value < 0)
-                throw new NotSupportedException("The semantics of negative values have not been defined.");
-
-            bool negative = value < 0;
-
-            unchecked
-            {
-                if (negative) value = -value;
-
-                value = (int)SetMostSignificantBit((uint)value);
-
-                if (negative) value = -value;
-            }
-
-            return value;
-        }
-
-        /// <summary>
-        /// Gets an integer with the most significant set bit set to 1 and all other bits set to 0.
-        /// </summary>
-        /// <param name="value">The value to test.</param>
-        /// <returns>An integer that has the most significant bit set in <paramref name="value"/> set to 1,
-        /// and the other bits to 0.</returns>
-        /// <remarks>
-        /// The sign of <paramref name="value"/> is ignored.
-        /// </remarks>
-        public static long SetMostSignificantBit(long value)
-        {
-            if (value < 0)
-                throw new NotSupportedException("The semantics of negative values have not been defined.");
-
-            bool negative = value < 0;
-
-            unchecked
-            {
-                if (negative) value = -value;
-
-                value = (long)SetMostSignificantBit((ulong)value);
-
-                if (negative) value = -value;
-            }
-
-            return value;
-        }
-        #endregion
 
 
         /// <summary>
@@ -572,5 +428,133 @@ namespace Virtlink.Utilib
 
             return checked(offset + BinaryMath.GetPadding(offset, boundary));
         }
+
+        #region IsPowerOfTwoOrZero() Overloads
+        /// <summary>
+        /// Determines whether a value is a positive power of two, or zero.
+        /// </summary>
+        /// <param name="value">The value to test.</param>
+        /// <returns><see langword="true"/> when <paramref name="value"/> is a positive power of two,
+        /// or zero; otherwise, <see langword="false"/>.</returns>
+        public static bool IsPowerOfTwoOrZero(long value)
+        {
+            return value >= 0 && BinaryMath.IsPowerOfTwoOrZero(unchecked((ulong)value));
+        }
+
+        /// <summary>
+        /// Determines whether a value is a power of two, or zero.
+        /// </summary>
+        /// <param name="value">The value to test.</param>
+        /// <returns><see langword="true"/> when <paramref name="value"/> is a power of two,
+        /// or zero; otherwise, <see langword="false"/>.</returns>
+        public static bool IsPowerOfTwoOrZero(uint value)
+        {
+            return BinaryMath.IsPowerOfTwoOrZero((ulong)value);
+        }
+
+        /// <summary>
+        /// Determines whether a value is a positive power of two, or zero.
+        /// </summary>
+        /// <param name="value">The value to test.</param>
+        /// <returns><see langword="true"/> when <paramref name="value"/> is a positive power of two,
+        /// or zero; otherwise, <see langword="false"/>.</returns>
+        public static bool IsPowerOfTwoOrZero(int value)
+        {
+            return BinaryMath.IsPowerOfTwoOrZero((long)value);
+        }
+        #endregion
+
+        #region IsPowerOfTwo() Overloads
+        /// <summary>
+        /// Determines whether a value is a positive power of two.
+        /// </summary>
+        /// <param name="value">The value to test.</param>
+        /// <returns><see langword="true"/> when <paramref name="value"/> is a positive power of two;
+        /// otherwise, <see langword="false"/>.</returns>
+        public static bool IsPowerOfTwo(long value)
+        {
+            return value > 0 && BinaryMath.IsPowerOfTwoOrZero(unchecked((ulong)value));
+        }
+
+        /// <summary>
+        /// Determines whether a value is a power of two.
+        /// </summary>
+        /// <param name="value">The value to test.</param>
+        /// <returns><see langword="true"/> when <paramref name="value"/> is a power of two;
+        /// otherwise, <see langword="false"/>.</returns>
+        public static bool IsPowerOfTwo(uint value)
+        {
+            return BinaryMath.IsPowerOfTwo((ulong)value);
+        }
+
+        /// <summary>
+        /// Determines whether a value is a positive power of two.
+        /// </summary>
+        /// <param name="value">The value to test.</param>
+        /// <returns><see langword="true"/> when <paramref name="value"/> is a positive power of two;
+        /// otherwise, <see langword="false"/>.</returns>
+        public static bool IsPowerOfTwo(int value)
+        {
+            return BinaryMath.IsPowerOfTwo((long)value);
+        }
+        #endregion
+
+        #region SetMostSignificantBit() Overloads
+        /// <summary>
+        /// Gets an integer with the most significant set bit set to 1 and all other bits set to 0.
+        /// </summary>
+        /// <param name="value">The value to test.</param>
+        /// <returns>An integer that has the most significant bit set in <paramref name="value"/> set to 1,
+        /// and the other bits to 0.</returns>
+        /// <remarks>
+        /// The sign of <paramref name="value"/> is ignored.
+        /// </remarks>
+        public static int SetMostSignificantBit(int value)
+        {
+            if (value < 0)
+                throw new NotSupportedException("The semantics of negative values have not been defined.");
+
+            bool negative = value < 0;
+
+            unchecked
+            {
+                if (negative) value = -value;
+
+                value = (int)SetMostSignificantBit((uint)value);
+
+                if (negative) value = -value;
+            }
+
+            return value;
+        }
+
+        /// <summary>
+        /// Gets an integer with the most significant set bit set to 1 and all other bits set to 0.
+        /// </summary>
+        /// <param name="value">The value to test.</param>
+        /// <returns>An integer that has the most significant bit set in <paramref name="value"/> set to 1,
+        /// and the other bits to 0.</returns>
+        /// <remarks>
+        /// The sign of <paramref name="value"/> is ignored.
+        /// </remarks>
+        public static long SetMostSignificantBit(long value)
+        {
+            if (value < 0)
+                throw new NotSupportedException("The semantics of negative values have not been defined.");
+
+            bool negative = value < 0;
+
+            unchecked
+            {
+                if (negative) value = -value;
+
+                value = (long)SetMostSignificantBit((ulong)value);
+
+                if (negative) value = -value;
+            }
+
+            return value;
+        }
+        #endregion
     }
 }

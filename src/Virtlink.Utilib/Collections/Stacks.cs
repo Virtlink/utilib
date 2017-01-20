@@ -9,15 +9,15 @@ namespace Virtlink.Utilib.Collections
     public static class Stacks
     {
         /// <summary>
-		/// Pushes a range of elements onto the stack.
-		/// </summary>
-		/// <typeparam name="T">The type of elements.</typeparam>
-		/// <param name="stack">The stack.</param>
-		/// <param name="elements">The elements to push.</param>
-		/// <remarks>
-		/// The first element is pushed first.
-		/// </remarks>
-		public static void PushRange<T>(this Stack<T> stack, IEnumerable<T> elements)
+        /// Pushes a range of elements onto the stack.
+        /// </summary>
+        /// <typeparam name="T">The type of elements.</typeparam>
+        /// <param name="stack">The stack.</param>
+        /// <param name="elements">The elements to push.</param>
+        /// <remarks>
+        /// The first element is pushed first.
+        /// </remarks>
+        public static void PushRange<T>(this Stack<T> stack, IEnumerable<T> elements)
         {
             #region Contract
             if (stack == null)

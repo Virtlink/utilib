@@ -9,15 +9,15 @@ namespace Virtlink.Utilib.Collections
     public static class Queues
     {
         /// <summary>
-		/// Enqueues a range of elements onto the queue.
-		/// </summary>
-		/// <typeparam name="T">The type of elements.</typeparam>
-		/// <param name="queue">The queue.</param>
-		/// <param name="elements">The elements to enqueue.</param>
-		/// <remarks>
-		/// The first element is enqueued first.
-		/// </remarks>
-		public static void EnqueueRange<T>(this Queue<T> queue, IEnumerable<T> elements)
+        /// Enqueues a range of elements onto the queue.
+        /// </summary>
+        /// <typeparam name="T">The type of elements.</typeparam>
+        /// <param name="queue">The queue.</param>
+        /// <param name="elements">The elements to enqueue.</param>
+        /// <remarks>
+        /// The first element is enqueued first.
+        /// </remarks>
+        public static void EnqueueRange<T>(this Queue<T> queue, IEnumerable<T> elements)
         {
             #region Contract
             if (queue == null)

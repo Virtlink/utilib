@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-
 #if NET45
 using System.Runtime.Remoting;
 #endif
@@ -12,10 +9,10 @@ using System.Runtime.Remoting;
 namespace Virtlink.Utilib.IO
 {
     /// <summary>
-	/// Wrapper for a <see cref="Stream"/> that prevent the underlying
-	/// stream from being closed or disposed.
-	/// </summary>
-	internal sealed class NonClosingStreamWrapper : Stream
+    /// Wrapper for a <see cref="Stream"/> that prevent the underlying
+    /// stream from being closed or disposed.
+    /// </summary>
+    internal sealed class NonClosingStreamWrapper : Stream
     {
         /// <summary>
         /// Gets the underlying base stream.
@@ -23,28 +20,28 @@ namespace Virtlink.Utilib.IO
         /// <value>The base stream.</value>
         public Stream BaseStream { get; }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override bool CanRead => this.BaseStream.CanRead;
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override bool CanSeek => this.BaseStream.CanSeek;
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override bool CanWrite => this.BaseStream.CanWrite;
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override long Length => this.BaseStream.Length;
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override bool CanTimeout => this.BaseStream.CanTimeout;
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override int ReadTimeout => this.BaseStream.ReadTimeout;
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override int WriteTimeout => this.BaseStream.WriteTimeout;
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override long Position
         {
             get { return this.BaseStream.Position; }
@@ -66,32 +63,32 @@ namespace Virtlink.Utilib.IO
         }
         #endregion
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override long Seek(long offset, SeekOrigin origin)
         {
             return this.BaseStream.Seek(offset, origin);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override int Read(byte[] buffer, int offset, int count)
         {
             return this.BaseStream.Read(buffer, offset, count);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
         {
             return this.BaseStream.ReadAsync(buffer, offset, count, cancellationToken);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override int ReadByte()
         {
             return this.BaseStream.ReadByte();
         }
 
 #if NET45
-		/// <inheritdoc />
+        /// <inheritdoc />
 		public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
 		{
 			return this.BaseStream.BeginRead(buffer, offset, count, callback, state);
@@ -104,26 +101,26 @@ namespace Virtlink.Utilib.IO
 		}
 #endif
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override void Write(byte[] buffer, int offset, int count)
         {
             this.BaseStream.Write(buffer, offset, count);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
         {
             return this.BaseStream.WriteAsync(buffer, offset, count, cancellationToken);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override void WriteByte(byte value)
         {
             this.BaseStream.WriteByte(value);
         }
 
 #if NET45
-		/// <inheritdoc />
+        /// <inheritdoc />
 		public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
 		{
 			return this.BaseStream.BeginWrite(buffer, offset, count, callback, state);
@@ -136,32 +133,32 @@ namespace Virtlink.Utilib.IO
 		}
 #endif
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override void Flush()
         {
             this.BaseStream.Flush();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override Task FlushAsync(CancellationToken cancellationToken)
         {
             return this.BaseStream.FlushAsync(cancellationToken);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override void SetLength(long value)
         {
             this.BaseStream.SetLength(value);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken)
         {
             return this.BaseStream.CopyToAsync(destination, bufferSize, cancellationToken);
         }
 
 #if NET45
-		/// <inheritdoc />
+        /// <inheritdoc />
 		public override object InitializeLifetimeService()
 		{
 			return this.BaseStream.InitializeLifetimeService();
@@ -180,7 +177,7 @@ namespace Virtlink.Utilib.IO
 		}
 #endif
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         protected override void Dispose(bool disposing)
         {
             // Ignored.

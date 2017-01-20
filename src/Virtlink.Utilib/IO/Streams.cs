@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Virtlink.Utilib.IO
 {
@@ -12,14 +10,14 @@ namespace Virtlink.Utilib.IO
     public static class Streams
     {
         /// <summary>
-        /// The default encoding: UTF8 without BOM.
-        /// </summary>
-		private static Encoding DefaultEncoding { get; } = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
-
-        /// <summary>
         /// The default buffer size.
         /// </summary>
         private const int DefaultBufferSize = 1024;
+
+        /// <summary>
+        /// The default encoding: UTF8 without BOM.
+        /// </summary>
+        private static Encoding DefaultEncoding { get; } = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
 
         /// <summary>
         /// Opens a binary reader for the stream.

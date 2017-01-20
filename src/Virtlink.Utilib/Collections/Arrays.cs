@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Virtlink.Utilib.Collections
+﻿namespace Virtlink.Utilib.Collections
 {
     /// <summary>
     /// Functions for working with arrays.
@@ -9,11 +6,11 @@ namespace Virtlink.Utilib.Collections
     public static class Arrays
     {
         /// <summary>
-		/// Returns a read-only empty array.
-		/// </summary>
-		/// <typeparam name="T">The type of elements in the array.</typeparam>
-		/// <returns>The read-only empty array.</returns>
-		public static T[] Empty<T>()
+        /// Returns a read-only empty array.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the array.</typeparam>
+        /// <returns>The read-only empty array.</returns>
+        public static T[] Empty<T>()
         {
             return EmptyArrayClass<T>.Instance;
         }

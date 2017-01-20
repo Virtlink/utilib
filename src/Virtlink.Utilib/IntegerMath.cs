@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Virtlink.Utilib
 {
     /// <summary>
-	/// Math operations on integers.
-	/// </summary>
-	public static class IntegerMath
+    /// Math operations on integers.
+    /// </summary>
+    public static class IntegerMath
     {
         /// <summary>
         /// Calculates the dividend modulo the divisor.
@@ -70,8 +68,6 @@ namespace Virtlink.Utilib
             long r = dividend % divisor;
             return r >= 0 ? r : r + divisor;
         }
-
-
 
 
         /// <summary>

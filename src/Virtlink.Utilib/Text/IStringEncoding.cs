@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Virtlink.Utilib.Text
+﻿namespace Virtlink.Utilib.Text
 {
     /// <summary>
-	/// A string encoding.
-	/// </summary>
-	public interface IStringEncoding
+    /// A string encoding.
+    /// </summary>
+    public interface IStringEncoding
     {
         /// <summary>
         /// Encodes the specified string.

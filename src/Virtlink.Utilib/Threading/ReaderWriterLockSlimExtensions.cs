@@ -23,8 +23,8 @@ namespace Virtlink.Utilib.Threading
             #endregion
 
             return locker.IsReadLockHeld
-                || locker.IsUpgradeableReadLockHeld
-                || locker.IsWriteLockHeld;
+                   || locker.IsUpgradeableReadLockHeld
+                   || locker.IsWriteLockHeld;
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Virtlink.Utilib.Threading
                 this.action = action;
             }
 
-            /// <inheritdoc />
+            /// <inheritdoc/>
             public void Dispose()
             {
                 this.action();

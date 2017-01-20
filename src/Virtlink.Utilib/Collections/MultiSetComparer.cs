@@ -6,11 +6,11 @@ using JetBrains.Annotations;
 namespace Virtlink.Utilib.Collections
 {
     /// <summary>
-	/// Compares two multi-sets (unordered collections which may contain duplicates)
-	/// for equality.
-	/// </summary>
-	/// <typeparam name="T">The type of elements in the sets.</typeparam>
-	public sealed class MultiSetComparer<T> : IEqualityComparer<IEnumerable<T>>
+    /// Compares two multi-sets (unordered collections which may contain duplicates)
+    /// for equality.
+    /// </summary>
+    /// <typeparam name="T">The type of elements in the sets.</typeparam>
+    public sealed class MultiSetComparer<T> : IEqualityComparer<IEnumerable<T>>
     {
         /// <summary>
         /// Gets the default instance of the <see cref="MultiSetComparer{T}"/>.
@@ -30,7 +30,9 @@ namespace Virtlink.Utilib.Collections
         /// </summary>
         public MultiSetComparer()
             : this(EqualityComparer<T>.Default)
-        { /* Nothing to do. */ }
+        {
+            /* Nothing to do. */
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiSetComparer{T}"/> class.
@@ -47,7 +49,7 @@ namespace Virtlink.Utilib.Collections
         }
         #endregion
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public bool Equals(IEnumerable<T> x, IEnumerable<T> y)
         {
             if (x == null)
@@ -65,7 +67,7 @@ namespace Virtlink.Utilib.Collections
             return !HaveMismatchedElement(x, y);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public int GetHashCode(IEnumerable<T> enumerable)
         {
             #region Contract
@@ -99,11 +101,11 @@ namespace Virtlink.Utilib.Collections
         }
 
 #if false
-		/// <summary>
-		/// Calculates the hash code of the collection while keeping the number of hash collisions low.
-		/// </summary>
-		/// <param name="enumerable">The collection.</param>
-		// ReSharper disable once UnusedMember.Local
+        /// <summary>
+        /// Calculates the hash code of the collection while keeping the number of hash collisions low.
+        /// </summary>
+        /// <param name="enumerable">The collection.</param>
+        // ReSharper disable once UnusedMember.Local
 		private int GetExpensiveHashCode(IEnumerable<T> enumerable)
 		{
             #region Contract
@@ -141,8 +143,8 @@ namespace Virtlink.Utilib.Collections
             var ycount = Enumerables.TryGetCount(y);
 
             return xcount != null
-                && ycount != null
-                && xcount != ycount;
+                   && ycount != null
+                   && xcount != ycount;
         }
 
         /// <summary>
@@ -176,7 +178,6 @@ namespace Virtlink.Utilib.Collections
 
                 if (firstElementCount != secondElementCount)
                     return true;
-
             }
 
             return false;

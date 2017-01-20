@@ -52,10 +52,7 @@ namespace Virtlink.Utilib.Collections
             #endregion
 
             var collection = enumerable as ICollection;
-            if (collection != null)
-                return collection.Count;
-
-            return null;
+            return collection?.Count;
         }
     }
 }

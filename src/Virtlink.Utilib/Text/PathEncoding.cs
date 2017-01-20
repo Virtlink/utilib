@@ -3,58 +3,15 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Virtlink.Utilib.Text
 {
     /// <summary>
-	/// Path encoding.
-	/// </summary>
-	public class PathEncoding : IStringEncoding
+    /// Path encoding.
+    /// </summary>
+    public class PathEncoding : IStringEncoding
     {
         private static Encoding DefaultEncoding => Encoding.UTF8;
-
-        /// <inheritdoc />
-        public string Encode(string unencoded)
-        {
-            #region Contract
-            if (unencoded == null) throw new ArgumentNullException(nameof(unencoded));
-            #endregion
-
-            byte[] buffer = new byte[4];
-
-            var sb = new StringBuilder(unencoded.Length * 2);
-
-            // Encode as many characters as we can.
-            int i = 0;
-            while (i < unencoded.Length)
-            {
-                if (!IsAllowedCharacter(unencoded[i]))
-                {
-                    int step = EncodeChar(unencoded, i, sb, buffer);
-                    i += step;
-                }
-                else
-                {
-                    sb.Append(unencoded[i]);
-                    i += 1;
-                }
-            }
-
-            string encoded = sb.ToString();
-
-            // Avoid creating an illegal name.
-            if (!IsAllowedName(encoded))
-            {
-                // Encode the first character.
-                sb.Clear();
-                int step = EncodeChar(encoded, 0, sb, buffer);
-                sb.Append(encoded.Substring(step));
-                encoded = sb.ToString();
-            }
-
-            return encoded;
-        }
 
         /// <summary>
         /// Encodes a character.
@@ -74,36 +31,6 @@ namespace Virtlink.Utilib.Text
                 output.Append(buffer[j].ToString("X2"));
             }
             return chars;
-        }
-
-        /// <inheritdoc />
-        public string Decode(string encoded)
-        {
-            #region Contract
-            if (encoded == null) throw new ArgumentNullException(nameof(encoded));
-            #endregion
-
-            var buffer = new List<byte>(4);
-
-            var sb = new StringBuilder(encoded.Length);
-
-            // Decode characters.
-            int i = 0;
-            while (i < encoded.Length)
-            {
-                if (encoded[i] == '%')
-                {
-                    int step = DecodeChars(encoded, i, sb, buffer);
-                    i += step;
-                }
-                else
-                {
-                    sb.Append(encoded[i]);
-                    i += 1;
-                }
-            }
-
-            return sb.ToString();
         }
 
         /// <summary>
@@ -158,7 +85,9 @@ namespace Virtlink.Utilib.Text
                 throw new FormatException("Percent encoded UTF-8 character ended prematurely.");
 
             int result;
-            if (!Int32.TryParse(encoded.Substring(index + 1, 2), NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out result))
+            if (
+                !Int32.TryParse(encoded.Substring(index + 1, 2), NumberStyles.AllowHexSpecifier,
+                    CultureInfo.InvariantCulture, out result))
                 throw new FormatException("Percent encoded UTF-8 character was not encoded properly.");
 
             buffer.Add((byte)result);
@@ -193,7 +122,79 @@ namespace Virtlink.Utilib.Text
         protected virtual bool IsAllowedName(string name)
         {
             return name != "."
-                && name != "..";
+                   && name != "..";
+        }
+
+        /// <inheritdoc/>
+        public string Encode(string unencoded)
+        {
+            #region Contract
+            if (unencoded == null) throw new ArgumentNullException(nameof(unencoded));
+            #endregion
+
+            byte[] buffer = new byte[4];
+
+            var sb = new StringBuilder(unencoded.Length * 2);
+
+            // Encode as many characters as we can.
+            int i = 0;
+            while (i < unencoded.Length)
+            {
+                if (!IsAllowedCharacter(unencoded[i]))
+                {
+                    int step = EncodeChar(unencoded, i, sb, buffer);
+                    i += step;
+                }
+                else
+                {
+                    sb.Append(unencoded[i]);
+                    i += 1;
+                }
+            }
+
+            string encoded = sb.ToString();
+
+            // Avoid creating an illegal name.
+            if (!IsAllowedName(encoded))
+            {
+                // Encode the first character.
+                sb.Clear();
+                int step = EncodeChar(encoded, 0, sb, buffer);
+                sb.Append(encoded.Substring(step));
+                encoded = sb.ToString();
+            }
+
+            return encoded;
+        }
+
+        /// <inheritdoc/>
+        public string Decode(string encoded)
+        {
+            #region Contract
+            if (encoded == null) throw new ArgumentNullException(nameof(encoded));
+            #endregion
+
+            var buffer = new List<byte>(4);
+
+            var sb = new StringBuilder(encoded.Length);
+
+            // Decode characters.
+            int i = 0;
+            while (i < encoded.Length)
+            {
+                if (encoded[i] == '%')
+                {
+                    int step = DecodeChars(encoded, i, sb, buffer);
+                    i += step;
+                }
+                else
+                {
+                    sb.Append(encoded[i]);
+                    i += 1;
+                }
+            }
+
+            return sb.ToString();
         }
     }
 }
