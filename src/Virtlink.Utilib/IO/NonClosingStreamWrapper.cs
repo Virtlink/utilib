@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 #if NET45
+using System;
 using System.Runtime.Remoting;
 #endif
 
