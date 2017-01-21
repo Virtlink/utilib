@@ -1,4 +1,4 @@
-[![AppVeyor](https://img.shields.io/appveyor/ci/Virtlink/utilib.svg)](https://ci.appveyor.com/project/Virtlink/utilib)
+[![AppVeyor](https://img.shields.io/appveyor/ci/Virtlink/utilib/master.svg)](https://ci.appveyor.com/project/Virtlink/utilib)
 [![GitHub release](https://img.shields.io/github/release/Virtlink/utilib.svg)](https://github.com/Virtlink/utilib/releases)
 [![NuGet](https://img.shields.io/nuget/v/Virtlink.Utilib.svg)](https://www.nuget.org/packages/Virtlink.Utilib/)
 [![GitHub license](https://img.shields.io/github/license/Virtlink/utilib.svg)](http://www.apache.org/licenses/LICENSE-2.0)
