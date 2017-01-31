@@ -325,15 +325,65 @@ namespace Virtlink.Utilib.IO
 		{
 			return GetByteCount(value ? (byte)1 : (byte)0);
 		}
-		#endregion
+        #endregion
 
-		#region GetBytes(Primitive)
-		/// <summary>
-		/// Encodes the specified 8-bit unsigned integer value as an array of bytes.
-		/// </summary>
-		/// <param name="value">The value to encode.</param>
-		/// <returns>The array of bytes.</returns>
-		[Pure]
+        #region GetMaxByteCount(Type)
+	    /// <summary>
+	    /// Gets the minimum number of bytes used to encode the specified type.
+	    /// </summary>
+	    /// <param name="type">The type, which must be a primitive type.</param>
+	    /// <returns>The minimum number of bytes used to encode the specified type.</returns>
+	    /// <remarks>
+	    /// The supported types are:
+	    /// <list type="bullet">
+	    /// <item><description>Byte</description></item>
+	    /// <item><description>UInt16</description></item>
+	    /// <item><description>UInt32</description></item>
+	    /// <item><description>UInt64</description></item>
+	    /// <item><description>SByte</description></item>
+	    /// <item><description>Int16</description></item>
+	    /// <item><description>Int32</description></item>
+	    /// <item><description>Int64</description></item>
+	    /// <item><description>Single</description></item>
+	    /// <item><description>Double</description></item>
+	    /// <item><description>Decimal</description></item>
+	    /// <item><description>Boolean</description></item>
+	    /// </list>
+	    /// </remarks>
+	    public abstract int GetMinByteCount(Type type);
+
+        /// <summary>
+        /// Gets the maximum number of bytes used to encode the specified type.
+        /// </summary>
+        /// <param name="type">The type, which must be a primitive type.</param>
+        /// <returns>The maximum number of bytes used to encode the specified type.</returns>
+        /// <remarks>
+        /// The supported types are:
+        /// <list type="bullet">
+        /// <item><description>Byte</description></item>
+        /// <item><description>UInt16</description></item>
+        /// <item><description>UInt32</description></item>
+        /// <item><description>UInt64</description></item>
+        /// <item><description>SByte</description></item>
+        /// <item><description>Int16</description></item>
+        /// <item><description>Int32</description></item>
+        /// <item><description>Int64</description></item>
+        /// <item><description>Single</description></item>
+        /// <item><description>Double</description></item>
+        /// <item><description>Decimal</description></item>
+	    /// <item><description>Boolean</description></item>
+        /// </list>
+        /// </remarks>
+	    public abstract int GetMaxByteCount(Type type);
+        #endregion
+
+        #region GetBytes(Primitive)
+        /// <summary>
+        /// Encodes the specified 8-bit unsigned integer value as an array of bytes.
+        /// </summary>
+        /// <param name="value">The value to encode.</param>
+        /// <returns>The array of bytes.</returns>
+        [Pure]
 		public virtual byte[] GetBytes(Byte value)
 		{
 			byte[] buffer = new byte[GetByteCount(value)];
