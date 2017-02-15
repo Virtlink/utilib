@@ -1,12 +1,12 @@
 {
-  "version": "1.17.1-*",
+  "version": "1.17.2-*",
 
   "testRunner": "nunit",
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
     "System.Collections.NonGeneric": "4.0.1",
-    "Virtlink.Utilib": "1.17.1-*",
+    "Virtlink.Utilib": "1.17.2-*",
     "NUnit": "3.6.0",
     "dotnet-test-nunit": "3.4.0-beta-3"
   },
