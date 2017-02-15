@@ -1,5 +1,5 @@
 {
-  "version": "1.17.3-*",
+  "version": "1.18.0-*",
   "title": "Utilib - Utility library",
   "description": "A utility library for .Net. It contains all those little utility classes and functions that are missing from the standard .Net libraries.",
   "copyright": "Copyright - Daniel Pelsmaeker",
