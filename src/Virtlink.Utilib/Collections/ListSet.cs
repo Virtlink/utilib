@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Virtlink.Utilib.Diagnostics;
 
 namespace Virtlink.Utilib.Collections
 {
     /// <summary>
     /// A set that's especially useful for small sets.
     /// </summary>
+    [DebuggerTypeProxy(typeof(CollectionDebugView<>))]
+    [DebuggerDisplay("Count = {" + nameof(Count) + "}")]
     public sealed class ListSet<T> : ISet<T>, IReadOnlySet<T>
     {
         private readonly List<T> innerList = new List<T>();
