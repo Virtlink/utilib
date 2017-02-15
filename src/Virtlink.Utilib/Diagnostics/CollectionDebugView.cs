@@ -13,13 +13,13 @@ namespace Virtlink.Utilib.Diagnostics
         /// <summary>
         /// The collection.
         /// </summary>
-        private readonly IReadOnlyCollection<T> collection;
+        private readonly IEnumerable<T> collection;
 
         #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="CollectionDebugView{T}"/> class.
         /// </summary>
-        public CollectionDebugView(IReadOnlyCollection<T> collection)
+        public CollectionDebugView(IEnumerable<T> collection)
         {
             #region Contract
             if (collection == null)
