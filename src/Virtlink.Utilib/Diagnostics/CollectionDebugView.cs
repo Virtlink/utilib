@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Virtlink.Utilib.Diagnostics
 {
@@ -14,13 +13,13 @@ namespace Virtlink.Utilib.Diagnostics
         /// <summary>
         /// The collection.
         /// </summary>
-        private readonly ICollection<T> collection;
+        private readonly IReadOnlyCollection<T> collection;
 
         #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="CollectionDebugView{T}"/> class.
         /// </summary>
-        public CollectionDebugView(ICollection<T> collection)
+        public CollectionDebugView(IReadOnlyCollection<T> collection)
         {
             #region Contract
             if (collection == null)
@@ -36,14 +35,6 @@ namespace Virtlink.Utilib.Diagnostics
         /// </summary>
         /// <value>An array of items.</value>
         [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-        public T[] Items
-        {
-            get
-            {
-                var array = new T[this.collection.Count];
-                this.collection.CopyTo(array, 0);
-                return array;
-            }
-        }
+        public T[] Items => this.collection.ToArray();
     }
 }
