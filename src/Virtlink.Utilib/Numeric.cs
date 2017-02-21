@@ -14,8 +14,8 @@ namespace Virtlink.Utilib
         /// <summary>
         /// Compares two boxed numbers, regardless of their actual numeric type and signedness.
         /// </summary>
-        /// <param name="x">The left-hand boxed integer to compare.</param>
-        /// <param name="y">The right-hand boxed integer to compare.</param>
+        /// <param name="x">The left-hand boxed number to compare.</param>
+        /// <param name="y">The right-hand boxed number to compare.</param>
         /// <returns>A negative value if <paramref name="x"/> is less than <paramref name="y"/>,
         /// a positive value if <paramref name="x"/> is greater than <paramref name="y"/>,
         /// or zero if <paramref name="x"/> is equal to <paramref name="y"/>.</returns>

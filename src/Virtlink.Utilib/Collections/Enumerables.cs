@@ -14,7 +14,7 @@ namespace Virtlink.Utilib.Collections
         /// only if it can be determined efficiently.
         /// </summary>
         /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
-        /// <param name="enumerable">The enumerable for which tog et the count.</param>
+        /// <param name="enumerable">The enumerable for which to get the count.</param>
         /// <returns>The number of elements;
         /// or <see langword="null"/> when it could not be determined
         /// without enumerating all elements.</returns>

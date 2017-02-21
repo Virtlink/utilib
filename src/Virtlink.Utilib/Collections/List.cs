@@ -39,8 +39,7 @@ namespace Virtlink.Utilib.Collections
             if (count < 0 || sourceIndex + count > sourceList.Count || destinationIndex + count > destinationList.Count)
                 throw new ArgumentOutOfRangeException(nameof(count));
             #endregion
-
-
+            
             if (sourceIndex < destinationIndex)
             {
                 for (int i = count - 1; i >= 0; i--)
