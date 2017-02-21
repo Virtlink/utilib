@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.IO
 {
@@ -13,11 +10,10 @@ namespace Virtlink.Utilib.IO
         /// <summary>
         /// Tests the <see cref="Streams.WriteText"/> function.
         /// </summary>
-        [TestFixture]
         public sealed class WriteTextTests
         {
-            [Test]
-            public void ReturnsATextWriter()
+            [Fact]
+            public void ShouldReturnATextWriter()
             {
                 // Arrange
                 var input = "TEST";
@@ -29,15 +25,15 @@ namespace Virtlink.Utilib.IO
                 writer.Flush();
 
                 // Assert
-                Assert.That(GetString(stream), Is.EqualTo(input));
+                Assert.Equal(input, GetString(stream));
 
                 // Cleanup
                 writer.Dispose();
                 stream.Dispose();
             }
 
-            [Test]
-            public void ClosingWriterDoesNotCloseStream()
+            [Fact]
+            public void ShouldNotCloseStream_WhenClosingTheWriter()
             {
                 // Arrange
                 var stream = new MemoryStream();
@@ -45,30 +41,34 @@ namespace Virtlink.Utilib.IO
 
                 // Act
                 writer.Dispose();
-
-                // Assert
-                Assert.That(() =>
+                var exception = Record.Exception(() =>
                 {
                     long p = stream.Position;
-                }, Throws.Nothing);
+                });
+
+                // Assert
+                Assert.Null(exception);
 
                 // Cleanup
                 stream.Dispose();
             }
 
-            [Test]
-            public void ThrowsWhenStreamIsNull()
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenStreamIsNull()
             {
                 // Arrange
                 Stream sut = null;
 
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     sut.WriteText();
-                }, Throws.ArgumentNullException);
-            }
+                });
 
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
+            }
+            
             private string GetString(MemoryStream stream)
             {
                 stream.Position = 0;

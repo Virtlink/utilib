@@ -1,39 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using Xunit;
 
 namespace Virtlink.Utilib
 {
     partial class StringExtTests
     {
-        [TestFixture]
+        /// <summary>
+        /// Tests the <see cref="StringExt.CountNewlines"/> function.
+        /// </summary>
         public sealed class CountNewlinesTests
         {
-            [TestCase("", ExpectedResult = 0)]
-            [TestCase("abc", ExpectedResult = 0)]
-            [TestCase("\n", ExpectedResult = 1)]
-            [TestCase("abc\n", ExpectedResult = 1)]
-            [TestCase("\ndef", ExpectedResult = 1)]
-            [TestCase("abc\ndef", ExpectedResult = 1)]
-            [TestCase("\r", ExpectedResult = 1)]
-            [TestCase("abc\r", ExpectedResult = 1)]
-            [TestCase("\rdef", ExpectedResult = 1)]
-            [TestCase("abc\rdef", ExpectedResult = 1)]
-            [TestCase("\r\n", ExpectedResult = 1)]
-            [TestCase("abc\r\n", ExpectedResult = 1)]
-            [TestCase("\r\ndef", ExpectedResult = 1)]
-            [TestCase("abc\r\ndef", ExpectedResult = 1)]
-            [TestCase("abc\rdef\rghi", ExpectedResult = 2)]
-            [TestCase("abc\ndef\nghi", ExpectedResult = 2)]
-            [TestCase("abc\r\ndef\r\nghi", ExpectedResult = 2)]
-            [TestCase("abc\r\rghi", ExpectedResult = 2)]
-            [TestCase("abc\n\nghi", ExpectedResult = 2)]
-            [TestCase("abc\n\rghi", ExpectedResult = 2)]
-            public int CountNewlinesTest(string str)
+            [Theory]
+            [InlineData("",                  0)]
+            [InlineData("abc",               0)]
+            [InlineData("\n",                1)]
+            [InlineData("abc\n",             1)]
+            [InlineData("\ndef",             1)]
+            [InlineData("abc\ndef",          1)]
+            [InlineData("\r",                1)]
+            [InlineData("abc\r",             1)]
+            [InlineData("\rdef",             1)]
+            [InlineData("abc\rdef",          1)]
+            [InlineData("\r\n",              1)]
+            [InlineData("abc\r\n",           1)]
+            [InlineData("\r\ndef",           1)]
+            [InlineData("abc\r\ndef",        1)]
+            [InlineData("abc\rdef\rghi",     2)]
+            [InlineData("abc\ndef\nghi",     2)]
+            [InlineData("abc\r\ndef\r\nghi", 2)]
+            [InlineData("abc\r\rghi",        2)]
+            [InlineData("abc\n\nghi",        2)]
+            [InlineData("abc\n\rghi",        2)]
+            public void ShouldReturnExpectedResult(string str, int expected)
             {
-                return StringExt.CountNewlines(str);
+                // Act
+                int actual = StringExt.CountNewlines(str);
+
+                // Assert
+                Assert.Equal(expected, actual);
             }
         }
     }

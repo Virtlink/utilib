@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 
 namespace Virtlink.Utilib.Text
 {
@@ -7,12 +7,10 @@ namespace Virtlink.Utilib.Text
 		/// <summary>
 		/// Tests the <see cref="PathEncoding.Decode"/> method.
 		/// </summary>
-		[TestFixture]
 		public class DecodeTests : PathEncodingTests
 		{
-
-			[Test]
-			public void DoesNotDecodeNormalCharacters()
+			[Fact]
+			public void ShouldNotDecodeNormalCharacters()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -22,11 +20,11 @@ namespace Virtlink.Utilib.Text
 				string unencoded = encoding.Decode(encoded);
 
 				// Assert
-				Assert.That(unencoded, Is.EqualTo(encoded));
+				Assert.Equal(encoded, unencoded);
 			}
 
-			[Test]
-			public void DecodesControlCharacters()
+			[Fact]
+			public void ShouldDecodeControlCharacters()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -36,11 +34,11 @@ namespace Virtlink.Utilib.Text
 				string unencoded = encoding.Decode(encoded);
 
 				// Assert
-				Assert.That(unencoded, Is.EqualTo("\0"));
+				Assert.Equal("\0", unencoded);
 			}
 
-			[Test]
-			public void DecodesExclamationMark()
+			[Fact]
+			public void ShouldDecodeExclamationMark()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -50,11 +48,11 @@ namespace Virtlink.Utilib.Text
 				string unencoded = encoding.Decode(encoded);
 
 				// Assert
-				Assert.That(unencoded, Is.EqualTo("!"));
+				Assert.Equal("!", unencoded);
 			}
 
-			[Test]
-			public void DecodesPercent()
+			[Fact]
+			public void ShouldDecodePercent()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -64,11 +62,11 @@ namespace Virtlink.Utilib.Text
 				string unencoded = encoding.Decode(encoded);
 
 				// Assert
-				Assert.That(unencoded, Is.EqualTo("%"));
+				Assert.Equal("%", unencoded);
 			}
 
-			[Test]
-			public void DecodesForwardSlash()
+			[Fact]
+			public void ShouldDecodeForwardSlash()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -78,11 +76,11 @@ namespace Virtlink.Utilib.Text
 				string unencoded = encoding.Decode(encoded);
 
 				// Assert
-				Assert.That(unencoded, Is.EqualTo("/"));
+				Assert.Equal("/", unencoded);
 			}
 
-			[Test]
-			public void DecodesEncodedCharacterInTheMiddle()
+			[Fact]
+			public void ShouldDecodeEncodedCharacterInTheMiddle()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -92,7 +90,7 @@ namespace Virtlink.Utilib.Text
 				string unencoded = encoding.Decode(encoded);
 
 				// Assert
-				Assert.That(unencoded, Is.EqualTo("foo/bar"));
+				Assert.Equal("foo/bar", unencoded);
 			}
 			
 		}

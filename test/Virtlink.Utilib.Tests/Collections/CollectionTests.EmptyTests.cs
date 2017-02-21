@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -12,30 +10,32 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="Collection{T}.Empty"/> function.
         /// </summary>
-        [TestFixture]
         public sealed class EmptyTests
         {
-            [Test]
-            public void ReturnsAnEmptyArray()
+            [Fact]
+            public void ShouldReturnIReadOnlyCollection()
             {
                 // Act
                 var result = Collection.Empty<String>();
 
                 // Assert
-                Assert.That(result, Is.InstanceOf<IReadOnlyCollection<String>>());
+                Assert.IsAssignableFrom<IReadOnlyCollection<String>>(result);
             }
 
-            [Test]
-            public void ReturnedEmptyArrayCannotBeModified()
+            [Fact]
+            public void ShouldThrowNotSupportedException_WhenEmptyCollectionIsModified()
             {
-                // Act
+                // Arrange
                 var result = (ICollection<String>)Collection.Empty<String>();
 
-                // Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     result.Add("test");
-                }, Throws.InstanceOf<NotSupportedException>());
+                });
+
+                // Assert
+                Assert.IsType<NotSupportedException>(exception);
             }
         }
     }

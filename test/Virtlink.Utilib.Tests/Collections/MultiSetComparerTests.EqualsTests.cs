@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,11 +9,10 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="MultiSetComparer{T}.Equals"/> method.
         /// </summary>
-        [TestFixture]
         public sealed class EqualsTests
         {
-            [Test]
-            public void SameCollectionsAreEqual()
+            [Fact]
+            public void ShouldReturnTrue_WhenGivenSameCollections()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -25,11 +22,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.That(result, Is.True);
+                Assert.True(result);
             }
 
-            [Test]
-            public void EqualCollectionsAreEqual()
+            [Fact]
+            public void ShouldReturnTrue_WhenGivenEqualCollections()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -39,11 +36,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.That(result, Is.True);
+                Assert.True(result);
             }
 
-            [Test]
-            public void EquivalentCollectionsAreEqual()
+            [Fact]
+            public void ShouldReturnFalse_WhenGivenCollectionsWithDifferentlyOrderedElements()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -53,11 +50,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.That(result, Is.True);
+                Assert.True(result);
             }
 
-            [Test]
-            public void EmptySetsAreEqual()
+            [Fact]
+            public void ShouldReturnTrue_WhenGivenEmptyCollections()
             {
                 // Arrange
                 var set0 = new int[0];
@@ -68,11 +65,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = sut.Equals(set0, set1);
 
                 // Assert
-                Assert.That(result, Is.True);
+                Assert.True(result);
             }
 
-            [Test]
-            public void NullsAreEqual()
+            [Fact]
+            public void ShouldReturnTrue_WhenGivenNulls()
             {
                 // Arrange
                 var sut = new MultiSetComparer<int>();
@@ -81,11 +78,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = sut.Equals(null, null);
 
                 // Assert
-                Assert.That(result, Is.True);
+                Assert.True(result);
             }
 
-            [Test]
-            public void CollectionsWithDifferentElementsAreNotEqual()
+            [Fact]
+            public void ShouldReturnFalse_WhenGivenCollectionsWithDifferentElements()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -95,11 +92,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.That(result, Is.False);
+                Assert.False(result);
             }
 
-            [Test]
-            public void CollectionsWithDifferentMultiplesOfElementsAreNotEqual()
+            [Fact]
+            public void ShouldReturnFalse_WhenGivenCollectionsWithDifferentMultiplesOfElements()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -109,11 +106,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.That(result, Is.False);
+                Assert.False(result);
             }
 
-            [Test]
-            public void CollectionsWithDifferentCountsAreNotEqual()
+            [Fact]
+            public void ShouldReturnFalse_WhenGivenCollectionsWithDifferentCounts()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -123,11 +120,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.That(result, Is.False);
+                Assert.False(result);
             }
 
-            [Test]
-            public void SetsAndNullAreNotEqual()
+            [Fact]
+            public void ShouldReturnFalse_WhenGivenCollectionAndNull()
             {
                 // Arrange
                 var set0 = new int[0];
@@ -137,11 +134,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = sut.Equals(set0, null);
 
                 // Assert
-                Assert.That(result, Is.False);
+                Assert.False(result);
             }
 
-            [Test]
-            public void ComparerIsUsedForComparison()
+            [Fact]
+            public void ShouldUseGivenComparerForComparisons()
             {
                 // Arrange
                 var set0 = new[] { "B", "D", "g", "g", "A", "C", "E", "e", "E" };
@@ -152,7 +149,7 @@ namespace Virtlink.Utilib.Collections
                 bool result = sut.Equals(set0, set1);
 
                 // Assert
-                Assert.That(result, Is.True);
+                Assert.True(result);
             }
         }
     }

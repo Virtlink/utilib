@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 
 namespace Virtlink.Utilib.Text
 {
@@ -7,13 +7,10 @@ namespace Virtlink.Utilib.Text
 		/// <summary>
 		/// Tests the <see cref="PathEncoding.Encode"/> method.
 		/// </summary>
-		[TestFixture]
 		public class EncodeTests : PathEncodingTests
 		{
-			// NOTE: We assume percent encoded characters are written in uppercase ("%2F" and not "%2f").
-
-			[Test]
-			public void DoesNotEncodeNormalCharacters()
+			[Fact]
+			public void ShouldNotEncodeNormalCharacters()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -23,11 +20,11 @@ namespace Virtlink.Utilib.Text
 				string encoded = encoding.Encode(unencoded);
 
 				// Assert
-				Assert.That(encoded, Is.EqualTo(unencoded));
+				Assert.Equal(unencoded, encoded);
 			}
 
-			[Test]
-			public void EncodesControlCharacters()
+			[Fact]
+			public void ShouldEncodeControlCharacters()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -37,11 +34,11 @@ namespace Virtlink.Utilib.Text
 				string encoded = encoding.Encode(unencoded);
 
 				// Assert
-				Assert.That(encoded, Is.EqualTo("%00"));        // U+00
+				Assert.Equal("%00", encoded.ToUpperInvariant());        // U+00
 			}
 
-			[Test]
-			public void EncodesExclamationMark()
+			[Fact]
+			public void ShouldEncodeExclamationMark()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -51,11 +48,11 @@ namespace Virtlink.Utilib.Text
 				string encoded = encoding.Encode(unencoded);
 
 				// Assert
-				Assert.That(encoded, Is.EqualTo("%21"));        // U+21
+				Assert.Equal("%21", encoded.ToUpperInvariant());        // U+21
 			}
 
-			[Test]
-			public void EncodesPercent()
+			[Fact]
+			public void ShouldEncodePercent()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -65,11 +62,11 @@ namespace Virtlink.Utilib.Text
 				string encoded = encoding.Encode(unencoded);
 
 				// Assert
-				Assert.That(encoded, Is.EqualTo("%25"));        // U+25
+				Assert.Equal("%25", encoded.ToUpperInvariant());        // U+25
 			}
 
-			[Test]
-			public void EncodesForwardSlash()
+			[Fact]
+			public void ShouldEncodeForwardSlash()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -79,7 +76,7 @@ namespace Virtlink.Utilib.Text
 				string encoded = encoding.Encode(unencoded);
 
 				// Assert
-				Assert.That(encoded, Is.EqualTo("%2F"));        // U+2F
+				Assert.Equal("%2F", encoded.ToUpperInvariant());        // U+2F
 			}
 			
 		}

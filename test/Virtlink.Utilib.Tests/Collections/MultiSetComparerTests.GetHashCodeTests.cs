@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,11 +8,10 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="MultiSetComparer{T}.GetHashCode"/> method.
         /// </summary>
-        [TestFixture]
         public sealed class GetHashCodeTests
         {
-            [Test]
-            public void SameCollectionsHaveSameHashCode()
+            [Fact]
+            public void ShouldHaveSameHashCode_WhenGivenSameCollections()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -26,11 +22,11 @@ namespace Virtlink.Utilib.Collections
                 int h2 = MultiSetComparer<String>.Default.GetHashCode(c2);
 
                 // Assert
-                Assert.That(h1, Is.EqualTo(h2));
+                Assert.Equal(h1, h2);
             }
 
-            [Test]
-            public void EqualCollectionsHaveSameHashCode()
+            [Fact]
+            public void ShouldHaveSameHashCode_WhenGivenEqualCollections()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -41,11 +37,11 @@ namespace Virtlink.Utilib.Collections
                 int h2 = MultiSetComparer<String>.Default.GetHashCode(c2);
 
                 // Assert
-                Assert.That(h1, Is.EqualTo(h2));
+                Assert.Equal(h1, h2);
             }
 
-            [Test]
-            public void EquivalentCollectionsHaveSameHashCode()
+            [Fact]
+            public void ShouldHaveSameHashCode_WhenGivenEquivalentCollections()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -56,7 +52,7 @@ namespace Virtlink.Utilib.Collections
                 int h2 = MultiSetComparer<String>.Default.GetHashCode(c2);
 
                 // Assert
-                Assert.That(h1, Is.EqualTo(h2));
+                Assert.Equal(h1, h2);
             }
         }
     }

@@ -1,74 +1,89 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Xunit;
 
 namespace Virtlink.Utilib
 {
 	partial class BinaryMathTests
 	{
 		/// <summary>
-		/// Unit tests for the <see cref="SetMostSignificantBit"/> functions.
+		/// Unit tests for the <see cref="BinaryMath.SetMostSignificantBit"/> functions.
 		/// </summary>
-		[TestFixture]
 		public sealed class SetMostSignificantBitTests
 		{
-			[TestCase(0, ExpectedResult = 0)]
-			[TestCase(1, ExpectedResult = 1)]
-			[TestCase(2, ExpectedResult = 2)]
-			[TestCase(3, ExpectedResult = 2)]
-			[TestCase(4, ExpectedResult = 4)]
-			[TestCase(15, ExpectedResult = 8)]
-			[TestCase(16, ExpectedResult = 16)]
-			[TestCase(17, ExpectedResult = 16)]
-			[TestCase(0x40000000, ExpectedResult = 0x40000000)]
-			public int OnInt32(int input)
+		    [Theory]
+		    [InlineData(0,          0)]
+			[InlineData(1,          1)]
+			[InlineData(2,          2)]
+			[InlineData(3,          2)]
+			[InlineData(4,          4)]
+			[InlineData(15,         8)]
+			[InlineData(16,         16)]
+			[InlineData(17,         16)]
+			[InlineData(0x40000000, 0x40000000)]
+			public void Int32_ShouldReturnExpectedResult(int input, int expected)
 			{
-				return BinaryMath.SetMostSignificantBit(input);
+                // Act
+				var actual = BinaryMath.SetMostSignificantBit(input);
+
+                // Assert
+                Assert.Equal(expected, actual);
 			}
+
+		    [Theory]
+		    [InlineData(0,                  0)]
+			[InlineData(1,                  1)]
+			[InlineData(2,                  2)]
+			[InlineData(3,                  2)]
+			[InlineData(4,                  4)]
+			[InlineData(15,                 8)]
+			[InlineData(16,                 16)]
+			[InlineData(17,                 16)]
+			[InlineData(0x4000000000000000, 0x4000000000000000)]
+			public void Int64_ShouldReturnExpectedResult(long input, long expected)
+		    {
+		        // Act
+		        var actual = BinaryMath.SetMostSignificantBit(input);
+
+		        // Assert
+		        Assert.Equal(expected, actual);
+		    }
+
+		    [Theory]
+		    [InlineData((uint)0,          (uint)0)]
+			[InlineData((uint)1,          (uint)1)]
+			[InlineData((uint)2,          (uint)2)]
+			[InlineData((uint)3,          (uint)2)]
+			[InlineData((uint)4,          (uint)4)]
+			[InlineData((uint)15,         (uint)8)]
+			[InlineData((uint)16,         (uint)16)]
+			[InlineData((uint)17,         (uint)16)]
+			[InlineData((uint)0x80000000, (uint)0x80000000)]
+			public void UInt32_ShouldReturnExpectedResult(uint input, uint expected)
+		    {
+		        // Act
+		        var actual = BinaryMath.SetMostSignificantBit(input);
+
+		        // Assert
+		        Assert.Equal(expected, actual);
+		    }
 			
-			[TestCase(0, ExpectedResult = 0)]
-			[TestCase(1, ExpectedResult = 1)]
-			[TestCase(2, ExpectedResult = 2)]
-			[TestCase(3, ExpectedResult = 2)]
-			[TestCase(4, ExpectedResult = 4)]
-			[TestCase(15, ExpectedResult = 8)]
-			[TestCase(16, ExpectedResult = 16)]
-			[TestCase(17, ExpectedResult = 16)]
-			[TestCase(0x4000000000000000, ExpectedResult = 0x4000000000000000)]
-			public long OnInt64(long input)
-			{
-				return BinaryMath.SetMostSignificantBit(input);
-			}
-			
-			[TestCase((uint)0, ExpectedResult = (uint)0)]
-			[TestCase((uint)1, ExpectedResult = (uint)1)]
-			[TestCase((uint)2, ExpectedResult = (uint)2)]
-			[TestCase((uint)3, ExpectedResult = (uint)2)]
-			[TestCase((uint)4, ExpectedResult = (uint)4)]
-			[TestCase((uint)15, ExpectedResult = (uint)8)]
-			[TestCase((uint)16, ExpectedResult = (uint)16)]
-			[TestCase((uint)17, ExpectedResult = (uint)16)]
-			[TestCase((uint)0x80000000, ExpectedResult = (uint)0x80000000)]
-			public uint OnUInt32(uint input)
-			{
-				return BinaryMath.SetMostSignificantBit(input);
-			}
-			
-			[TestCase((ulong)0, ExpectedResult = (ulong)0)]
-			[TestCase((ulong)1, ExpectedResult = (ulong)1)]
-			[TestCase((ulong)2, ExpectedResult = (ulong)2)]
-			[TestCase((ulong)3, ExpectedResult = (ulong)2)]
-			[TestCase((ulong)4, ExpectedResult = (ulong)4)]
-			[TestCase((ulong)15, ExpectedResult = (ulong)8)]
-			[TestCase((ulong)16, ExpectedResult = (ulong)16)]
-			[TestCase((ulong)17, ExpectedResult = (ulong)16)]
-			[TestCase((ulong)0x8000000000000000, ExpectedResult = (ulong)0x8000000000000000)]
-			public ulong OnUInt64(ulong input)
-			{
-				return BinaryMath.SetMostSignificantBit(input);
-			}
+            [Theory]
+			[InlineData((ulong)0,                  (ulong)0)]
+			[InlineData((ulong)1,                  (ulong)1)]
+			[InlineData((ulong)2,                  (ulong)2)]
+			[InlineData((ulong)3,                  (ulong)2)]
+			[InlineData((ulong)4,                  (ulong)4)]
+			[InlineData((ulong)15,                 (ulong)8)]
+			[InlineData((ulong)16,                 (ulong)16)]
+			[InlineData((ulong)17,                 (ulong)16)]
+			[InlineData((ulong)0x8000000000000000, (ulong)0x8000000000000000)]
+			public void UInt64_ShouldReturnExpectedResult(ulong input, ulong expected)
+            {
+                // Act
+                var actual = BinaryMath.SetMostSignificantBit(input);
+
+                // Assert
+                Assert.Equal(expected, actual);
+            }
 		}
 
 	}

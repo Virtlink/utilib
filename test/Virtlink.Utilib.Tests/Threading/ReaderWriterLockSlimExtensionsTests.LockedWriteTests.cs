@@ -1,15 +1,18 @@
-﻿using NUnit.Framework;
+﻿using System;
+using Xunit;
 using System.Threading;
 
 namespace Virtlink.Utilib.Threading
 {
 	partial class ReaderWriterLockSlimExtensionsTests
-	{
-		[TestFixture]
-		public sealed class LockedWriteTests
+    {
+        /// <summary>
+        /// Tests the <see cref="ReaderWriterLockSlimExtensions.LockedWrite"/> method.
+        /// </summary>
+        public sealed class LockedWriteTests
 		{
-			[Test]
-			public void ExecutesAFunctionInAWriteLock()
+			[Fact]
+			public void ShouldExecuteAFunctionInAWriteLock()
 			{
 				// Arrange
 				var sut = new ReaderWriterLockSlim();
@@ -19,33 +22,39 @@ namespace Virtlink.Utilib.Threading
 				sut.LockedWrite(x => held = sut.IsWriteLockHeld, true);
 
 				// Assert
-				Assert.That(held, Is.True);
+				Assert.True(held);
 			}
 
-			[Test]
-			public void ThrowsWhenReaderWriterLockSlimIsNull()
+			[Fact]
+			public void ShouldThrowArgumentNullException_WhenReaderWriterLockSlimIsNull()
 			{
 				// Arrange
 				ReaderWriterLockSlim sut = null;
 
-				// Act/Assert
-				Assert.That(() =>
-				{
-					sut.LockedWrite(x => { }, false);
-				}, Throws.ArgumentNullException);
+			    // Act
+			    var exception = Record.Exception(() =>
+			    {
+			        sut.LockedWrite(x => { }, false);
+			    });
+
+			    // Assert
+			    Assert.IsType<ArgumentNullException>(exception);
 			}
 
-			[Test]
-			public void ThrowsWhenActionnIsNull()
+			[Fact]
+			public void ShouldThrowArgumentNullException_WhenActionnIsNull()
 			{
 				// Arrange
 				var sut = new ReaderWriterLockSlim();
 
-				// Act/Assert
-				Assert.That(() =>
-				{
-					sut.LockedWrite(null, false);
-				}, Throws.ArgumentNullException);
+			    // Act
+			    var exception = Record.Exception(() =>
+			    {
+			        sut.LockedWrite(null, false);
+			    });
+
+			    // Assert
+			    Assert.IsType<ArgumentNullException>(exception);
 			}
 		}
 	}

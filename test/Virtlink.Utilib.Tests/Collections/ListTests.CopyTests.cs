@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,11 +8,10 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="List.Copy"/> function.
         /// </summary>
-        [TestFixture]
         public sealed class CopyTests
         {
-            [Test]
-            public void CountZero_CopiesNothing()
+            [Fact]
+            public void ShouldCopyNothing_WhenCountIsZero()
             {
                 // Arrange
                 var source = new int[] {1, 2, 3};
@@ -25,11 +21,11 @@ namespace Virtlink.Utilib.Collections
                 List.Copy(source, 0, destination, 0, 0);
 
                 // Assert
-                Assert.That(destination, Is.EqualTo(new[] {0, 0, 0, 0, 0}));
+                Assert.Equal(new[] { 0, 0, 0, 0, 0 }, destination);
             }
 
-            [Test]
-            public void TwoLists_CopiesStuff()
+            [Fact]
+            public void ShouldCopyStuff_WhenTwoLists()
             {
                 // Arrange
                 var source = new int[] { 1, 2, 3 };
@@ -39,11 +35,11 @@ namespace Virtlink.Utilib.Collections
                 List.Copy(source, 1, destination, 2, 2);
 
                 // Assert
-                Assert.That(destination, Is.EqualTo(new[] { 1, 3, 2, 3, 9 }));
+                Assert.Equal(new[] { 1, 3, 2, 3, 9 }, destination);
             }
 
-            [Test]
-            public void SameListFromStartToLater_CopiesBackward()
+            [Fact]
+            public void ShouldCopyBackward_WhenSameListFromStartToLater()
             {
                 // Arrange
                 var list = new int[] { 1, 2, 3, 4, 5 };
@@ -52,11 +48,11 @@ namespace Virtlink.Utilib.Collections
                 List.Copy(list, 1, list, 3, 2);
 
                 // Assert
-                Assert.That(list, Is.EqualTo(new[] { 1, 2, 3, 2, 3 }));
+                Assert.Equal(new[] { 1, 2, 3, 2, 3 }, list);
             }
 
-            [Test]
-            public void SameListFromLaterToStart_CopiesForward()
+            [Fact]
+            public void ShouldCopyForward_WhenSameListFromLaterToStart()
             {
                 // Arrange
                 var list = new int[] { 1, 2, 3, 4, 5 };
@@ -65,11 +61,11 @@ namespace Virtlink.Utilib.Collections
                 List.Copy(list, 3, list, 1, 2);
 
                 // Assert
-                Assert.That(list, Is.EqualTo(new[] { 1, 4, 5, 4, 5 }));
+                Assert.Equal(new[] { 1, 4, 5, 4, 5 }, list);
             }
 
-            [Test]
-            public void SameListFromSameToSame_CopiesNothing()
+            [Fact]
+            public void ShouldCopyNothing_WhenSameListFromSameToSame()
             {
                 // Arrange
                 var list = new int[] { 1, 2, 3, 4, 5 };
@@ -78,79 +74,103 @@ namespace Virtlink.Utilib.Collections
                 List.Copy(list, 2, list, 2, 2);
 
                 // Assert
-                Assert.That(list, Is.EqualTo(new[] { 1, 2, 3, 4, 5 }));
+                Assert.Equal(new[] { 1, 2, 3, 4, 5 }, list);
             }
 
-            [Test]
-            public void NullSource_ThrowsException()
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenSourceIsNull()
             {
-                // Act/Assert
-                Assert.That(() => {
+                // Act
+                var exception = Record.Exception(() => {
                     List.Copy(null, 0, new int[5], 0, 0);
-                }, Throws.ArgumentNullException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
             }
 
-            [Test]
-            public void NullDestination_ThrowsException()
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenDestinationIsNull()
             {
-                // Act/Assert
-                Assert.That(() => {
+                // Act
+                var exception = Record.Exception(() => {
                     List.Copy(new int[5], 0, null, 0, 0);
-                }, Throws.ArgumentNullException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
             }
 
-            [Test]
-            public void NegativeSourceIndex_ThrowsException()
+            [Fact]
+            public void ShouldThrowArgumentOutOfRangeException_WhenSourceIndexIsNegative()
             {
-                // Act/Assert
-                Assert.That(() => {
+                // Act
+                var exception = Record.Exception(() => {
                     List.Copy(new int[5], -3, new int[5], 0, 0);
-                }, Throws.InstanceOf<ArgumentOutOfRangeException>());
+                });
+
+                // Assert
+                Assert.IsType<ArgumentOutOfRangeException>(exception);
             }
 
-            [Test]
-            public void NegativeDestinationIndex_ThrowsException()
+            [Fact]
+            public void ShouldThrowArgumentOutOfRangeException_WhenDestinationIndexIsNegative()
             {
-                // Act/Assert
-                Assert.That(() => {
+                // Act
+                var exception = Record.Exception(() => {
                     List.Copy(new int[5], 0, new int[5], -3, 0);
-                }, Throws.InstanceOf<ArgumentOutOfRangeException>());
+                });
+
+                // Assert
+                Assert.IsType<ArgumentOutOfRangeException>(exception);
             }
 
-            [Test]
-            public void NegativeCount_ThrowsException()
+            [Fact]
+            public void ShouldThrowArgumentOutOfRangeException_WhenCountIsNegative()
             {
-                // Act/Assert
-                Assert.That(() => {
+                // Act
+                var exception = Record.Exception(() => {
                     List.Copy(new int[5], 0, new int[5], 0, -3);
-                }, Throws.InstanceOf<ArgumentOutOfRangeException>());
+                });
+
+                // Assert
+                Assert.IsType<ArgumentOutOfRangeException>(exception);
             }
 
-            [Test]
-            public void SourceIndexOutOfBounds_ThrowsException()
+            [Fact]
+            public void ShouldThrowArgumentOutOfRangeException_WhenSourceIndexOutOfBounds()
             {
-                // Act/Assert
-                Assert.That(() => {
+                // Act
+                var exception = Record.Exception(() => {
                     List.Copy(new int[5], 6, new int[5], 0, 0);
-                }, Throws.InstanceOf<ArgumentOutOfRangeException>());
+                });
+
+                // Assert
+                Assert.IsType<ArgumentOutOfRangeException>(exception);
             }
 
-            [Test]
-            public void DestinationIndexOutOfBounds_ThrowsException()
+            [Fact]
+            public void ShouldThrowArgumentOutOfRangeException_WhenDestinationIndexOutOfBounds()
             {
-                // Act/Assert
-                Assert.That(() => {
+                // Act
+                var exception = Record.Exception(() => {
                     List.Copy(new int[5], 0, new int[5], 6, 0);
-                }, Throws.InstanceOf<ArgumentOutOfRangeException>());
+                });
+
+                // Assert
+                Assert.IsType<ArgumentOutOfRangeException>(exception);
             }
 
-            [Test]
-            public void CountOutOfBounds_ThrowsException()
+            [Fact]
+            public void ShouldThrowArgumentOutOfRangeException_WhenCountOutOfBounds()
             {
-                // Act/Assert
-                Assert.That(() => {
+                // Act
+                var exception = Record.Exception(() => {
                     List.Copy(new int[5], 5, new int[5], 0, 1);
-                }, Throws.InstanceOf<ArgumentOutOfRangeException>());
+                });
+
+                // Assert
+                Assert.IsType<ArgumentOutOfRangeException>(exception);
             }
         }
     }

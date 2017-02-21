@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.IO
 {
@@ -13,11 +9,10 @@ namespace Virtlink.Utilib.IO
         /// <summary>
         /// Tests the <see cref="Streams.WriteBinary"/> function.
         /// </summary>
-        [TestFixture]
         public sealed class WriteBinaryTests
         {
-            [Test]
-            public void ReturnsABinaryWriter()
+            [Fact]
+            public void ShouldReturnABinaryWriter()
             {
                 // Arrange
                 var input = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD};
@@ -28,15 +23,15 @@ namespace Virtlink.Utilib.IO
                 writer.Write(input);
 
                 // Assert
-                Assert.That(GetBytes(stream), Is.EqualTo(input));
+                Assert.Equal(input, GetBytes(stream));
 
                 // Cleanup
                 writer.Dispose();
                 stream.Dispose();
             }
 
-            [Test]
-            public void ClosingWriterDoesNotCloseStream()
+            [Fact]
+            public void ShouldNotCloseStream_WhenClosingTheWriter()
             {
                 // Arrange
                 var stream = new MemoryStream();
@@ -44,28 +39,32 @@ namespace Virtlink.Utilib.IO
 
                 // Act
                 writer.Dispose();
-
-                // Assert
-                Assert.That(() =>
+                var exception = Record.Exception(() =>
                 {
                     long p = stream.Position;
-                }, Throws.Nothing);
+                });
+
+                // Assert
+                Assert.Null(exception);
 
                 // Cleanup
                 stream.Dispose();
             }
-
-            [Test]
-            public void ThrowsWhenStreamIsNull()
+            
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenStreamIsNull()
             {
                 // Arrange
                 Stream sut = null;
 
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     sut.WriteBinary();
-                }, Throws.ArgumentNullException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
             }
 
             private byte[] GetBytes(MemoryStream stream)

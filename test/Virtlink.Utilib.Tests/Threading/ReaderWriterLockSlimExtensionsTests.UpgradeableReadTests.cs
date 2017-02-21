@@ -1,16 +1,18 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 using System;
 using System.Threading;
 
 namespace Virtlink.Utilib.Threading
 {
 	partial class ReaderWriterLockSlimExtensionsTests
-	{
-		[TestFixture]
-		public sealed class UpgradeableReadTests
+    {
+        /// <summary>
+        /// Tests the <see cref="ReaderWriterLockSlimExtensions.UpgradeableRead"/> method.
+        /// </summary>
+        public sealed class UpgradeableReadTests
 		{
-			[Test]
-			public void ReturnsDisposable()
+			[Fact]
+			public void ShouldReturnADisposable()
 			{
 				// Arrange
 				var sut = new ReaderWriterLockSlim();
@@ -19,14 +21,14 @@ namespace Virtlink.Utilib.Threading
 				var @lock = sut.UpgradeableRead();
 
 				// Assert
-				Assert.That(@lock, Is.AssignableTo(typeof(IDisposable)));
+				Assert.IsAssignableFrom<IDisposable>(@lock);
 
 				// Cleanup
 				@lock.Dispose();
 			}
 
-			[Test]
-			public void IsLockedWhileNotDisposed()
+			[Fact]
+			public void ShouldBeLocked_WhileNotDisposed()
 			{
 				// Arrange
 				var sut = new ReaderWriterLockSlim();
@@ -35,14 +37,14 @@ namespace Virtlink.Utilib.Threading
 				var @lock = sut.UpgradeableRead();
 
 				// Assert
-				Assert.That(sut.IsUpgradeableReadLockHeld, Is.True);
+				Assert.True(sut.IsUpgradeableReadLockHeld);
 
 				// Cleanup
 				@lock.Dispose();
 			}
 
-			[Test]
-			public void IsUnlockedWhenDisposed()
+			[Fact]
+			public void ShouldBeUnlocked_WhenDisposed()
 			{
 				// Arrange
 				var sut = new ReaderWriterLockSlim();
@@ -52,20 +54,23 @@ namespace Virtlink.Utilib.Threading
 				@lock.Dispose();
 
 				// Assert
-				Assert.That(sut.IsUpgradeableReadLockHeld, Is.False);
+				Assert.False(sut.IsUpgradeableReadLockHeld);
 			}
 
-			[Test]
-			public void ThrowsWhenReaderWriterLockSlimIsNull()
+			[Fact]
+			public void ShouldThrowArgumentNullException_WhenReaderWriterLockSlimIsNull()
 			{
 				// Arrange
 				ReaderWriterLockSlim sut = null;
 
-				// Act/Assert
-				Assert.That(() =>
-				{
-					sut.UpgradeableRead();
-				}, Throws.ArgumentNullException);
+			    // Act
+			    var exception = Record.Exception(() =>
+			    {
+			        sut.UpgradeableRead();
+			    });
+
+			    // Assert
+			    Assert.IsType<ArgumentNullException>(exception);
 			}
 		}
 	}

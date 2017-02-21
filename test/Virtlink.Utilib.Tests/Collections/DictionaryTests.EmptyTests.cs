@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,30 +9,32 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="Dictionary.Empty"/> function.
         /// </summary>
-        [TestFixture]
         public sealed class EmptyTests
         {
-            [Test]
-            public void ReturnsAnEmptyArray()
+            [Fact]
+            public void ShouldReturnIReadOnlyDictionary()
             {
                 // Act
                 var result = Dictionary.Empty<String, Object>();
 
                 // Assert
-                Assert.That(result, Is.InstanceOf<IReadOnlyDictionary<String, Object>>());
+                Assert.IsAssignableFrom<IReadOnlyDictionary<String, Object>>(result);
             }
 
-            [Test]
-            public void ReturnedEmptyArrayCannotBeModified()
+            [Fact]
+            public void ShouldThrowNotSupportedException_WhenEmptyDictionaryIsModified()
             {
-                // Act
+                // Arrange
                 var result = (IDictionary<String, Object>)Dictionary.Empty<String, Object>();
 
-                // Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     result.Add("test", 12);
-                }, Throws.InstanceOf<NotSupportedException>());
+                });
+
+                // Assert
+                Assert.IsType<NotSupportedException>(exception);
             }
         }
     }

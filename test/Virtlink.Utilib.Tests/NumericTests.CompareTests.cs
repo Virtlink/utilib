@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib
 {
@@ -13,47 +11,59 @@ namespace Virtlink.Utilib
         /// </summary>
         public sealed class CompareTests
         {
-            [Test]
-            public void IfFirstArgumentIsNull_ShouldThrowException()
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenFirstArgumentIsNull()
             {
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     Numeric.Compare(null, 10);
-                }, Throws.ArgumentNullException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
             }
 
-            [Test]
-            public void IfSecondArgumentIsNull_ShouldThrowException()
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenSecondArgumentIsNull()
             {
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     Numeric.Compare(10, null);
-                }, Throws.ArgumentNullException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
             }
 
-            [Test]
-            public void IfFirstArgumentIsNotNumeric_ShouldThrowException()
+            [Fact]
+            public void ShouldThrowArgumentException_WhenFirstArgumentIsNotNumeric()
             {
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     Numeric.Compare("abc", 10);
-                }, Throws.ArgumentException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentException>(exception);
             }
 
-            [Test]
-            public void IfSecondArgumentIsNotNumeric_ShouldThrowException()
+            [Fact]
+            public void ShouldThrowArgumentException_WhenSecondArgumentIsNotNumeric()
             {
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     Numeric.Compare(10, "abc");
-                }, Throws.ArgumentException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentException>(exception);
             }
 
-            private static object[] LessThanTestCases =
+            public static IEnumerable<object[]> LessThanTestCases { get; } = new[]
             {
                 new object[] { (long)    -13000, (short)   -12345 },
                 new object[] { (ulong)    12000, (ushort)   12345 },
@@ -67,17 +77,18 @@ namespace Virtlink.Utilib
                 new object[] { (double) -1234.5, (int)      -1230 },
                 new object[] { (decimal)12345.6, (uint)     12350 },
             };
-            [Test, TestCaseSource(nameof(LessThanTestCases))]
+            [Theory]
+            [MemberData(nameof(LessThanTestCases))]
             public void IfFirstArgumentIsLessThanSecondArgument_ShouldReturnNegativeValue(object x, object y)
             {
                 // Act
                 int result = Numeric.Compare(x, y);
 
                 // Assert
-                Assert.That(result, Is.Negative);
+                Assert.True(result < 0);
             }
 
-            private static object[] GreaterThanTestCases =
+            public static IEnumerable<object[]> GreaterThanTestCases { get; } = new[]
             {
                 new object[] { (long)     12345, (short)     -123 },
                 new object[] { (ulong)    12345, (ushort)    1230 },
@@ -91,17 +102,18 @@ namespace Virtlink.Utilib
                 new object[] { (double)  1234.5, (int)        -15 },
                 new object[] { (decimal)   12.6, (uint)        10 },
             };
-            [Test, TestCaseSource(nameof(GreaterThanTestCases))]
+            [Theory]
+            [MemberData(nameof(GreaterThanTestCases))]
             public void IfFirstArgumentIsGreaterThanSecondArgument_ShouldReturnPositiveValue(object x, object y)
             {
                 // Act
                 int result = Numeric.Compare(x, y);
 
                 // Assert
-                Assert.That(result, Is.Positive);
+                Assert.True(result > 0);
             }
 
-            private static object[] EqualToTestCases =
+            public static IEnumerable<object[]> EqualToTestCases { get; } = new[]
             {
                 new object[] { (long)      -123, (short)     -123 },
                 new object[] { (ulong)     1230, (ushort)    1230 },
@@ -115,14 +127,15 @@ namespace Virtlink.Utilib
                 new object[] { (double)  1234.0, (int)       1234 },
                 new object[] { (decimal)   12.0, (uint)        12 },
             };
-            [Test, TestCaseSource(nameof(EqualToTestCases))]
+            [Theory]
+            [MemberData(nameof(EqualToTestCases))]
             public void IfFirstArgumentIsEqualToSecondArgument_ShouldReturnZero(object x, object y)
             {
                 // Act
                 int result = Numeric.Compare(x, y);
 
                 // Assert
-                Assert.That(result, Is.Zero);
+                Assert.True(result == 0);
             }
         }
     }

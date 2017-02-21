@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,30 +9,32 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="Arrays.Empty"/> function.
         /// </summary>
-        [TestFixture]
         public sealed class EmptyTests
         {
-            [Test]
-            public void ReturnsAnEmptyArray()
+            [Fact]
+            public void ShouldReturnEmptyArray()
             {
                 // Act
                 var result = Arrays.Empty<String>();
 
                 // Assert
-                Assert.That(result, Is.EqualTo(new String[0]));
+                Assert.Equal(new String[0], result);
             }
 
-            [Test]
-            public void ReturnedArrayIsImmutable()
+            [Fact]
+            public void ShouldThrowNotSupportedException_WhenEmptyArrayIsModified()
             {
                 // Arrange
                 var result = Arrays.Empty<string>();
 
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     ((ICollection<string>)result).Add("str");
-                }, Throws.InstanceOf<NotSupportedException>());
+                });
+
+                // Assert
+                Assert.IsType<NotSupportedException>(exception);
             }
         }
     }

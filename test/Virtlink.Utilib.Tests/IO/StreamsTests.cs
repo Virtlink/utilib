@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.IO
 {
     /// <summary>
     /// Tests the <see cref="Streams"/> class.
     /// </summary>
-    [TestFixture]
     public partial class StreamsTests
     {
         /// <summary>
@@ -19,17 +15,20 @@ namespace Virtlink.Utilib.IO
 		/// 
 		/// This fact is used in several tests.
 		/// </summary>
-		[Test]
-        public void DisposedMemoryStreamThrowsExceptionOnGetPosition()
+		[Fact]
+        public void ShouldThrowObjectDisposedException_WhenAMemoryStreamIsDisposedAndGettingPosition()
         {
             // Arrange
             var stream = new MemoryStream();
             stream.Dispose();
 
-            // Act/Assert
-            Assert.That(() => {
+            // Act
+            var exception = Record.Exception(() => {
                 long v = stream.Position;
-            }, Throws.InstanceOf<ObjectDisposedException>());
+            });
+
+            // Assert
+            Assert.IsType<ObjectDisposedException>(exception);
         }
     }
 }

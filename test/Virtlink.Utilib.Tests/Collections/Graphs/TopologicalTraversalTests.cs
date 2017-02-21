@@ -1,12 +1,12 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Virtlink.Utilib.Collections.Graphs
 {
-	[TestFixture]
+	/// <summary>
+    /// Tests the <see cref="TopologicalTraversal"/> class.
+    /// </summary>
 	public sealed class TopologicalTraversalTests
 	{
 		/// <summary>
@@ -18,8 +18,8 @@ namespace Virtlink.Utilib.Collections.Graphs
 			return new TopologicalTraversal.LambdaTraversal<Node>(node => node.Children);
 		}
 		
-		[Test]
-		public void OneNode()
+		[Fact]
+		public void ShouldReturnATopologicalTraversalSequence_WhenTheGraphIsOneNode()
 		{
 			// Arrange
 			var traversal = Create();
@@ -29,11 +29,11 @@ namespace Virtlink.Utilib.Collections.Graphs
 			var nodes = traversal.Traverse(root).ToArray();
 
 			// Assert
-			Assert.That(nodes, Is.EqualTo(new[] { root }));
+			Assert.Equal(new[] { root }, nodes);
 		}
 		
-		[Test]
-		public void Tree()
+		[Fact]
+		public void ShouldReturnATopologicalTraversalSequence_WhenTheGraphIsATree()
 		{
 			// Arrange
 			var traversal = Create();
@@ -62,11 +62,11 @@ namespace Virtlink.Utilib.Collections.Graphs
 			var nodes = traversal.Traverse(root).ToArray();
 
 			// Assert
-			Assert.That(nodes, Is.EqualTo(new[] { root, a, b, c, d, e, f, g, h, i, j, k }));
+			Assert.Equal(new[] { root, a, b, c, d, e, f, g, h, i, j, k }, nodes);
 		}
 
-		[Test]
-		public void DAG()
+		[Fact]
+		public void ShouldReturnATopologicalTraversalSequence_WhenTheGraphIsADAG()
 		{
 			// Arrange
 			var traversal = Create();
@@ -96,11 +96,11 @@ namespace Virtlink.Utilib.Collections.Graphs
 			var nodes = traversal.Traverse(root).ToArray();
 
 			// Assert
-			Assert.That(nodes, Is.EqualTo(new[] { root, a, b, c, d, e, h, f, g }));
+			Assert.Equal(new[] { root, a, b, c, d, e, h, f, g }, nodes);
 		}
 		
-		[Test]
-		public void GraphWithCycles()
+		[Fact]
+		public void ShouldThrowInvalidOperationException_WhenTheGraphHasCycles()
 		{
 			// Arrange
 			var traversal = Create();
@@ -122,10 +122,13 @@ namespace Virtlink.Utilib.Collections.Graphs
 			//    E
 
 			// Act
-			Assert.That(() =>
+			var exception = Record.Exception(() =>
 			{
 				traversal.Traverse(a).ToArray();
-			}, Throws.InvalidOperationException);
+			});
+
+            // Assert
+		    Assert.IsType<InvalidOperationException>(exception);
 		}
 	}
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib
 {
@@ -8,48 +8,53 @@ namespace Virtlink.Utilib
         /// <summary>
         /// Tests the <see cref="Numeric.IsDecimalType"/> function.
         /// </summary>
-        [TestFixture]
         public sealed class IsDecimalTypeTests
         {
-            [Test]
-            public void IfTypeArgumentIsNull_ShouldThrowException()
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenTypeArgumentIsNull()
             {
-                // Act/Assert
-                Assert.That(() => {
+                // Act
+                var exception = Record.Exception(() =>
+                {
                     Numeric.IsDecimalType(null);
-                }, Throws.ArgumentNullException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
             }
 
-            [TestCase(typeof(String))]
-            [TestCase(typeof(Object))]
-            [TestCase(typeof(DateTime))]
-            [TestCase(typeof(SByte))]
-            [TestCase(typeof(Byte))]
-            [TestCase(typeof(Int16))]
-            [TestCase(typeof(UInt16))]
-            [TestCase(typeof(Int32))]
-            [TestCase(typeof(UInt32))]
-            [TestCase(typeof(Int64))]
-            [TestCase(typeof(UInt64))]
-            [TestCase(typeof(Single))]
-            [TestCase(typeof(Double))]
-            public void IfTypeArgumentIsNotDecimal_ShouldReturnFalse(Type type)
+            [Theory]
+            [InlineData(typeof(String))]
+            [InlineData(typeof(Object))]
+            [InlineData(typeof(DateTime))]
+            [InlineData(typeof(SByte))]
+            [InlineData(typeof(Byte))]
+            [InlineData(typeof(Int16))]
+            [InlineData(typeof(UInt16))]
+            [InlineData(typeof(Int32))]
+            [InlineData(typeof(UInt32))]
+            [InlineData(typeof(Int64))]
+            [InlineData(typeof(UInt64))]
+            [InlineData(typeof(Single))]
+            [InlineData(typeof(Double))]
+            public void ShouldReturnFalse_WhenTypeArgumentIsNotDecimal(Type type)
             {
                 // Act
                 bool result = Numeric.IsDecimalType(type);
 
                 // Assert
-                Assert.That(result, Is.False);
+                Assert.False(result);
             }
 
-            [TestCase(typeof(Decimal))]
-            public void IfTypeArgumentIsDecimal_ShouldReturnTrue(Type type)
+            [Theory]
+            [InlineData(typeof(Decimal))]
+            public void ShouldReturnTrue_WhenTypeArgumentIsDecimal(Type type)
             {
                 // Act
                 bool result = Numeric.IsDecimalType(type);
 
                 // Assert
-                Assert.That(result, Is.True);
+                Assert.True(result);
             }
         }
     }

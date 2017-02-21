@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -12,11 +11,10 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="Enumerables.TryGetCount"/> method.
         /// </summary>
-        [TestFixture]
         public sealed class TryGetCountTests
         {
-            [Test]
-            public void ReturnsCountOfICollection_T()
+            [Fact]
+            public void ShouldReturnTheCount_WhenEnumerableIsAnICollectionOfT()
             {
                 // Arrange
                 var collection = new List<String>{ "a", "b", "c" };
@@ -25,11 +23,11 @@ namespace Virtlink.Utilib.Collections
                 int? result = Enumerables.TryGetCount(collection);
 
                 // Assert
-                Assert.That(result, Is.EqualTo(3));
+                Assert.Equal(3, result);
             }
 
-            [Test]
-            public void ReturnsCountOfICollection()
+            [Fact]
+            public void ShouldReturnTheCount_WhenEnumerableIsAnICollection()
             {
                 // Arrange
                 var collection = new ArrayList { "a", "b", "c" };
@@ -38,11 +36,11 @@ namespace Virtlink.Utilib.Collections
                 int? result = Enumerables.TryGetCount(collection);
 
                 // Assert
-                Assert.That(result, Is.EqualTo(3));
+                Assert.Equal(3, result);
             }
 
-            [Test]
-            public void ReturnsNullForNonCollection()
+            [Fact]
+            public void ShouldReturnNull_WhenEnumerableIsNotACollection()
             {
                 // Arrange
                 var enumerable = new [] { "a", "b", "c" }.Select(s => s);
@@ -51,20 +49,23 @@ namespace Virtlink.Utilib.Collections
                 int? result = Enumerables.TryGetCount(enumerable);
 
                 // Assert
-                Assert.That(result, Is.Null);
+                Assert.Null(result);
             }
 
-            [Test]
-            public void ThrowsIfEnumerableIsNull()
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenEnumerableIsNull()
             {
                 // Arrange
                 IReadOnlyCollection<String> enumerable = null;
 
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     Enumerables.TryGetCount(enumerable);
-                }, Throws.ArgumentNullException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
             }
         }
     }

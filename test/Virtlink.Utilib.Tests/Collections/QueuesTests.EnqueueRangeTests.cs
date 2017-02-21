@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
     partial class QueuesTests
     {
         /// <summary>
-        /// Tests the <see cref="EnqueueRange"/> method.
+        /// Tests the <see cref="Queues.EnqueueRange"/> method.
         /// </summary>
-        [TestFixture]
         public sealed class EnqueueRangeTests
         {
-            [Test]
-            public void EmptyRangeEnqueuesNothing()
+            [Fact]
+            public void ShouldEnqueueNothing_WhenGivenAnEmptyRange()
             {
                 // Arrange
                 var input = new String[0];
@@ -25,11 +22,11 @@ namespace Virtlink.Utilib.Collections
                 queue.EnqueueRange(input);
 
                 // Assert
-                Assert.That(queue, Is.EqualTo(new[] { "a" }));
+                Assert.Equal(new[] { "a" }, queue);
             }
 
-            [Test]
-            public void SomeRangeEnqueuesFirstToLast()
+            [Fact]
+            public void ShouldEnqueueFirstToLast_WhenGivenSomeRange()
             {
                 // Arrange
                 var input = new[] {"b", "c", "d"};
@@ -39,20 +36,23 @@ namespace Virtlink.Utilib.Collections
                 queue.EnqueueRange(input);
 
                 // Assert
-                Assert.That(queue, Is.EqualTo(new[] { "a", "b", "c", "d" }));
+                Assert.Equal(new[] { "a", "b", "c", "d" }, queue);
             }
 
-            [Test]
-            public void ThrowsWhenQueueIsNull()
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenTheQueueIsNull()
             {
                 // Arrange
                 Queue<String> sut = null;
 
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     sut.EnqueueRange(new String[0]);
-                }, Throws.ArgumentNullException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
             }
         }
     }

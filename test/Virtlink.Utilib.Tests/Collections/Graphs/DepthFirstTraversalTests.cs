@@ -1,13 +1,12 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
+﻿using Xunit;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Virtlink.Utilib.Collections.Graphs
 {
-	[TestFixture]
-	public sealed class DepthFirstTraversalTests
+    /// <summary>
+    /// Tests the <see cref="DepthFirstTraversal"/> class.
+    /// </summary>
+    public sealed class DepthFirstTraversalTests
 	{
 		/// <summary>
 		/// Creates the traversal algorithm.
@@ -18,8 +17,8 @@ namespace Virtlink.Utilib.Collections.Graphs
 			return new DepthFirstTraversal.LambdaTraversal<Node>(node => node.Children);
 		}
 
-		[Test]
-		public void OneNode()
+		[Fact]
+		public void ShouldReturnADepthFirstSequence_WhenTheGraphIsOneNode()
 		{
 			// Arrange
 			var traversal = Create();
@@ -29,11 +28,11 @@ namespace Virtlink.Utilib.Collections.Graphs
 			var nodes = traversal.Traverse(root).ToArray();
 
 			// Assert
-			Assert.That(nodes, Is.EqualTo(new[] { root }));
+			Assert.Equal(new[] { root }, nodes);
 		}
 
-		[Test]
-		public void Tree()
+		[Fact]
+		public void ShouldReturnADepthFirstSequence_WhenTheGraphIsATree()
 		{
 			// Arrange
 			var traversal = Create();
@@ -62,11 +61,11 @@ namespace Virtlink.Utilib.Collections.Graphs
 			var nodes = traversal.Traverse(root).ToArray();
 
 			// Assert
-			Assert.That(nodes, Is.EqualTo(new[] { root, a, d, h, i, e, b, c, f, j, k, g }));
+			Assert.Equal(new[] { root, a, d, h, i, e, b, c, f, j, k, g }, nodes);
 		}
 
-		[Test]
-		public void DAG()
+		[Fact]
+		public void ShouldReturnADepthFirstSequence_WhenTheGraphIsADAG()
 		{
 			// Arrange
 			var traversal = Create();
@@ -96,11 +95,11 @@ namespace Virtlink.Utilib.Collections.Graphs
 			var nodes = traversal.Traverse(root).ToArray();
 
 			// Assert
-			Assert.That(nodes, Is.EqualTo(new[] { root, a, d, f, g, h, b, e, c }));
+			Assert.Equal(new[] { root, a, d, f, g, h, b, e, c }, nodes);
 		}
 
-		[Test]
-		public void GraphWithCycles()
+		[Fact]
+		public void ShouldReturnADepthFirstSequence_WhenTheGraphHasCycles()
 		{
 			// Arrange
 			var traversal = Create();
@@ -125,7 +124,7 @@ namespace Virtlink.Utilib.Collections.Graphs
 			var nodes = traversal.Traverse(a).ToArray();
 
 			// Assert
-			Assert.That(nodes, Is.EqualTo(new[] { a, b, c, e, d }));
+			Assert.Equal(new[] { a, b, c, e, d }, nodes);
 		}
 	}
 }

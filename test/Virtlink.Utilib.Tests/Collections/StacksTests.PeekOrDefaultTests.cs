@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
     partial class StacksTests
     {
         /// <summary>
-        /// Tests the <see cref="PeekOrDefault"/> method.
+        /// Tests the <see cref="Stacks.PeekOrDefault"/> method.
         /// </summary>
-        [TestFixture]
         public sealed class PeekOrDefaultTests
         {
-            [Test]
-            public void OnANonEmptyQueueReturnsTheTopElement()
+            [Fact]
+            public void ShouldReturnTheTopElement_WhenTheQueueIsNotEmpty()
             {
                 // Arrange
                 var stack = new Stack<String>(new[] { "a", "b", "c" });
@@ -24,11 +21,11 @@ namespace Virtlink.Utilib.Collections
                 var element = stack.PeekOrDefault();
 
                 // Assert
-                Assert.That(element, Is.EqualTo("c"));
+                Assert.Equal("c", element);
             }
 
-            [Test]
-            public void OnAnEmptyQueueReturnsDefault()
+            [Fact]
+            public void ShouldReturnDefault_WhenTheQueueIsEmpty()
             {
                 // Arrange
                 var stack = new Stack<String>();
@@ -37,20 +34,23 @@ namespace Virtlink.Utilib.Collections
                 var element = stack.PeekOrDefault();
 
                 // Assert
-                Assert.That(element, Is.Null);
+                Assert.Null(element);
             }
 
-            [Test]
-            public void ThrowsWhenStackIsNull()
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenStackIsNull()
             {
                 // Arrange
                 Stack<String> sut = null;
 
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     sut.PeekOrDefault();
-                }, Throws.ArgumentNullException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
             }
         }
     }

@@ -1,12 +1,11 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
+﻿using Xunit;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Virtlink.Utilib.Collections.Graphs
 {
-	[TestFixture]
+    /// <summary>
+    /// Tests the <see cref="PostOrderTraversal"/> class.
+    /// </summary>
 	public sealed class PostOrderTraversalTests
 	{
 		/// <summary>
@@ -18,8 +17,8 @@ namespace Virtlink.Utilib.Collections.Graphs
 			return new PostOrderTraversal.LambdaTraversal<Node>(node => node.Children);
 		}
 
-		[Test]
-		public void OneNode()
+		[Fact]
+		public void ShouldReturnAPostOrderSequence_WhenTheGraphIsOneNode()
 		{
 			// Arrange
 			var traversal = Create();
@@ -29,11 +28,11 @@ namespace Virtlink.Utilib.Collections.Graphs
 			var nodes = traversal.Traverse(root).ToArray();
 
 			// Assert
-			Assert.That(nodes, Is.EqualTo(new[] { root }));
+			Assert.Equal(new[] { root }, nodes);
 		}
 
-		[Test]
-		public void Tree()
+		[Fact]
+		public void ShouldReturnAPostOrderSequence_WhenTheGraphIsATree()
 		{
 			// Arrange
 			var traversal = Create();
@@ -62,11 +61,11 @@ namespace Virtlink.Utilib.Collections.Graphs
 			var nodes = traversal.Traverse(root).ToArray();
 
 			// Assert
-			Assert.That(nodes, Is.EqualTo(new[] { h, i, d, e, a, b, j, k, f, g, c, root }));
+			Assert.Equal(new[] { h, i, d, e, a, b, j, k, f, g, c, root }, nodes);
 		}
 
-		[Test]
-		public void DAG()
+		[Fact]
+		public void ShouldReturnAPostOrderSequence_WhenTheGraphIsADAG()
 		{
 			// Arrange
 			var traversal = Create();
@@ -96,11 +95,11 @@ namespace Virtlink.Utilib.Collections.Graphs
 			var nodes = traversal.Traverse(root).ToArray();
 
 			// Assert
-			Assert.That(nodes, Is.EqualTo(new[] { f, g, h, d, a, e, b, c, root }));
+			Assert.Equal(new[] { f, g, h, d, a, e, b, c, root }, nodes);
 		}
 
-		[Test]
-		public void GraphWithCycles()
+		[Fact]
+		public void ShouldReturnAPostOrderSequence_WhenTheGraphHasCycles()
 		{
 			// Arrange
 			var traversal = Create();
@@ -125,7 +124,7 @@ namespace Virtlink.Utilib.Collections.Graphs
 			var nodes = traversal.Traverse(a).ToArray();
 
 			// Assert
-			Assert.That(nodes, Is.EqualTo(new[] { e, c, d, b, a }));
+			Assert.Equal(new[] { e, c, d, b, a }, nodes);
 		}
 	}
 }

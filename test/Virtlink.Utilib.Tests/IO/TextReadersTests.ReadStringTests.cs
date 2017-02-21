@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using System.IO;
+using Xunit;
 
 namespace Virtlink.Utilib.IO
 {
@@ -12,11 +8,10 @@ namespace Virtlink.Utilib.IO
         /// <summary>
         /// Tests the <see cref="TextReaders.ReadString"/> method.
         /// </summary>
-        [TestFixture]
         public sealed class ReadStringTests
         {
-            [Test]
-            public void Given0_ReadsAnEmptyString()
+            [Fact]
+            public void ShouldReadAnEmptyString_WhenGiven0()
             {
                 // Arrange
                 var reader = new StringReader("abcdef");
@@ -25,11 +20,11 @@ namespace Virtlink.Utilib.IO
                 var result = reader.ReadString(0);
 
                 // Assert
-                Assert.That(result, Is.EqualTo(""));
+                Assert.Equal("", result);
             }
 
-            [Test]
-            public void Given1_ReadsASingleCharacter()
+            [Fact]
+            public void ShouldReadASingleCharacter_WhenGiven1()
             {
                 // Arrange
                 var reader = new StringReader("abcdef");
@@ -38,11 +33,11 @@ namespace Virtlink.Utilib.IO
                 var result = reader.ReadString(1);
 
                 // Assert
-                Assert.That(result, Is.EqualTo("a"));
+                Assert.Equal("a", result);
             }
 
-            [Test]
-            public void Given5_ReadsMostOfTheString()
+            [Fact]
+            public void ShouldReadMostOfTheString_WhenGiven5()
             {
                 // Arrange
                 var reader = new StringReader("abcdef");
@@ -51,11 +46,11 @@ namespace Virtlink.Utilib.IO
                 var result = reader.ReadString(5);
 
                 // Assert
-                Assert.That(result, Is.EqualTo("abcde"));
+                Assert.Equal("abcde", result);
             }
 
-            [Test]
-            public void Given6_ReadsAllOfTheString()
+            [Fact]
+            public void ShouldReadAllOfTheString_WhenGiven6()
             {
                 // Arrange
                 var reader = new StringReader("abcdef");
@@ -64,11 +59,11 @@ namespace Virtlink.Utilib.IO
                 var result = reader.ReadString(6);
 
                 // Assert
-                Assert.That(result, Is.EqualTo("abcdef"));
+                Assert.Equal("abcdef", result);
             }
 
-            [Test]
-            public void Given10_ReadsJustTheString()
+            [Fact]
+            public void ShouldReadJustTheString_WhenGiven10()
             {
                 // Arrange
                 var reader = new StringReader("abcdef");
@@ -77,7 +72,7 @@ namespace Virtlink.Utilib.IO
                 var result = reader.ReadString(10);
 
                 // Assert
-                Assert.That(result, Is.EqualTo("abcdef"));
+                Assert.Equal("abcdef", result);
             }
         }
     }

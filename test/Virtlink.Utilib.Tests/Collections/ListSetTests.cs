@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework.Internal;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
     /// <summary>
     /// Tests the <see cref="ListSet{T}"/> class.
     /// </summary>
-    [TestFixture]
     public partial class ListSetTests
     {
-        [Test]
-        public void DoesNotAddDuplicateElements()
+        [Fact]
+        public void ShouldNotAddElements_WhenAnEqualElementIsAlreadyPresent()
         {
             // Arrange
             var sut = new ListSet<String>();
@@ -24,12 +19,12 @@ namespace Virtlink.Utilib.Collections
             bool result = sut.Add("abc");
 
             // Assert
-            Assert.That(result, Is.False);
-            Assert.That(sut, Is.EquivalentTo(new [] { "abc" }));
+            Assert.False(result);
+            Assert.Equal(new[] { "abc" }, sut);
         }
 
-        [Test]
-        public void AddNewElements()
+        [Fact]
+        public void ShouldAddElement_WhenAnEqualElementIsNotAlreadyPresent()
         {
             // Arrange
             var sut = new ListSet<String>();
@@ -38,8 +33,8 @@ namespace Virtlink.Utilib.Collections
             bool result = sut.Add("abc");
 
             // Assert
-            Assert.That(result, Is.True);
-            Assert.That(sut, Is.EquivalentTo(new[] { "abc" }));
+            Assert.True(result);
+            Assert.Equal(new[] { "abc" }, sut);
         }
     }
 }

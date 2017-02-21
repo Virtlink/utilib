@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,11 +9,10 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="ListComparer{T}.Equals"/> method.
         /// </summary>
-        [TestFixture]
         public sealed class EqualsTests
         {
-            [Test]
-            public void SameListsAreEqual()
+            [Fact]
+            public void ShouldReturnTrue_WhenGivenSameLists()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -25,11 +22,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = ListComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.That(result, Is.True);
+                Assert.True(result);
             }
 
-            [Test]
-            public void EqualListsAreEqual()
+            [Fact]
+            public void ShouldReturnTrue_WhenGivenEqualLists()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -39,11 +36,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = ListComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.That(result, Is.True);
+                Assert.True(result);
             }
 
-            [Test]
-            public void ListsWithDifferentlyOrderedElementsAreNotEqual()
+            [Fact]
+            public void ShouldReturnFalse_WhenGivenListsWithDifferentlyOrderedElements()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -53,11 +50,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = ListComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.That(result, Is.False);
+                Assert.False(result);
             }
 
-            [Test]
-            public void EmptyListsAreEqual()
+            [Fact]
+            public void ShouldReturnTrue_WhenGivenEmptyLists()
             {
                 // Arrange
                 var set0 = new int[0];
@@ -68,11 +65,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = sut.Equals(set0, set1);
 
                 // Assert
-                Assert.That(result, Is.True);
+                Assert.True(result);
             }
 
-            [Test]
-            public void NullsAreEqual()
+            [Fact]
+            public void ShouldReturnTrue_WhenGivenNulls()
             {
                 // Arrange
                 var sut = new ListComparer<int>();
@@ -81,11 +78,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = sut.Equals(null, null);
 
                 // Assert
-                Assert.That(result, Is.True);
+                Assert.True(result);
             }
 
-            [Test]
-            public void ListsWithDifferentElementsAreNotEqual()
+            [Fact]
+            public void ShouldReturnFalse_WhenGivenListsWithDifferentElements()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -95,11 +92,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = ListComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.That(result, Is.False);
+                Assert.False(result);
             }
 
-            [Test]
-            public void ListsWithDifferentMultiplesOfElementsAreNotEqual()
+            [Fact]
+            public void ShouldReturnFalse_WhenGivenListsWithDifferentMultiplesOfElements()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -109,11 +106,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = ListComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.That(result, Is.False);
+                Assert.False(result);
             }
 
-            [Test]
-            public void ListsWithDifferentCountsAreNotEqual()
+            [Fact]
+            public void ShouldReturnFalse_WhenGivenListsWithDifferentCounts()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -123,11 +120,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = ListComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.That(result, Is.False);
+                Assert.False(result);
             }
 
-            [Test]
-            public void ListsAndNullAreNotEqual()
+            [Fact]
+            public void ShouldReturnFalse_WhenGivenListAndNull()
             {
                 // Arrange
                 var list0 = new int[0];
@@ -137,11 +134,11 @@ namespace Virtlink.Utilib.Collections
                 bool result = sut.Equals(list0, null);
 
                 // Assert
-                Assert.That(result, Is.False);
+                Assert.False(result);
             }
 
-            [Test]
-            public void ComparerIsUsedForComparison()
+            [Fact]
+            public void ShouldUseGivenComparerForComparisons()
             {
                 // Arrange
                 var list0 = new[] { "B", "D", "g", "g", "A", "C", "E", "e", "E" };
@@ -152,7 +149,7 @@ namespace Virtlink.Utilib.Collections
                 bool result = sut.Equals(list0, list1);
 
                 // Assert
-                Assert.That(result, Is.True);
+                Assert.True(result);
             }
         }
     }

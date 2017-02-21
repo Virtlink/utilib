@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 
 namespace Virtlink.Utilib.Text
 {
@@ -7,11 +7,10 @@ namespace Virtlink.Utilib.Text
 		/// <summary>
 		/// Tests the <see cref="UriEncoding.Decode"/> method.
 		/// </summary>
-		[TestFixture]
 		public class DecodeTests : UriEncodingTests
 		{
-			[Test]
-			public void DecodesExtendedAscii()
+			[Fact]
+			public void ShouldDecodeExtendedAscii()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -21,11 +20,11 @@ namespace Virtlink.Utilib.Text
 				string unencoded = encoding.Decode(encoded);
 
 				// Assert
-				Assert.That(unencoded, Is.EqualTo("ë"));
+				Assert.Equal("ë", unencoded);
 			}
 
-			[Test]
-			public void DecodesUtf16()
+			[Fact]
+			public void ShouldDecodeUtf16()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -35,11 +34,11 @@ namespace Virtlink.Utilib.Text
 				string unencoded = encoding.Decode(encoded);
 
 				// Assert
-				Assert.That(unencoded, Is.EqualTo("Ƶ"));
+				Assert.Equal("Ƶ", unencoded);
 			}
 
-			[Test]
-			public void DecodesUtf32()
+			[Fact]
+			public void ShouldDecodeUtf32()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -49,7 +48,7 @@ namespace Virtlink.Utilib.Text
 				string unencoded = encoding.Decode(encoded);
 
 				// Assert
-				Assert.That(unencoded, Is.EqualTo("😀"));
+				Assert.Equal("😀", unencoded);
 			}
 		}
 	}

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,11 +7,10 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="ExtHashSet{T}.TryGet"/> method.
         /// </summary>
-        [TestFixture]
         public sealed class TryGetTests
         {
-            [Test]
-            public void OnExistingSameValue_ReturnsElementAndTrue()
+            [Fact]
+            public void ShouldReturnElementAndTrue_WhenSameValueExists()
             {
                 // Arrange
                 var elements = new[]
@@ -34,12 +29,12 @@ namespace Virtlink.Utilib.Collections
                 bool result = set.TryGet(elements[1], out muller);
 
                 // Assert
-                Assert.That(result, Is.True);
-                Assert.That(muller, Is.SameAs(elements[1]));
+                Assert.True(result);
+                Assert.Same(elements[1], muller);
             }
-            
-            [Test]
-            public void OnExistingEqualValue_ReturnsElementAndTrue()
+
+            [Fact]
+            public void ShouldReturnElementAndTrue_WhenEqualValueExists()
             {
                 // Arrange
                 var elements = new[]
@@ -58,12 +53,12 @@ namespace Virtlink.Utilib.Collections
                 bool result = set.TryGet(new TestObject("C.G.P. Grey", "Process Manager"), out grey);
 
                 // Assert
-                Assert.That(result, Is.True);
-                Assert.That(grey, Is.SameAs(elements[5]));
+                Assert.True(result);
+                Assert.Same(elements[5], grey);
             }
 
-            [Test]
-            public void OnExistingChangedValue_ReturnsChangedElementAndTrue()
+            [Fact]
+            public void ShouldReturnChangedElementAndTrue_WhenChangedValueExists()
             {
                 // Arrange
                 var elements = new[]
@@ -86,12 +81,12 @@ namespace Virtlink.Utilib.Collections
                 bool result = set.TryGet(elements[4], out reich2);
 
                 // Assert
-                Assert.That(result, Is.True);
-                Assert.That(reich2.Value, Is.EqualTo("YouTuber"));
+                Assert.True(result);
+                Assert.Equal("YouTuber", reich2.Value);
             }
 
-            [Test]
-            public void OnNonExistingValue_ReturnsDefaultAndFalse()
+            [Fact]
+            public void ShouldReturnDefaultAndFalse_WhenValueDoesNotExist()
             {
                 // Arrange
                 var elements = new[]
@@ -110,8 +105,8 @@ namespace Virtlink.Utilib.Collections
                 bool result = set.TryGet(new TestObject("F.A.U. Kjellberg", "YouTuber"), out kjellberg);
 
                 // Assert
-                Assert.That(result, Is.False);
-                Assert.That(kjellberg, Is.SameAs(default(TestObject)));
+                Assert.False(result);
+                Assert.Same(default(TestObject), kjellberg);
             }
         }
     }

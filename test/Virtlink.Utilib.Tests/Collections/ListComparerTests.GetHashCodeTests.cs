@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,11 +8,10 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="ListComparer{T}.GetHashCode"/> method.
         /// </summary>
-        [TestFixture]
         public sealed class GetHashCodeTests
         {
-            [Test]
-            public void SameListsHaveSameHashCode()
+            [Fact]
+            public void ShouldHaveSameHashCode_WhenGivenSameLists()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -26,11 +22,11 @@ namespace Virtlink.Utilib.Collections
                 int h2 = ListComparer<String>.Default.GetHashCode(c2);
 
                 // Assert
-                Assert.That(h1, Is.EqualTo(h2));
+                Assert.Equal(h1, h2);
             }
 
-            [Test]
-            public void EqualListsHaveSameHashCode()
+            [Fact]
+            public void ShouldHaveSameHashCode_WhenGivenEqualLists()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
@@ -41,7 +37,7 @@ namespace Virtlink.Utilib.Collections
                 int h2 = ListComparer<String>.Default.GetHashCode(c2);
 
                 // Assert
-                Assert.That(h1, Is.EqualTo(h2));
+                Assert.Equal(h1, h2);
             }
         }
     }

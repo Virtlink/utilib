@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 
 namespace Virtlink.Utilib.Text
 {
@@ -7,13 +7,12 @@ namespace Virtlink.Utilib.Text
 		/// <summary>
 		/// Tests the <see cref="UriEncoding.Encode"/> method.
 		/// </summary>
-		[TestFixture]
 		public class EncodeTests : UriEncodingTests
 		{
 			// NOTE: We assume percent encoded characters are written in uppercase ("%2F" and not "%2f").
 			
-			[Test]
-			public void EncodesExtendedAscii()
+			[Fact]
+			public void ShouldEncodeExtendedAscii()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -23,11 +22,11 @@ namespace Virtlink.Utilib.Text
 				string encoded = encoding.Encode(unencoded);
 
 				// Assert
-				Assert.That(encoded, Is.EqualTo("%C3%AB"));		// U+EB
+				Assert.Equal("%C3%AB", encoded);		// U+EB
 			}
 
-			[Test]
-			public void EncodesUtf16()
+			[Fact]
+			public void ShouldEncodeUtf16()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -37,11 +36,11 @@ namespace Virtlink.Utilib.Text
 				string encoded = encoding.Encode(unencoded);
 
 				// Assert
-				Assert.That(encoded, Is.EqualTo("%C6%B5"));     // U+1B5
+				Assert.Equal("%C6%B5", encoded);     // U+1B5
 			}
 
-			[Test]
-			public void EncodesUtf32()
+			[Fact]
+			public void ShouldEncodeUtf32()
 			{
 				// Arrange
 				var encoding = CreateNew();
@@ -51,7 +50,7 @@ namespace Virtlink.Utilib.Text
 				string encoded = encoding.Encode(unencoded);
 
 				// Assert
-				Assert.That(encoded, Is.EqualTo("%F0%9F%98%80"));		// U+1F600
+				Assert.Equal("%F0%9F%98%80", encoded);		// U+1F600
 			}
 		}
 	}

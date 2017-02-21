@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.IO
 {
@@ -13,11 +9,10 @@ namespace Virtlink.Utilib.IO
         /// <summary>
         /// Tests the <see cref="Streams.ResetPosition"/> function.
         /// </summary>
-        [TestFixture]
         public sealed class ResetPositionTests
         {
-            [Test]
-            public void ResetsThePositionToZero()
+            [Fact]
+            public void ShouldResetThePositionToZero()
             {
                 // Arrange
                 var input = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD};
@@ -30,15 +25,15 @@ namespace Virtlink.Utilib.IO
                 long newPosition = stream.Position;
 
                 // Assert
-                Assert.That(oldPosition, Is.EqualTo(4));
-                Assert.That(newPosition, Is.EqualTo(0));
+                Assert.Equal(4, oldPosition);
+                Assert.Equal(0, newPosition);
 
                 // Cleanup
                 stream.Dispose();
             }
 
-            [Test]
-            public void ReturnsTheInputStream()
+            [Fact]
+            public void ShouldReturnTheInputStream()
             {
                 // Arrange
                 var stream = new MemoryStream();
@@ -47,23 +42,26 @@ namespace Virtlink.Utilib.IO
                 var result = stream.ResetPosition();
 
                 // Assert
-                Assert.That(result, Is.SameAs(stream));
+                Assert.Same(stream, result);
 
                 // Cleanup
                 stream.Dispose();
             }
-
-            [Test]
-            public void ThrowsWhenStreamIsNull()
+            
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenStreamIsNull()
             {
                 // Arrange
                 Stream sut = null;
 
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     sut.ResetPosition();
-                }, Throws.ArgumentNullException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
             }
         }
     }

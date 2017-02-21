@@ -1,15 +1,18 @@
-﻿using NUnit.Framework;
+﻿using System;
+using Xunit;
 using System.Threading;
 
 namespace Virtlink.Utilib.Threading
 {
 	partial class ReaderWriterLockSlimExtensionsTests
 	{
-		[TestFixture]
+        /// <summary>
+        /// Tests the <see cref="ReaderWriterLockSlimExtensions.IsLockHeld"/> method.
+        /// </summary>
 		public sealed class IsLockHeldTests
 		{
-			[Test]
-			public void IsFalseWhenNoLockIsHeld()
+			[Fact]
+			public void ShouldReturnFalse_WhenNoLockIsHeld()
 			{
 				// Arrange
 				var sut = new ReaderWriterLockSlim();
@@ -18,11 +21,11 @@ namespace Virtlink.Utilib.Threading
 				bool result = sut.IsLockHeld();
 
 				// Assert
-				Assert.That(result, Is.False);
+				Assert.False(result);
 			}
 
-			[Test]
-			public void IsTrueWhenReadLockIsHeld()
+			[Fact]
+			public void ShouldReturnTrue_WhenReadLockIsHeld()
 			{
 				// Arrange
 				var sut = new ReaderWriterLockSlim();
@@ -32,14 +35,14 @@ namespace Virtlink.Utilib.Threading
 				bool result = sut.IsLockHeld();
 
 				// Assert
-				Assert.That(result, Is.True);
+				Assert.True(result);
 
 				// Cleanup
 				sut.ExitReadLock();
 			}
 
-			[Test]
-			public void IsTrueWhenUpgradeableReadLockIsHeld()
+			[Fact]
+			public void ShouldReturnTrue_WhenUpgradeableReadLockIsHeld()
 			{
 				// Arrange
 				var sut = new ReaderWriterLockSlim();
@@ -49,14 +52,14 @@ namespace Virtlink.Utilib.Threading
 				bool result = sut.IsLockHeld();
 
 				// Assert
-				Assert.That(result, Is.True);
+				Assert.True(result);
 
 				// Cleanup
 				sut.ExitUpgradeableReadLock();
 			}
 
-			[Test]
-			public void IsTrueWhenWriteLockIsHeld()
+			[Fact]
+			public void ShouldReturnTrue_WhenWriteLockIsHeld()
 			{
 				// Arrange
 				var sut = new ReaderWriterLockSlim();
@@ -66,14 +69,14 @@ namespace Virtlink.Utilib.Threading
 				bool result = sut.IsLockHeld();
 
 				// Assert
-				Assert.That(result, Is.True);
+				Assert.True(result);
 
 				// Cleanup
 				sut.ExitWriteLock();
 			}
 
-			[Test]
-			public void IsTrueWhenWriteLockIsHeldInUpgradeableReadLock()
+			[Fact]
+			public void ShouldReturnTrue_WhenWriteLockIsHeldInUpgradeableReadLock()
 			{
 				// Arrange
 				var sut = new ReaderWriterLockSlim();
@@ -84,24 +87,27 @@ namespace Virtlink.Utilib.Threading
 				bool result = sut.IsLockHeld();
 
 				// Assert
-				Assert.That(result, Is.True);
+				Assert.True(result);
 
 				// Cleanup
 				sut.ExitWriteLock();
 				sut.ExitUpgradeableReadLock();
 			}
 
-			[Test]
-			public void ThrowsWhenReaderWriterLockSlimIsNull()
+			[Fact]
+			public void ShouldThrowArgumentNullException_WhenReaderWriterLockSlimIsNull()
 			{
 				// Arrange
 				ReaderWriterLockSlim sut = null;
 
-				// Act/Assert
-				Assert.That(() =>
+				// Act
+                var exception = Record.Exception(() =>
 				{
 					sut.IsLockHeld();
-				}, Throws.ArgumentNullException);
+				});
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
 			}
 		}
 	}

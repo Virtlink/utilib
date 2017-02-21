@@ -1,6 +1,4 @@
-﻿using NUnit.Framework;
-
-namespace Virtlink.Utilib.Text
+﻿namespace Virtlink.Utilib.Text
 {
 	/// <summary>
 	/// Tests the <see cref="UriEncoding"/> class.
@@ -15,8 +13,7 @@ namespace Virtlink.Utilib.Text
 		{
 			return new UriEncoding();
 		}
-
-		[TestFixture]
+        
 		public class EncodeTests2 : PathEncodingTests.EncodeTests
 		{
 			protected override PathEncoding CreateNew()
@@ -24,8 +21,7 @@ namespace Virtlink.Utilib.Text
 				return new UriEncoding();
 			}
 		}
-
-		[TestFixture]
+        
 		public class DecodeTests2 : PathEncodingTests.DecodeTests
 		{
 			protected override PathEncoding CreateNew()

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.IO
 {
@@ -13,11 +9,10 @@ namespace Virtlink.Utilib.IO
         /// <summary>
         /// Tests the <see cref="Streams.ReadBinary"/> function.
         /// </summary>
-        [TestFixture]
         public sealed class ReadBinaryTests
         {
-            [Test]
-            public void ReturnsABinaryReader()
+            [Fact]
+            public void ShouldReturnABinaryReader()
             {
                 // Arrange
                 var input = new byte[] { 0xAA, 0xBB, 0xCC, 0xDD};
@@ -27,15 +22,15 @@ namespace Virtlink.Utilib.IO
                 var reader = stream.ReadBinary();
 
                 // Assert
-                Assert.That(reader.ReadBytes(input.Length), Is.EqualTo(input));
+                Assert.Equal(input, reader.ReadBytes(input.Length));
 
                 // Cleanup
                 reader.Dispose();
                 stream.Dispose();
             }
 
-            [Test]
-            public void ClosingReaderDoesNotCloseStream()
+            [Fact]
+            public void ShouldNotCloseStream_WhenClosingTheReader()
             {
                 // Arrange
                 var stream = new MemoryStream();
@@ -43,28 +38,32 @@ namespace Virtlink.Utilib.IO
 
                 // Act
                 reader.Dispose();
-
-                // Assert
-                Assert.That(() =>
+                var exception = Record.Exception(() =>
                 {
                     long p = stream.Position;
-                }, Throws.Nothing);
+                });
+
+                // Assert
+                Assert.Null(exception);
 
                 // Cleanup
                 stream.Dispose();
             }
 
-            [Test]
-            public void ThrowsWhenStreamIsNull()
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenStreamIsNull()
             {
                 // Arrange
                 Stream sut = null;
 
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     sut.ReadBinary();
-                }, Throws.ArgumentNullException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
             }
         }
     }

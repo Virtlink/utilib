@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,30 +11,32 @@ namespace Virtlink.Utilib.Collections
         /// <summary>
         /// Tests the <see cref="List.Empty"/> function.
         /// </summary>
-        [TestFixture]
         public sealed class EmptyTests
         {
-            [Test]
+            [Fact]
             public void ReturnsAnEmptyArray()
             {
                 // Act
                 var result = List.Empty<String>();
 
                 // Assert
-                Assert.That(result, Is.InstanceOf<IReadOnlyList<String>>());
+                Assert.IsAssignableFrom<IReadOnlyList<String>>(result);
             }
 
-            [Test]
+            [Fact]
             public void ReturnedEmptyArrayCannotBeModified()
             {
-                // Act
+                // Arrange
                 var result = (IList<String>)List.Empty<String>();
 
-                // Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     result.Add("test");
-                }, Throws.InstanceOf<NotSupportedException>());
+                });
+
+                // Assert
+                Assert.IsType<NotSupportedException>(exception);
             }
         }
     }

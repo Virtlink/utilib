@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
     partial class StacksTests
     {
         /// <summary>
-        /// Tests the <see cref="PushRange"/> method.
+        /// Tests the <see cref="Stacks.PushRange"/> method.
         /// </summary>
-        [TestFixture]
         public sealed class PushRangeTests
         {
-            [Test]
-            public void EmptyRangePushesNothing()
+            [Fact]
+            public void ShouldPushNothing_WhenRangeIsEmpty()
             {
                 // Arrange
                 var input = new String[0];
@@ -25,11 +22,11 @@ namespace Virtlink.Utilib.Collections
                 stack.PushRange(input);
 
                 // Assert
-                Assert.That(stack, Is.EqualTo(new[] { "a" }));
+                Assert.Equal(new[] { "a" }, stack);
             }
 
-            [Test]
-            public void SomeRangePushesFirstToLast()
+            [Fact]
+            public void ShouldPushFirstToLast_WhenRangeIsNotEmpty()
             {
                 // Arrange
                 var input = new[] {"b", "c", "d"};
@@ -39,20 +36,23 @@ namespace Virtlink.Utilib.Collections
                 stack.PushRange(input);
 
                 // Assert
-                Assert.That(stack, Is.EqualTo(new[] { "d", "c", "b", "a" }));
+                Assert.Equal(new[] { "d", "c", "b", "a" }, stack);
             }
-
-            [Test]
-            public void ThrowsWhenStackIsNull()
+            
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenStackIsNull()
             {
                 // Arrange
                 Stack<String> sut = null;
 
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     sut.PushRange(new String[0]);
-                }, Throws.ArgumentNullException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
             }
         }
     }

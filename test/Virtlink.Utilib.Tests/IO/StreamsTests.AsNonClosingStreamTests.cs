@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
 namespace Virtlink.Utilib.IO
 {
@@ -13,11 +10,10 @@ namespace Virtlink.Utilib.IO
         /// <summary>
         /// Tests the <see cref="Streams.AsNonClosingStream"/> function.
         /// </summary>
-        [TestFixture]
         public sealed class AsNonClosingStreamTests
         {
-            [Test]
-            public void ReturnedStreamAllowsReading()
+            [Fact]
+            public void ShouldReturnReadableStream()
             {
                 // Arrange
                 var input = "TEST";
@@ -29,15 +25,15 @@ namespace Virtlink.Utilib.IO
                 var result = reader.ReadToEnd();
 
                 // Assert
-                Assert.That(result, Is.EqualTo(input));
+                Assert.Equal(input, result);
 
                 // Cleanup
                 reader.Dispose();
                 stream.Dispose();
             }
 
-            [Test]
-            public void ReturnedStreamAllowsWriting()
+            [Fact]
+            public void ShouldReturnWritableStream()
             {
                 // Arrange
                 var input = "TEST";
@@ -50,15 +46,15 @@ namespace Virtlink.Utilib.IO
                 writer.Flush();
 
                 // Assert
-                Assert.That(GetString(stream), Is.EqualTo(input));
+                Assert.Equal(input, GetString(stream));
 
                 // Cleanup
                 writer.Dispose();
                 stream.Dispose();
             }
 
-            [Test]
-            public void ReturnedStreamAllowsSeeking()
+            [Fact]
+            public void ShouldReturnSeekableStream()
             {
                 // Arrange
                 var input = "TEST";
@@ -69,14 +65,14 @@ namespace Virtlink.Utilib.IO
                 nonClosingStream.Seek(2, SeekOrigin.Begin);
 
                 // Assert
-                Assert.That(stream.Position, Is.EqualTo(2));
+                Assert.Equal(2, stream.Position);
 
                 // Cleanup
                 stream.Dispose();
             }
 
-            [Test]
-            public void UnderlyingStreamIsNotClosed()
+            [Fact]
+            public void ShouldNotHaveAnUnderlyingStreamClosed()
             {
                 // Arrange
                 var stream = new MemoryStream();
@@ -84,19 +80,20 @@ namespace Virtlink.Utilib.IO
 
                 // Act
                 nonClosingStream.Dispose();
-
-                // Assert
-                Assert.That(() =>
+                var exception = Record.Exception(() =>
                 {
                     long p = stream.Position;
-                }, Throws.Nothing);
+                });
+
+                // Assert
+                Assert.Null(exception);
 
                 // Cleanup
                 stream.Dispose();
             }
 
-            [Test]
-            public void ReturnsSameStreamWhenStreamIsAlreadyNonClosing()
+            [Fact]
+            public void ShouldReturnSameStreamWhenStreamIsAlreadyNonClosing()
             {
                 // Arrange
                 var stream = new MemoryStream().AsNonClosingStream();
@@ -105,20 +102,23 @@ namespace Virtlink.Utilib.IO
                 var result = stream.AsNonClosingStream();
 
                 // Assert
-                Assert.That(result, Is.SameAs(stream));
+                Assert.Same(stream, result);
             }
 
-            [Test]
-            public void ThrowsWhenStreamIsNull()
+            [Fact]
+            public void ShouldThrowArgumentNullException_WhenStreamIsNull()
             {
                 // Arrange
                 Stream sut = null;
 
-                // Act/Assert
-                Assert.That(() =>
+                // Act
+                var exception = Record.Exception(() =>
                 {
                     sut.AsNonClosingStream();
-                }, Throws.ArgumentNullException);
+                });
+
+                // Assert
+                Assert.IsType<ArgumentNullException>(exception);
             }
 
             private string GetString(MemoryStream stream)
