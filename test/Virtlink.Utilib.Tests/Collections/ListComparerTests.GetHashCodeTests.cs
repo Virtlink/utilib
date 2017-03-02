@@ -11,6 +11,19 @@ namespace Virtlink.Utilib.Collections
         public sealed class GetHashCodeTests
         {
             [Fact]
+            public void ShouldNotThrowAnException_WhenGivenNull()
+            {
+                // Act
+                var exception = Record.Exception(() =>
+                {
+                    ListComparer<String>.Default.GetHashCode(null);
+                });
+
+                // Assert
+                Assert.Null(exception);
+            }
+
+            [Fact]
             public void ShouldHaveSameHashCode_WhenGivenSameLists()
             {
                 // Arrange

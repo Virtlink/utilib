@@ -70,12 +70,7 @@ namespace Virtlink.Utilib.Collections
         /// <inheritdoc/>
         public int GetHashCode(IEnumerable<T> enumerable)
         {
-            #region Contract
-            if (enumerable == null)
-                throw new ArgumentNullException(nameof(enumerable));
-            #endregion
-
-            return GetQuickHashCode(enumerable);
+            return enumerable != null ? GetQuickHashCode(enumerable) : 0;
         }
 
         /// <summary>

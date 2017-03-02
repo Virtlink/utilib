@@ -76,10 +76,8 @@ namespace Virtlink.Utilib.Collections
         /// <inheritdoc/>
         public int GetHashCode(IEnumerable<T> enumerable)
         {
-            #region Contract
             if (enumerable == null)
-                throw new ArgumentNullException(nameof(enumerable));
-            #endregion
+                return 0;
 
             int hash = 17;
             unchecked
