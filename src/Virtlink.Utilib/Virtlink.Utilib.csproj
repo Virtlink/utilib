@@ -10,7 +10,7 @@
     <PackageTags>virtlink;utility;library</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/Virtlink/utilib/master/doc/Icon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/Virtlink/utilib/</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/Virtlink/utilib/blob/master/License.md</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/Virtlink/utilib/blob/master/LICENSE.md</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/Virtlink/utilib</RepositoryUrl>
     <Copyright>Copyright - Daniel Pelsmaeker</Copyright>
