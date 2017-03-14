@@ -1,20 +1,24 @@
 version: "#{build}"
-os: Visual Studio 2015
+image: Visual Studio 2017
 configuration: Release
 
 before_build:
 - ps: dotnet --info
 - ps: dotnet restore --verbosity detailed
 
+build:
+  verbosity: minimal
+
 test_script:
-- ps: dotnet test -c $env:CONFIGURATION ./test/Virtlink.Utilib.Tests
+- ps: dotnet test -c $env:CONFIGURATION ./test/Virtlink.Utilib.Tests/Virtlink.Utilib.Tests.csproj
 
 after_test:
-- ps: dotnet pack -c $env:CONFIGURATION src/Virtlink.Utilib/
+- ps: dotnet pack -c $env:CONFIGURATION ./src/Virtlink.Utilib/Virtlink.Utilib.csproj
 
 artifacts:
 - path: 'src/Virtlink.Utilib/bin/Release/*.nupkg'
   name: NuGet Packages
+
 
 deploy:
 - provider: GitHub
