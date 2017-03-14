@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -53,6 +54,47 @@ namespace Virtlink.Utilib.Collections
 
             var collection = enumerable as ICollection;
             return collection?.Count;
+        }
+
+        /// <summary>
+        /// Returns the elements of the first sequence, or the elements of the second sequence when the first
+        /// sequence is empty.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the sequences.</typeparam>
+        /// <param name="source">The first sequence.</param>
+        /// <param name="otherwise">The second sequence, only to be returned when the first sequence is empty.</param>
+        /// <returns>The resulting enumerable.</returns>
+        public static IEnumerable<T> OrIfEmpty<T>(this IEnumerable<T> source, IEnumerable<T> otherwise)
+        {
+            #region Contract
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (otherwise == null)
+                throw new ArgumentNullException(nameof(otherwise));
+            #endregion
+
+            IEnumerable<T> Enumerator()
+            {
+                using (var enumerator = source.GetEnumerator())
+                {
+                    if (enumerator.MoveNext())
+                    {
+                        do
+                        {
+                            yield return enumerator.Current;
+                        } while (enumerator.MoveNext());
+                    }
+                    else
+                    {
+                        foreach (var e in otherwise)
+                        {
+                            yield return e;
+                        }
+                    }
+                }
+            }
+
+            return Enumerator();
         }
     }
 }
