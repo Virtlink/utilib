@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.21.0] - 2017-03-14
+- Switch to new `.csproj` format.
+
 ## [1.20.0] - 2017-03-02
 - Implementations of `IEqualityComparer` no longer throw an exception when `GetHashCode()` is given `null`.
 
