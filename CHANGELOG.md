@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.22.0] - 2017-03-14
+- Add `ListSlice` and some enumerable extensions.
+
 ## [1.21.0] - 2017-03-14
 - Switch to new `.csproj` format.
 
