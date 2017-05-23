@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <VersionPrefix>1.22.0</VersionPrefix>
+    <VersionPrefix>1.23.0</VersionPrefix>
     <VersionSuffix></VersionSuffix>
     <Product>Utilib - Utility library</Product>
-    <Description>A utility library for .Net. It contains all those little utility classes and functions that are missing from the standard .Net libraries.</Description>
+    <Description>A utility library for .NET. It contains all those little utility classes and functions that are missing from the standard .NET libraries.</Description>
     <PackageTags>virtlink;utility;library</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/Virtlink/utilib/master/doc/Icon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/Virtlink/utilib/</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/Virtlink/utilib/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/Virtlink/utilib/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/Virtlink/utilib</RepositoryUrl>
     <Copyright>Copyright - Daniel Pelsmaeker</Copyright>
