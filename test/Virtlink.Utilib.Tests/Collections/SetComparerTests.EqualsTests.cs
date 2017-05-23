@@ -4,10 +4,10 @@ using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
-    partial class MultiSetComparerTests
+    partial class SetComparerTests
     {
         /// <summary>
-        /// Tests the <see cref="MultiSetComparer{T}.Equals"/> method.
+        /// Tests the <see cref="SetComparer{T}.Equals"/> method.
         /// </summary>
         public sealed class EqualsTests
         {
@@ -19,7 +19,7 @@ namespace Virtlink.Utilib.Collections
                 var c2 = c1;
 
                 // Act
-                bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
+                bool result = SetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
                 Assert.True(result);
@@ -33,7 +33,7 @@ namespace Virtlink.Utilib.Collections
                 var c2 = new[] {"a", "b", "b", "c"};
 
                 // Act
-                bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
+                bool result = SetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
                 Assert.True(result);
@@ -47,7 +47,7 @@ namespace Virtlink.Utilib.Collections
                 var c2 = new[] {"c", "b", "a", "b"};
 
                 // Act
-                bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
+                bool result = SetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
                 Assert.True(result);
@@ -59,7 +59,7 @@ namespace Virtlink.Utilib.Collections
                 // Arrange
                 var set0 = new int[0];
                 var set1 = new List<int>();
-                var sut = new MultiSetComparer<int>();
+                var sut = new SetComparer<int>();
 
                 // Act
                 bool result = sut.Equals(set0, set1);
@@ -72,7 +72,7 @@ namespace Virtlink.Utilib.Collections
             public void ShouldReturnTrue_WhenGivenNulls()
             {
                 // Arrange
-                var sut = new MultiSetComparer<int>();
+                var sut = new SetComparer<int>();
 
                 // Act
                 bool result = sut.Equals(null, null);
@@ -89,38 +89,38 @@ namespace Virtlink.Utilib.Collections
                 var c2 = new[] {"a", "b", "d", "e"};
 
                 // Act
-                bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
+                bool result = SetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
                 Assert.False(result);
             }
 
             [Fact]
-            public void ShouldReturnFalse_WhenGivenCollectionsWithDifferentMultiplesOfElements()
+            public void ShouldReturnTrue_WhenGivenCollectionsWithDifferentMultiplesOfElements()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
                 var c2 = new[] {"a", "b", "c", "c"};
 
                 // Act
-                bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
+                bool result = SetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.False(result);
+                Assert.True(result);
             }
 
             [Fact]
-            public void ShouldReturnFalse_WhenGivenCollectionsWithDifferentCounts()
+            public void ShouldReturnTrue_WhenGivenCollectionsWithDifferentCounts()
             {
                 // Arrange
                 var c1 = new[] {"a", "b", "b", "c"};
                 var c2 = new[] {"a", "b", "c"};
 
                 // Act
-                bool result = MultiSetComparer<String>.Default.Equals(c1, c2);
+                bool result = SetComparer<String>.Default.Equals(c1, c2);
 
                 // Assert
-                Assert.False(result);
+                Assert.True(result);
             }
 
             [Fact]
@@ -128,7 +128,7 @@ namespace Virtlink.Utilib.Collections
             {
                 // Arrange
                 var set0 = new int[0];
-                var sut = new MultiSetComparer<int>();
+                var sut = new SetComparer<int>();
 
                 // Act
                 bool result = sut.Equals(set0, null);
@@ -143,7 +143,7 @@ namespace Virtlink.Utilib.Collections
                 // Arrange
                 var set0 = new[] { "B", "D", "g", "g", "A", "C", "E", "e", "E" };
                 var set1 = new[] { "b", "d", "G", "G", "A", "C", "e", "e", "e" };
-                var sut = new MultiSetComparer<string>(StringComparer.OrdinalIgnoreCase);
+                var sut = new SetComparer<string>(StringComparer.OrdinalIgnoreCase);
 
                 // Act
                 bool result = sut.Equals(set0, set1);

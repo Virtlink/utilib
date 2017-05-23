@@ -3,10 +3,10 @@ using Xunit;
 
 namespace Virtlink.Utilib.Collections
 {
-    partial class MultiSetComparerTests
+    partial class SetComparerTests
     {
         /// <summary>
-        /// Tests the <see cref="MultiSetComparer{T}.GetHashCode"/> method.
+        /// Tests the <see cref="SetComparer{T}.GetHashCode"/> method.
         /// </summary>
         public sealed class GetHashCodeTests
         {
@@ -16,7 +16,7 @@ namespace Virtlink.Utilib.Collections
                 // Act
                 var exception = Record.Exception(() =>
                 {
-                    MultiSetComparer<String>.Default.GetHashCode(null);
+                    SetComparer<String>.Default.GetHashCode(null);
                 });
 
                 // Assert
@@ -31,8 +31,8 @@ namespace Virtlink.Utilib.Collections
                 var c2 = c1;
 
                 // Act
-                int h1 = MultiSetComparer<String>.Default.GetHashCode(c1);
-                int h2 = MultiSetComparer<String>.Default.GetHashCode(c2);
+                int h1 = SetComparer<String>.Default.GetHashCode(c1);
+                int h2 = SetComparer<String>.Default.GetHashCode(c2);
 
                 // Assert
                 Assert.Equal(h1, h2);
@@ -46,8 +46,8 @@ namespace Virtlink.Utilib.Collections
                 var c2 = new[] {"a", "b", "b", "c"};
 
                 // Act
-                int h1 = MultiSetComparer<String>.Default.GetHashCode(c1);
-                int h2 = MultiSetComparer<String>.Default.GetHashCode(c2);
+                int h1 = SetComparer<String>.Default.GetHashCode(c1);
+                int h2 = SetComparer<String>.Default.GetHashCode(c2);
 
                 // Assert
                 Assert.Equal(h1, h2);
@@ -61,8 +61,8 @@ namespace Virtlink.Utilib.Collections
                 var c2 = new[] {"c", "b", "a", "b"};
 
                 // Act
-                int h1 = MultiSetComparer<String>.Default.GetHashCode(c1);
-                int h2 = MultiSetComparer<String>.Default.GetHashCode(c2);
+                int h1 = SetComparer<String>.Default.GetHashCode(c1);
+                int h2 = SetComparer<String>.Default.GetHashCode(c2);
 
                 // Assert
                 Assert.Equal(h1, h2);
@@ -79,6 +79,21 @@ namespace Virtlink.Utilib.Collections
                 // Act
                 int h1 = comparer.GetHashCode(c1);
                 int h2 = comparer.GetHashCode(c2);
+
+                // Assert
+                Assert.Equal(h1, h2);
+            }
+
+            [Fact]
+            public void ShouldHaveSameHashCode_WhenGivenEquivalentDistinctCollections()
+            {
+                // Arrange
+                var c1 = new[] { "a", "b", "b", "b", "c" };
+                var c2 = new[] { "c", "b", "a" };
+
+                // Act
+                int h1 = SetComparer<String>.Default.GetHashCode(c1);
+                int h2 = SetComparer<String>.Default.GetHashCode(c2);
 
                 // Assert
                 Assert.Equal(h1, h2);

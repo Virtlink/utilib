@@ -70,55 +70,8 @@ namespace Virtlink.Utilib.Collections
         /// <inheritdoc/>
         public int GetHashCode(IEnumerable<T> enumerable)
         {
-            return enumerable != null ? GetQuickHashCode(enumerable) : 0;
+            return enumerable != null ? HashCodeUtils.GetQuickHashCode(enumerable, this.elementComparer) : 0;
         }
-
-        /// <summary>
-        /// Calculates the hash code of the collection quickly.
-        /// </summary>
-        /// <param name="enumerable">The collection.</param>
-        private int GetQuickHashCode(IEnumerable<T> enumerable)
-        {
-            #region Contract
-            Debug.Assert(enumerable != null);
-            #endregion
-
-            int hash = 17;
-            unchecked
-            {
-                // Since addition is commutative, we don't care about the order of the elements.
-                foreach (T value in enumerable)
-                {
-                    hash += (value != null ? this.elementComparer.GetHashCode(value) : 42);
-                }
-            }
-            return hash;
-        }
-
-#if false
-        /// <summary>
-        /// Calculates the hash code of the collection while keeping the number of hash collisions low.
-        /// </summary>
-        /// <param name="enumerable">The collection.</param>
-        // ReSharper disable once UnusedMember.Local
-		private int GetExpensiveHashCode(IEnumerable<T> enumerable)
-		{
-            #region Contract
-			Debug.Assert(enumerable != null);
-            #endregion
-
-			int hash = 17;
-			unchecked
-			{
-				// ReSharper disable once LoopCanBeConvertedToQuery
-				foreach (T value in enumerable.OrderBy(x => x))
-				{
-					hash = hash * 29 + (value != null ? this.elementComparer.GetHashCode(value) : 42);
-				}
-			}
-			return hash;
-		}
-#endif
 
         /// <summary>
         /// Compares the number of elements in the two collections, if possible.

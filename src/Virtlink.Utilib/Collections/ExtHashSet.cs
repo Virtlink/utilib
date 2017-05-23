@@ -13,6 +13,12 @@ namespace Virtlink.Utilib.Collections
         private readonly HashSet<T> innerSet;
 
         /// <summary>
+        /// Gets the inner hash set.
+        /// </summary>
+        /// <value>The inner hash set.</value>
+        internal HashSet<T> InnerSet => this.innerSet;
+
+        /// <summary>
         /// Gets the comparer used to compare elements of the set.
         /// </summary>
         /// <value>The equality comparer.</value>
