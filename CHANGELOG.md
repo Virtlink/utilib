@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+- Add `SmartList<T>` class, which wraps an enumerable to provide a list interface,
+  while minimizing enumerating the enumerable and ensuring it is enumerated only once.
+- Add `Enumerables.AsSmartList()`, which is a more conventient way to wrap an enumerable
+  in a `SmartList<T>`.
+- Fix `Enumerables.TryGetCount()` such that Resharper no longer complains
+  about enumerating an enumerable.
+
 ## [1.23.0] - 2017-05-23
 - Add `SetComparer` for comparing sets.
 

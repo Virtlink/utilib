@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using JetBrains.Annotations;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -11,6 +12,26 @@ namespace Virtlink.Utilib.Collections
     public static class Enumerables
     {
         /// <summary>
+        /// Wraps the enumerable in a <see cref="SmartList{T}"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
+        /// <param name="enumerable">The numerable to wrap.</param>
+        /// <returns>The wrapped enumerable.</returns>
+        /// <remarks>
+        /// The smart list tries to not fully enumerate the given enumerable whenever possible,
+        /// and will ensure the enumerable is enumerated only once.
+        /// </remarks>
+        public static SmartList<T> AsSmartList<T>(this IEnumerable<T> enumerable)
+        {
+            #region Contract
+            if (enumerable == null)
+                throw new ArgumentNullException(nameof(enumerable));
+            #endregion
+
+            return new SmartList<T>(enumerable);
+        }
+
+        /// <summary>
         /// Attempts to get the number of elements in the enumerable,
         /// only if it can be determined efficiently.
         /// </summary>
@@ -19,7 +40,7 @@ namespace Virtlink.Utilib.Collections
         /// <returns>The number of elements;
         /// or <see langword="null"/> when it could not be determined
         /// without enumerating all elements.</returns>
-        public static int? TryGetCount<T>(IEnumerable<T> enumerable)
+        public static int? TryGetCount<T>([NoEnumeration] IEnumerable<T> enumerable)
         {
             #region Contract
             if (enumerable == null)
@@ -45,7 +66,7 @@ namespace Virtlink.Utilib.Collections
         /// <returns>The number of elements;
         /// or <see langword="null"/> when it could not be determined
         /// without enumerating all elements.</returns>
-        public static int? TryGetCount(IEnumerable enumerable)
+        public static int? TryGetCount([NoEnumeration] IEnumerable enumerable)
         {
             #region Contract
             if (enumerable == null)
