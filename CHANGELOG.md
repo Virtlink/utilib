@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [1.24.0] - 2017-05-29
 - Add `SmartList<T>` class, which wraps an enumerable to provide a list interface,
   while minimizing enumerating the enumerable and ensuring it is enumerated only once.
 - Add `Enumerables.AsSmartList()`, which is a more conventient way to wrap an enumerable
