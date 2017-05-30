@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [1.25.0] - 2017-05-30
 - Add `Enumerables.ZipEqual()`, an alternative to LINQ's `Zip()`
   that ensures both sequences have the same length.
 
