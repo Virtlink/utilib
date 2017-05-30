@@ -55,7 +55,7 @@ namespace Virtlink.Utilib.Collections
             if (roCollection != null)
                 return roCollection.Count;
 
-            return TryGetCount((IEnumerable)enumerable);
+            return TryGetCount((IEnumerable) enumerable);
         }
 
         /// <summary>
@@ -112,6 +112,47 @@ namespace Virtlink.Utilib.Collections
                             yield return e;
                         }
                     }
+                }
+            }
+
+            return Enumerator();
+        }
+
+        /// <summary>
+        /// Zips two sequences together, like Zip, but enforces that both sequences have equal lengths.
+        /// </summary>
+        /// <typeparam name="T1">The type of elements in the first sequence.</typeparam>
+        /// <typeparam name="T2">The type of elements in the second sequence.</typeparam>
+        /// <typeparam name="TResult">The result selector.</typeparam>
+        /// <returns>The resulting sequence.</returns>
+        public static IEnumerable<TResult> ZipEqual<T1, T2, TResult>(
+            IEnumerable<T1> first,
+            IEnumerable<T2> second,
+            Func<T1, T2, TResult> resultSelector)
+        {
+            #region Contract
+            if (first == null)
+                throw new ArgumentNullException(nameof(first));
+            if (second == null)
+                throw new ArgumentNullException(nameof(second));
+            if (resultSelector == null)
+                throw new ArgumentNullException(nameof(resultSelector));
+            #endregion
+
+            IEnumerable<TResult> Enumerator()
+            {
+                using (var e1 = first.GetEnumerator())
+                using (var e2 = second.GetEnumerator())
+                {
+                    while (e1.MoveNext())
+                    {
+                        if (!e2.MoveNext())
+                            throw new InvalidOperationException("Second sequence is shorter than the first.");
+
+                        yield return resultSelector(e1.Current, e2.Current);
+                    }
+                    if (e2.MoveNext())
+                        throw new InvalidOperationException("First sequence is shorter than the second.");
                 }
             }
 
