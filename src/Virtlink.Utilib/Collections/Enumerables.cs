@@ -12,7 +12,7 @@ namespace Virtlink.Utilib.Collections
     public static class Enumerables
     {
         /// <summary>
-        /// Wraps the enumerable in a <see cref="SmartList{T}"/>.
+        /// Returns the enumerable as a list, either by casting it or by wrapping it in a smart list.
         /// </summary>
         /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
         /// <param name="enumerable">The numerable to wrap.</param>
@@ -21,13 +21,15 @@ namespace Virtlink.Utilib.Collections
         /// The smart list tries to not fully enumerate the given enumerable whenever possible,
         /// and will ensure the enumerable is enumerated only once.
         /// </remarks>
-        public static SmartList<T> AsSmartList<T>(this IEnumerable<T> enumerable)
+        public static IReadOnlyList<T> AsList<T>(this IEnumerable<T> enumerable)
         {
             #region Contract
             if (enumerable == null)
                 throw new ArgumentNullException(nameof(enumerable));
             #endregion
 
+            if (enumerable is IReadOnlyList<T> list)
+                return list;
             return new SmartList<T>(enumerable);
         }
 
@@ -126,7 +128,7 @@ namespace Virtlink.Utilib.Collections
         /// <typeparam name="TResult">The result selector.</typeparam>
         /// <returns>The resulting sequence.</returns>
         public static IEnumerable<TResult> ZipEqual<T1, T2, TResult>(
-            IEnumerable<T1> first,
+            this IEnumerable<T1> first,
             IEnumerable<T2> second,
             Func<T1, T2, TResult> resultSelector)
         {

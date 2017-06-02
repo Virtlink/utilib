@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- **Breaking** change name of `Enumerables.AsSmartList()` to `AsList()`.
+- **Breaking** change signature of `Enumerables.AsSmartList()` to return `IReadOnlyList<T>`.
+- **Breaking** change `SmartList<T>` is now an internal class.
+- `AsSmartList()` no longer wraps the enumerable if it's already a list.
+- Fix bug in SmartList when wrapping an empty non-enumerable and iterating over it.
 
 ## [1.25.1] - 2017-06-02
 - Generate and include debugging symbols.

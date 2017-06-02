@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Virtlink.Utilib.Collections;
 using Xunit;
@@ -10,6 +11,20 @@ namespace Virtlink.Utilib
     {
         public sealed class GetEnumeratorTests
         {
+            [Fact]
+            public void ShouldWorkWithLinq()
+            {
+                // Arrange
+                IEnumerable<Object> objects = new object[0];
+                var list = new SmartList<Object>(objects);
+
+                // Act
+                bool result = list.Any(c => c == null);
+
+                // Assert
+                Assert.False(result);
+            }
+
             [Fact]
             public void ShouldReturnEnumeratorButDoesNotEnumerate_WhenEnumerable()
             {

@@ -16,7 +16,7 @@ namespace Virtlink.Utilib.Collections
     /// <para>This class obviously won't work with infinite enumerables.</para>
     /// <para>This class is not thread-safe.</para>
     /// </remarks>
-    public sealed class SmartList<T> : IReadOnlyList<T>
+    internal sealed class SmartList<T> : IReadOnlyList<T>
     {
         /// <summary>
         /// The enumerator, or null when we don't have one.
@@ -111,7 +111,7 @@ namespace Virtlink.Utilib.Collections
             #region Contract
             Debug.Assert(index >= 0);
             #endregion
-
+            
             // Do we have this element in the list already? Then return it.
             if (index < this.innerList.Count)
             {
@@ -140,9 +140,12 @@ namespace Virtlink.Utilib.Collections
         /// otherwise, <see langword="false"/> when there are no more elements.</returns>
         private bool ReadNext(out T element)
         {
-            #region Contract
-            Debug.Assert(this.enumerator != null, "This method must never be called when we have no enumerator.");
-            #endregion
+            if (this.enumerator == null)
+            {
+                // There are no more elements.
+                element = default(T);
+                return false;
+            }
 
             int index = this.innerList.Count;
             if (!this.enumerator.MoveNext())
