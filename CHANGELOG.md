@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [1.26.0] - 2017-06-02
 - **Breaking** change name of `Enumerables.AsSmartList()` to `AsList()`.
 - **Breaking** change signature of `Enumerables.AsSmartList()` to return `IReadOnlyList<T>`.
 - **Breaking** change `SmartList<T>` is now an internal class.
