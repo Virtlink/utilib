@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 - Add `IBuffer` interface and `DataBuffer` class, which represents a buffer of bytes.
 
+## [1.26.0] - 2017-06-02
+- **Breaking** change name of `Enumerables.AsSmartList()` to `AsList()`.
+- **Breaking** change signature of `Enumerables.AsSmartList()` to return `IReadOnlyList<T>`.
+- **Breaking** change `SmartList<T>` is now an internal class.
+- `AsSmartList()` no longer wraps the enumerable if it's already a list.
+- Fix bug in SmartList when wrapping an empty non-enumerable and iterating over it.
+
+## [1.25.1] - 2017-06-02
+- Generate and include debugging symbols.
+
+## [1.25.0] - 2017-05-30
+- Add `Enumerables.ZipEqual()`, an alternative to LINQ's `Zip()`
+  that ensures both sequences have the same length.
+
+## [1.24.0] - 2017-05-29
+- Add `SmartList<T>` class, which wraps an enumerable to provide a list interface,
+  while minimizing enumerating the enumerable and ensuring it is enumerated only once.
+- Add `Enumerables.AsSmartList()`, which is a more conventient way to wrap an enumerable
+  in a `SmartList<T>`.
+- Fix `Enumerables.TryGetCount()` such that Resharper no longer complains
+  about enumerating an enumerable.
+
 ## [1.23.0] - 2017-05-23
 - Add `SetComparer` for comparing sets.
 

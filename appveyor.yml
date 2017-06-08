@@ -13,7 +13,7 @@ test_script:
 - ps: dotnet test -c $env:CONFIGURATION ./test/Virtlink.Utilib.Tests/Virtlink.Utilib.Tests.csproj
 
 after_test:
-- ps: dotnet pack -c $env:CONFIGURATION ./src/Virtlink.Utilib/Virtlink.Utilib.csproj
+- ps: dotnet pack -c $env:CONFIGURATION ./src/Virtlink.Utilib/Virtlink.Utilib.csproj --include-symbols
 
 artifacts:
 - path: 'src/Virtlink.Utilib/bin/Release/*.nupkg'
