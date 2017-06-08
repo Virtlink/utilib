@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- Add `IBuffer` interface and `DataBuffer` class, which represents a buffer of bytes.
 
 ## [1.26.0] - 2017-06-02
 - **Breaking** change name of `Enumerables.AsSmartList()` to `AsList()`.
