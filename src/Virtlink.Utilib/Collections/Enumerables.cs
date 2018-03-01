@@ -12,10 +12,21 @@ namespace Virtlink.Utilib.Collections
     public static class Enumerables
     {
         /// <summary>
+        /// Returns a enumerable with one value.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
+        /// <param name="value">The value.</param>
+        /// <returns>The singleton enumerable.</returns>
+        public static IEnumerable<T> Of<T>(T value)
+        {
+            yield return value;
+        }
+
+        /// <summary>
         /// Returns the enumerable as a list, either by casting it or by wrapping it in a smart list.
         /// </summary>
         /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
-        /// <param name="enumerable">The numerable to wrap.</param>
+        /// <param name="enumerable">The enumerable to wrap.</param>
         /// <returns>The wrapped enumerable.</returns>
         /// <remarks>
         /// The smart list tries to not fully enumerate the given enumerable whenever possible,

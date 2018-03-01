@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 - Add `IBuffer` interface and `DataBuffer` class, which represents a buffer of bytes.
+- Add `Enumerables.Of` method, which returns an enumerable singleton.
 
 ## [1.26.0] - 2017-06-02
 - **Breaking** change name of `Enumerables.AsSmartList()` to `AsList()`.
