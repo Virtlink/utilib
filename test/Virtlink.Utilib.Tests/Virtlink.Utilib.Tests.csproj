@@ -5,6 +5,7 @@
     <RootNamespace>Virtlink.Utilib</RootNamespace>
     <VersionPrefix>1.26.0</VersionPrefix>
     <VersionSuffix></VersionSuffix>
+    <Version>1.27.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

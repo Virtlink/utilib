@@ -15,6 +15,7 @@
     <RepositoryUrl>git://github.com/Virtlink/utilib</RepositoryUrl>
     <Copyright>Copyright - Daniel Pelsmaeker</Copyright>
     <Authors>Daniel Pelsmaeker</Authors>
+    <Version>1.27.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

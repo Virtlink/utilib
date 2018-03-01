@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [1.27.0] - 2018-03-01
 - Add `IBuffer` interface and `DataBuffer` class, which represents a buffer of bytes.
 - Add `Enumerables.Of` method, which returns an enumerable singleton.
 
