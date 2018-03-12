@@ -556,5 +556,93 @@ namespace Virtlink.Utilib
             return value;
         }
         #endregion
+
+        /// <summary>
+        /// Counts the number of bits set in the specified value.
+        /// </summary>
+        /// <param name="value">The value whose bits to count.</param>
+        /// <returns>The number of bits that are set to 1.</returns>
+        public static int CountSetBits(ulong value)
+        {
+            // Based on: Bit Twiddling Hacks
+            // https://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetParallel
+
+            unchecked
+            {
+                ulong v = value;
+                v = v - ((v >> 1) & 0x5555555555555555UL);
+                v = (v & 0x3333333333333333UL) + ((v >> 2) & 0x3333333333333333UL);
+                v = (v + (v >> 4)) & 0xF0F0F0F0F0F0F0FUL;
+                return (int) ((v * 0x101010101010101UL) >> 56);
+            }
+        }
+
+        /// <summary>
+        /// Counts the number of bits set in the specified value.
+        /// </summary>
+        /// <param name="value">The value whose bits to count.</param>
+        /// <returns>The number of bits that are set to 1.</returns>
+        public static int CountSetBits(uint value)
+        {
+            // Based on: Bit Twiddling Hacks
+            // https://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetParallel
+
+            unchecked
+            {
+                uint v = value;
+                v = v - ((v >> 1) & 0x55555555U);
+                v = (v & 0x33333333U) + ((v >> 2) & 0x33333333U);
+                v = (v + (v >> 4)) & 0x0F0F0F0FU;
+                return (int) ((v * 0x01010101U) >> 24);
+            }
+        }
+
+        /// <summary>
+        /// Counts the number of bits set in the specified value.
+        /// </summary>
+        /// <param name="value">The value whose bits to count.</param>
+        /// <returns>The number of bits that are set to 1.</returns>
+        public static int CountSetBits(long value)
+            => CountSetBits(unchecked((ulong)value));
+
+        /// <summary>
+        /// Counts the number of bits set in the specified value.
+        /// </summary>
+        /// <param name="value">The value whose bits to count.</param>
+        /// <returns>The number of bits that are set to 1.</returns>
+        public static int CountSetBits(int value)
+            => CountSetBits(unchecked((uint)value));
+
+        /// <summary>
+        /// Counts the number of bits set in the specified value.
+        /// </summary>
+        /// <param name="value">The value whose bits to count.</param>
+        /// <returns>The number of bits that are set to 1.</returns>
+        public static int CountSetBits(short value)
+            => CountSetBits(unchecked((uint)(ushort)value));
+
+        /// <summary>
+        /// Counts the number of bits set in the specified value.
+        /// </summary>
+        /// <param name="value">The value whose bits to count.</param>
+        /// <returns>The number of bits that are set to 1.</returns>
+        public static int CountSetBits(ushort value)
+            => CountSetBits(unchecked((uint)value));
+
+        /// <summary>
+        /// Counts the number of bits set in the specified value.
+        /// </summary>
+        /// <param name="value">The value whose bits to count.</param>
+        /// <returns>The number of bits that are set to 1.</returns>
+        public static int CountSetBits(sbyte value)
+            => CountSetBits(unchecked((uint)(byte)value));
+
+        /// <summary>
+        /// Counts the number of bits set in the specified value.
+        /// </summary>
+        /// <param name="value">The value whose bits to count.</param>
+        /// <returns>The number of bits that are set to 1.</returns>
+        public static int CountSetBits(byte value)
+            => CountSetBits(unchecked((uint)value));
     }
 }
