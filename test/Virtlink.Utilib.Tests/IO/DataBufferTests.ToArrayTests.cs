@@ -22,7 +22,7 @@ namespace Virtlink.Utilib.IO
                 var result = buffer.ToArray();
 
                 // Assert
-                Assert.Equal(0, result.Length);
+                Assert.Empty(result);
             }
 
             [Fact]

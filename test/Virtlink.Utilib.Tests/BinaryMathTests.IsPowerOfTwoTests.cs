@@ -33,7 +33,6 @@ namespace Virtlink.Utilib
 			}
 
 		    [Theory]
-		    [InlineData(UInt32.MinValue,  false)]
 			[InlineData((uint)0,          false)]
 			[InlineData((uint)1,          true)]
 			[InlineData((uint)2,          true)]
@@ -76,7 +75,6 @@ namespace Virtlink.Utilib
 		    }
 
 		    [Theory]
-		    [InlineData(UInt64.MinValue,           false)]
 			[InlineData((ulong)0,                  false)]
 			[InlineData((ulong)1,                  true)]
 			[InlineData((ulong)2,                  true)]
