@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.28.0] - 2018-03-12
+- Add `BinaryMath.CountBitsSet` to count the number of bits set to 1.
+
 ## [1.27.0] - 2018-03-01
 - Add `IBuffer` interface and `DataBuffer` class, which represents a buffer of bytes.
 - Add `Enumerables.Of` method, which returns an enumerable singleton.

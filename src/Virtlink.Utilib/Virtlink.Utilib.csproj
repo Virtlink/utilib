@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <VersionPrefix>1.26.0</VersionPrefix>
+    <VersionPrefix>1.28.0</VersionPrefix>
     <VersionSuffix></VersionSuffix>
     <Product>Utilib - Utility library</Product>
     <Description>A utility library for .NET. It contains all those little utility classes and functions that are missing from the standard .NET libraries.</Description>
@@ -15,7 +15,6 @@
     <RepositoryUrl>git://github.com/Virtlink/utilib</RepositoryUrl>
     <Copyright>Copyright - Daniel Pelsmaeker</Copyright>
     <Authors>Daniel Pelsmaeker</Authors>
-    <Version>1.27.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
