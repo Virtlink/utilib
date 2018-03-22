@@ -71,20 +71,13 @@ namespace Virtlink.Utilib.Collections
         }
         #endregion
 
-        /// <summary>
-        /// Attempts to retrieve an equal element from the set.
-        /// </summary>
-        /// <param name="item">The object to compare to.</param>
-        /// <param name="element">The equal element that was in the set;
-        /// or the default of <typeparamref name="T"/> if not found.</param>
-        /// <returns><see langword="true"/> if the element was found in the set;
-        /// otherwise, <see langword="false"/>.</returns>
-        public bool TryGet(T item, out T element)
+        /// <inheritdoc />
+        public bool TryGetValue(T equalValue, out T actualValue)
         {
             var comparer = (CustomComparer)this.innerSet.Comparer;
 
-            bool contained = this.innerSet.Contains(item);
-            element = contained ? comparer.EqualKey : default(T);
+            bool contained = this.innerSet.Contains(equalValue);
+            actualValue = contained ? comparer.EqualKey : equalValue;
 
             // Reset here to ensure we don't keep the object unintentionally alive
             // with our reference in the comparer.
@@ -93,73 +86,73 @@ namespace Virtlink.Utilib.Collections
             return contained;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public override bool Equals(object obj) => this.innerSet.Equals(obj);
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public override int GetHashCode() => this.innerSet.GetHashCode();
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public override string ToString() => this.innerSet.ToString();
 
-        /// <inheritdoc/>
+        /// <inheritdoc cref="IReadOnlyCollection{T}.Count"/>
         public int Count => this.innerSet.Count;
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         bool ICollection<T>.IsReadOnly => ((ICollection<T>)this.innerSet).IsReadOnly;
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool Add(T item) => this.innerSet.Add(item);
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         void ICollection<T>.Add(T item) => ((ICollection<T>)this.innerSet).Add(item);
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool Remove(T item) => this.innerSet.Remove(item);
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void Clear() => this.innerSet.Clear();
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void UnionWith(IEnumerable<T> other) => this.innerSet.UnionWith(other);
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void IntersectWith(IEnumerable<T> other) => this.innerSet.IntersectWith(other);
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void ExceptWith(IEnumerable<T> other) => this.innerSet.ExceptWith(other);
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void SymmetricExceptWith(IEnumerable<T> other) => this.innerSet.SymmetricExceptWith(other);
 
-        /// <inheritdoc/>
+        /// <inheritdoc cref="ICollection{T}.Contains"/>
         public bool Contains(T item) => this.innerSet.Contains(item);
 
-        /// <inheritdoc/>
+        /// <inheritdoc cref="IReadOnlySet{T}.SetEquals" />
         public bool SetEquals(IEnumerable<T> other) => this.innerSet.SetEquals(other);
 
-        /// <inheritdoc/>
+        /// <inheritdoc cref="IReadOnlySet{T}.IsSubsetOf" />
         public bool IsSubsetOf(IEnumerable<T> other) => this.innerSet.IsSubsetOf(other);
 
-        /// <inheritdoc/>
+        /// <inheritdoc cref="IReadOnlySet{T}.IsSupersetOf" />
         public bool IsSupersetOf(IEnumerable<T> other) => this.innerSet.IsSupersetOf(other);
 
-        /// <inheritdoc/>
+        /// <inheritdoc cref="IReadOnlySet{T}.IsProperSupersetOf" />
         public bool IsProperSupersetOf(IEnumerable<T> other) => this.innerSet.IsProperSupersetOf(other);
 
-        /// <inheritdoc/>
+        /// <inheritdoc cref="IReadOnlySet{T}.IsProperSubsetOf" />
         public bool IsProperSubsetOf(IEnumerable<T> other) => this.innerSet.IsProperSubsetOf(other);
 
-        /// <inheritdoc/>
+        /// <inheritdoc cref="IReadOnlySet{T}.Overlaps" />
         public bool Overlaps(IEnumerable<T> other) => this.innerSet.Overlaps(other);
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void CopyTo(T[] array, int arrayIndex) => this.innerSet.CopyTo(array, arrayIndex);
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public IEnumerator<T> GetEnumerator() => this.innerSet.GetEnumerator();
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)this.innerSet).GetEnumerator();
 
         /// <summary>
@@ -202,17 +195,17 @@ namespace Virtlink.Utilib.Collections
                 this.EqualKey = default(T);
             }
 
-            /// <inheritdoc/>
+            /// <inheritdoc />
             public bool Equals(T x, T y)
             {
                 if (!this.baseComparer.Equals(x, y))
                     return false;
 
-                EqualKey = x;
+                this.EqualKey = x;
                 return true;
             }
 
-            /// <inheritdoc/>
+            /// <inheritdoc />
             public int GetHashCode(T obj)
             {
                 return this.baseComparer.GetHashCode(obj);

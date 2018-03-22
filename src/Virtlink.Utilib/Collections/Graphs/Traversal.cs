@@ -37,7 +37,7 @@ namespace Virtlink.Utilib.Collections.Graphs
         /// <param name="node">The node.</param>
         protected abstract IEnumerable<T> GetChildren(T node);
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public abstract IEnumerable<T> Traverse(T root);
     }
 }

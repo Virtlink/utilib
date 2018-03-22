@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- **Breaking** change name of `IReadOnlySet.TryGet()` to `TryGetValue()`.
+- **Breaking** `IReadOnlySet.TryGetValue()` (was `TryGet()`) now returns input value when value is not found.
+- Add `CodePoint` struct that represents a Unicode code point.
+- Add `CodePointSet`: a set of Unicode code points.
 
 ## [1.28.0] - 2018-03-12
 - Add `BinaryMath.CountBitsSet` to count the number of bits set to 1.

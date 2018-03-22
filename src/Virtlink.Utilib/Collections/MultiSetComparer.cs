@@ -49,7 +49,7 @@ namespace Virtlink.Utilib.Collections
         }
         #endregion
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool Equals(IEnumerable<T> x, IEnumerable<T> y)
         {
             if (x == null)
@@ -67,7 +67,7 @@ namespace Virtlink.Utilib.Collections
             return !HaveMismatchedElement(x, y);
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public int GetHashCode(IEnumerable<T> enumerable)
         {
             return enumerable != null ? HashCodeUtils.GetQuickHashCode(enumerable, this.elementComparer) : 0;

@@ -125,7 +125,7 @@ namespace Virtlink.Utilib.Text
                    && name != "..";
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public string Encode(string unencoded)
         {
             #region Contract
@@ -167,7 +167,7 @@ namespace Virtlink.Utilib.Text
             return encoded;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public string Decode(string encoded)
         {
             #region Contract

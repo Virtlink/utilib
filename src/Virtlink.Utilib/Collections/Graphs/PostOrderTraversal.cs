@@ -10,7 +10,7 @@ namespace Virtlink.Utilib.Collections.Graphs
     /// </summary>
     public abstract class PostOrderTraversal<T> : Traversal<T>
     {
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public override IEnumerable<T> Traverse(T root)
         {
             #region Contract

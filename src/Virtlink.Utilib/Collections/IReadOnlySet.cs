@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -14,7 +15,11 @@ namespace Virtlink.Utilib.Collections
         /// <param name="item">The item to look for.</param>
         /// <returns><see langword="true"/> when the item is in the set;
         /// otherwise, <see langword="false"/>.</returns>
+        [Pure]
         bool Contains(T item);
+
+        [Pure]
+        bool TryGetValue(T equalValue, out T actualValue);
 
         /// <summary>
         /// Determines whether the specified collection is a proper subset of this set.
@@ -22,6 +27,7 @@ namespace Virtlink.Utilib.Collections
         /// <param name="other">The collection.</param>
         /// <returns><see langword="true"/> when the specified collection is a proper subset
         /// of this set; otherwise, <see langword="false"/>.</returns>
+        [Pure]
         bool IsProperSubsetOf(IEnumerable<T> other);
 
         /// <summary>
@@ -30,6 +36,7 @@ namespace Virtlink.Utilib.Collections
         /// <param name="other">The collection.</param>
         /// <returns><see langword="true"/> when the specified collection is a proper superset
         /// of this set; otherwise, <see langword="false"/>.</returns>
+        [Pure]
         bool IsProperSupersetOf(IEnumerable<T> other);
 
         /// <summary>
@@ -38,6 +45,7 @@ namespace Virtlink.Utilib.Collections
         /// <param name="other">The collection.</param>
         /// <returns><see langword="true"/> when the specified collection is a subset
         /// of this set; otherwise, <see langword="false"/>.</returns>
+        [Pure]
         bool IsSubsetOf(IEnumerable<T> other);
 
         /// <summary>
@@ -46,6 +54,7 @@ namespace Virtlink.Utilib.Collections
         /// <param name="other">The collection.</param>
         /// <returns><see langword="true"/> when the specified collection is a superset
         /// of this set; otherwise, <see langword="false"/>.</returns>
+        [Pure]
         bool IsSupersetOf(IEnumerable<T> other);
 
         /// <summary>
@@ -54,6 +63,7 @@ namespace Virtlink.Utilib.Collections
         /// <param name="other">The collection.</param>
         /// <returns><see langword="true"/> when the specified collection
         /// overlaps this set; otherwise, <see langword="false"/>.</returns>
+        [Pure]
         bool Overlaps(IEnumerable<T> other);
 
         /// <summary>
@@ -62,6 +72,7 @@ namespace Virtlink.Utilib.Collections
         /// <param name="other">The collection.</param>
         /// <returns><see langword="true"/> when the specified collection is equal
         /// to this set; otherwise, <see langword="false"/>.</returns>
+        [Pure]
         bool SetEquals(IEnumerable<T> other);
     }
 }

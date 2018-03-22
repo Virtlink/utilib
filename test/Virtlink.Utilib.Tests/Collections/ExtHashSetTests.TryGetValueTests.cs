@@ -5,9 +5,9 @@ namespace Virtlink.Utilib.Collections
     partial class ExtHashSetTests
     {
         /// <summary>
-        /// Tests the <see cref="ExtHashSet{T}.TryGet"/> method.
+        /// Tests the <see cref="ExtHashSet{T}.TryGetValue"/> method.
         /// </summary>
-        public sealed class TryGetTests
+        public sealed class TryGetValueTests
         {
             [Fact]
             public void ShouldReturnElementAndTrue_WhenSameValueExists()
@@ -25,8 +25,7 @@ namespace Virtlink.Utilib.Collections
                 var set = new ExtHashSet<TestObject>(elements);
 
                 // Act
-                TestObject muller;
-                bool result = set.TryGet(elements[1], out muller);
+                bool result = set.TryGetValue(elements[1], out var muller);
 
                 // Assert
                 Assert.True(result);
@@ -49,8 +48,7 @@ namespace Virtlink.Utilib.Collections
                 var set = new ExtHashSet<TestObject>(elements);
 
                 // Act
-                TestObject grey;
-                bool result = set.TryGet(new TestObject("C.G.P. Grey", "Process Manager"), out grey);
+                bool result = set.TryGetValue(new TestObject("C.G.P. Grey", "Process Manager"), out var grey);
 
                 // Assert
                 Assert.True(result);
@@ -72,13 +70,11 @@ namespace Virtlink.Utilib.Collections
                 };
                 var set = new ExtHashSet<TestObject>(elements);
 
-                TestObject reich;
-                set.TryGet(elements[4], out reich);
+                set.TryGetValue(elements[4], out var reich);
                 reich.Value = "YouTuber";
 
                 // Act
-                TestObject reich2;
-                bool result = set.TryGet(elements[4], out reich2);
+                bool result = set.TryGetValue(elements[4], out var reich2);
 
                 // Assert
                 Assert.True(result);
@@ -86,7 +82,7 @@ namespace Virtlink.Utilib.Collections
             }
 
             [Fact]
-            public void ShouldReturnDefaultAndFalse_WhenValueDoesNotExist()
+            public void ShouldReturnInputValueAndFalse_WhenValueDoesNotExist()
             {
                 // Arrange
                 var elements = new[]
@@ -101,12 +97,12 @@ namespace Virtlink.Utilib.Collections
                 var set = new ExtHashSet<TestObject>(elements);
 
                 // Act
-                TestObject kjellberg;
-                bool result = set.TryGet(new TestObject("F.A.U. Kjellberg", "YouTuber"), out kjellberg);
+                var toFind = new TestObject("F.A.U. Kjellberg", "YouTuber");
+                bool result = set.TryGetValue(toFind, out var kjellberg);
 
                 // Assert
                 Assert.False(result);
-                Assert.Same(default(TestObject), kjellberg);
+                Assert.Same(toFind, kjellberg);
             }
         }
     }

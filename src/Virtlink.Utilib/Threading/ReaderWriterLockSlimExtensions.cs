@@ -149,7 +149,7 @@ namespace Virtlink.Utilib.Threading
                 this.action = action;
             }
 
-            /// <inheritdoc/>
+            /// <inheritdoc />
             public void Dispose()
             {
                 this.action();

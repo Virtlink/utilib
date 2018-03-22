@@ -29,7 +29,7 @@ namespace Virtlink.Utilib.Collections.Graphs
             }
             #endregion
 
-            /// <inheritdoc/>
+            /// <inheritdoc />
             protected override IEnumerable<T> GetChildren(T node)
             {
                 return this.childrenGetter(node);

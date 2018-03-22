@@ -76,33 +76,19 @@ namespace Virtlink.Utilib.Collections
         }
         #endregion
 
-        /// <summary>
-        /// Attempts to retrieve an equal element from the set.
-        /// </summary>
-        /// <param name="item">The object to compare to.</param>
-        /// <param name="element">The equal element that was in the set;
-        /// or the default of <typeparamref name="T"/> if not found.</param>
-        /// <returns><see langword="true"/> if the element was found in the set;
-        /// otherwise, <see langword="false"/>.</returns>
-        public bool TryGet(T item, out T element)
+        /// <inheritdoc />
+        public bool TryGetValue(T equalValue, out T actualValue)
         {
-            if (item == null)
-            {
-                // Not found.
-                element = default(T);
-                return false;
-            }
-
-            int existingIndex = TryGetIndex(item);
+            int existingIndex = equalValue != null ? TryGetIndex(equalValue) : -1;
 
             if (existingIndex == -1)
             {
                 // Not found.
-                element = default(T);
+                actualValue = equalValue;
                 return false;
             }
 
-            element = this.innerList[existingIndex];
+            actualValue = this.innerList[existingIndex];
             return true;
         }
 
@@ -125,13 +111,13 @@ namespace Virtlink.Utilib.Collections
             return -1;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public int Count => this.innerList?.Count ?? 0;
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         bool ICollection<T>.IsReadOnly => false;
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool Add(T item)
         {
             #region Contract
@@ -151,10 +137,10 @@ namespace Virtlink.Utilib.Collections
             return true;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         void ICollection<T>.Add(T item) => Add(item);
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool Remove(T item)
         {
             if (item == null)
@@ -171,10 +157,10 @@ namespace Virtlink.Utilib.Collections
             return true;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void Clear() => this.innerList?.Clear();
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void UnionWith(IEnumerable<T> other)
         {
             foreach (var item in other)
@@ -183,7 +169,7 @@ namespace Virtlink.Utilib.Collections
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void IntersectWith(IEnumerable<T> other)
         {
             // Mark all elements that we have to keep.
@@ -202,7 +188,7 @@ namespace Virtlink.Utilib.Collections
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void ExceptWith(IEnumerable<T> other)
         {
             foreach (var item in other)
@@ -211,7 +197,7 @@ namespace Virtlink.Utilib.Collections
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void SymmetricExceptWith(IEnumerable<T> other)
         {
             foreach (var item in other)
@@ -230,13 +216,13 @@ namespace Virtlink.Utilib.Collections
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool Contains(T item)
         {
             return TryGetIndex(item) != -1;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool SetEquals(IEnumerable<T> other)
         {
             // Mark all elements that we found in the other set.
@@ -256,7 +242,7 @@ namespace Virtlink.Utilib.Collections
             return marks.All(m => m == true);
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool IsSubsetOf(IEnumerable<T> other)
         {
             // Mark all elements that we found in the other set.
@@ -272,7 +258,7 @@ namespace Virtlink.Utilib.Collections
             return marks.All(m => m == true);
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool IsSupersetOf(IEnumerable<T> other)
         {
             foreach (var item in other)
@@ -283,19 +269,19 @@ namespace Virtlink.Utilib.Collections
             return true;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool IsProperSupersetOf(IEnumerable<T> other)
         {
             return IsSupersetOf(other) && !SetEquals(other);
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool IsProperSubsetOf(IEnumerable<T> other)
         {
             return IsSubsetOf(other) && !SetEquals(other);
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool Overlaps(IEnumerable<T> other)
         {
             foreach (var item in other)
@@ -306,13 +292,13 @@ namespace Virtlink.Utilib.Collections
             return false;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void CopyTo(T[] array, int arrayIndex) => this.innerList.CopyTo(array, arrayIndex);
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public IEnumerator<T> GetEnumerator() => this.innerList.GetEnumerator();
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }
