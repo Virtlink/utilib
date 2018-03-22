@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Virtlink.Utilib.Collections
 {
@@ -12,6 +13,6 @@ namespace Virtlink.Utilib.Collections
         /// </summary>
         /// <typeparam name="T">The type of elements in the collection.</typeparam>
         /// <returns>The read-only empty collection.</returns>
-        public static IReadOnlyCollection<T> Empty<T>() => Arrays.Empty<T>();
+        public static IReadOnlyCollection<T> Empty<T>() => Array.Empty<T>();
     }
 }

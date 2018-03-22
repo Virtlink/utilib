@@ -65,7 +65,7 @@ namespace Virtlink.Utilib.Text
         /// Initializes a new instance of the <see cref="CodePointSet"/> class.
         /// </summary>
         public CodePointSet()
-        : this(false, new ulong[BitsLength], Arrays.Empty<int>()) { }
+        : this(false, new ulong[BitsLength], Array.Empty<int>()) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CodePointSet"/> class.
@@ -145,7 +145,7 @@ namespace Virtlink.Utilib.Text
                 }
                 else
                 {
-                    this.intervals = Arrays.Empty<int>();
+                    this.intervals = Array.Empty<int>();
                 }
 
                 this.Count = CountCharacters(this.hasEof, this.bits, this.intervals);
@@ -218,7 +218,7 @@ namespace Virtlink.Utilib.Text
         {
             this.hasEof = false;
             this.bits = new ulong[BitsLength];
-            this.intervals = Arrays.Empty<int>();
+            this.intervals = Array.Empty<int>();
             this.Count = 0;
         }
 

@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- **Breaking** library now targets .NET Standard 2.0.
+- **Breaking** remove `Arrays.Empty()`.  Use `Array.Empty()` from the standard library instead.
 - **Breaking** change name of `IReadOnlySet.TryGet()` to `TryGetValue()`.
 - **Breaking** `IReadOnlySet.TryGetValue()` (was `TryGet()`) now returns input value when value is not found.
 - Add `CodePoint` struct that represents a Unicode code point.

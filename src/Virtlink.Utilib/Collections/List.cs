@@ -13,7 +13,7 @@ namespace Virtlink.Utilib.Collections
         /// </summary>
         /// <typeparam name="T">The type of elements in the list.</typeparam>
         /// <returns>The read-only empty list.</returns>
-        public static IReadOnlyList<T> Empty<T>() => Arrays.Empty<T>();
+        public static IReadOnlyList<T> Empty<T>() => Array.Empty<T>();
 
         /// <summary>
         /// Copies elements from one list to another.

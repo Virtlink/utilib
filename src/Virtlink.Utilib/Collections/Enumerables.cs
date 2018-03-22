@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
 using JetBrains.Annotations;
 
 namespace Virtlink.Utilib.Collections
@@ -12,6 +12,16 @@ namespace Virtlink.Utilib.Collections
     public static class Enumerables
     {
         /// <summary>
+        /// Returns an empty enumerable.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
+        /// <returns>The empty enumerable.</returns>
+        public static IEnumerable<T> Of<T>()
+        {
+            return Enumerable.Empty<T>();
+        }
+
+        /// <summary>
         /// Returns a enumerable with one value.
         /// </summary>
         /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
@@ -20,6 +30,45 @@ namespace Virtlink.Utilib.Collections
         public static IEnumerable<T> Of<T>(T value)
         {
             yield return value;
+        }
+
+        /// <summary>
+        /// Returns a enumerable with two values.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
+        /// <param name="value1">The first value.</param>
+        /// <param name="value2">The second value.</param>
+        /// <returns>The enumerable.</returns>
+        public static IEnumerable<T> Of<T>(T value1, T value2)
+        {
+            yield return value1;
+            yield return value2;
+        }
+
+        /// <summary>
+        /// Returns a enumerable with three values.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
+        /// <param name="value1">The first value.</param>
+        /// <param name="value2">The second value.</param>
+        /// <param name="value3">The third value.</param>
+        /// <returns>The enumerable.</returns>
+        public static IEnumerable<T> Of<T>(T value1, T value2, T value3)
+        {
+            yield return value1;
+            yield return value2;
+            yield return value3;
+        }
+
+        /// <summary>
+        /// Returns a enumerable with multiple values.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the enumerable.</typeparam>
+        /// <param name="values">The values.</param>
+        /// <returns>The enumerable.</returns>
+        public static IEnumerable<T> Of<T>(params T[] values)
+        {
+            return values;
         }
 
         /// <summary>
@@ -60,12 +109,10 @@ namespace Virtlink.Utilib.Collections
                 throw new ArgumentNullException(nameof(enumerable));
             #endregion
 
-            var collection = enumerable as ICollection<T>;
-            if (collection != null)
+            if (enumerable is ICollection<T> collection)
                 return collection.Count;
 
-            var roCollection = enumerable as IReadOnlyCollection<T>;
-            if (roCollection != null)
+            if (enumerable is IReadOnlyCollection<T> roCollection)
                 return roCollection.Count;
 
             return TryGetCount((IEnumerable) enumerable);
