@@ -98,7 +98,7 @@ namespace Virtlink.Utilib.Threading.Tasks
         /// <summary>
         /// Runs the task to completion, ignoring any exceptions that occur.
         /// </summary>
-        private static readonly Action<Task> DefaultErrorContinuation =
+        private static readonly Action<Task> defaultErrorContinuation =
             t => { try { t.Wait(); } catch (Exception) { /* All ignored. */ } };
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Virtlink.Utilib.Threading.Tasks
 
             var continuation = exceptionHandler != null
                 ? t => exceptionHandler(t.Exception.GetBaseException())
-                : DefaultErrorContinuation;
+                : TaskExt.defaultErrorContinuation;
 
             task.ContinueWith(
                 continuation,

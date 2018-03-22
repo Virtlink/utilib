@@ -42,7 +42,7 @@ namespace Virtlink.Utilib
         /// </exception>
         public static int RoundToNextPowerOfTwoOrZero(int value)
         {
-            if (value > ((int)1 << 30))
+            if (value > (1 << 30))
                 throw new OverflowException("Rounding the input value would overflow the integer type.");
 
             bool negative = value < 0;
@@ -627,6 +627,7 @@ namespace Virtlink.Utilib
         /// <param name="value">The value whose bits to count.</param>
         /// <returns>The number of bits that are set to 1.</returns>
         public static int CountSetBits(ushort value)
+            // ReSharper disable once RedundantOverflowCheckingContext
             => CountSetBits(unchecked((uint)value));
 
         /// <summary>
@@ -643,6 +644,7 @@ namespace Virtlink.Utilib
         /// <param name="value">The value whose bits to count.</param>
         /// <returns>The number of bits that are set to 1.</returns>
         public static int CountSetBits(byte value)
+            // ReSharper disable once RedundantOverflowCheckingContext
             => CountSetBits(unchecked((uint)value));
     }
 }

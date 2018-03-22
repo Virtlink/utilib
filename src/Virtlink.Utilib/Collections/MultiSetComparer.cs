@@ -109,11 +109,8 @@ namespace Virtlink.Utilib.Collections
             Debug.Assert(second != null);
             #endregion
 
-            int firstNullCount;
-            int secondNullCount;
-
-            var firstElementCounts = CountElements(first, out firstNullCount);
-            var secondElementCounts = CountElements(second, out secondNullCount);
+            var firstElementCounts = CountElements(first, out int firstNullCount);
+            var secondElementCounts = CountElements(second, out int secondNullCount);
 
             if (firstNullCount != secondNullCount || firstElementCounts.Count != secondElementCounts.Count)
                 return true;
@@ -121,8 +118,7 @@ namespace Virtlink.Utilib.Collections
             foreach (var kvp in firstElementCounts)
             {
                 var firstElementCount = kvp.Value;
-                int secondElementCount;
-                secondElementCounts.TryGetValue(kvp.Key, out secondElementCount);
+                secondElementCounts.TryGetValue(kvp.Key, out int secondElementCount);
 
                 if (firstElementCount != secondElementCount)
                     return true;
@@ -150,8 +146,7 @@ namespace Virtlink.Utilib.Collections
             {
                 if (element != null)
                 {
-                    int num;
-                    dictionary.TryGetValue(element, out num);
+                    dictionary.TryGetValue(element, out int num);
                     dictionary[element] = num + 1;
                 }
                 else

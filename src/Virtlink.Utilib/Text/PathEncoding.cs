@@ -84,10 +84,8 @@ namespace Virtlink.Utilib.Text
             if (index + 3 > encoded.Length)
                 throw new FormatException("Percent encoded UTF-8 character ended prematurely.");
 
-            int result;
-            if (
-                !Int32.TryParse(encoded.Substring(index + 1, 2), NumberStyles.AllowHexSpecifier,
-                    CultureInfo.InvariantCulture, out result))
+            if (!Int32.TryParse(encoded.Substring(index + 1, 2), NumberStyles.AllowHexSpecifier,
+                    CultureInfo.InvariantCulture, out int result))
                 throw new FormatException("Percent encoded UTF-8 character was not encoded properly.");
 
             buffer.Add((byte)result);

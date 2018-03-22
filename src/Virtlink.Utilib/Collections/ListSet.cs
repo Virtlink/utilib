@@ -111,7 +111,7 @@ namespace Virtlink.Utilib.Collections
             return -1;
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IReadOnlyCollection{T}.Count" />
         public int Count => this.innerList?.Count ?? 0;
 
         /// <inheritdoc />
@@ -216,13 +216,13 @@ namespace Virtlink.Utilib.Collections
             }
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IReadOnlySet{T}.Contains"/>
         public bool Contains(T item)
         {
             return TryGetIndex(item) != -1;
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IReadOnlySet{T}.SetEquals" />
         public bool SetEquals(IEnumerable<T> other)
         {
             // Mark all elements that we found in the other set.
@@ -239,10 +239,11 @@ namespace Virtlink.Utilib.Collections
             }
             // If we have items we didn't find in the other set
             // we are not equal.
+            // ReSharper disable once RedundantBoolCompare
             return marks.All(m => m == true);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IReadOnlySet{T}.IsSubsetOf" />
         public bool IsSubsetOf(IEnumerable<T> other)
         {
             // Mark all elements that we found in the other set.
@@ -255,10 +256,11 @@ namespace Virtlink.Utilib.Collections
             }
             // If we have items we didn't find in the other set
             // we are not a subset.
+            // ReSharper disable once RedundantBoolCompare
             return marks.All(m => m == true);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IReadOnlySet{T}.IsSupersetOf" />
         public bool IsSupersetOf(IEnumerable<T> other)
         {
             foreach (var item in other)
@@ -269,19 +271,21 @@ namespace Virtlink.Utilib.Collections
             return true;
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IReadOnlySet{T}.IsProperSupersetOf" />
         public bool IsProperSupersetOf(IEnumerable<T> other)
         {
-            return IsSupersetOf(other) && !SetEquals(other);
+            var enumerable = other.ToList();
+            return IsSupersetOf(enumerable) && !SetEquals(enumerable);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IReadOnlySet{T}.IsProperSubsetOf" />
         public bool IsProperSubsetOf(IEnumerable<T> other)
         {
-            return IsSubsetOf(other) && !SetEquals(other);
+            var enumerable = other.ToList();
+            return IsSubsetOf(enumerable) && !SetEquals(enumerable);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IReadOnlySet{T}.Overlaps" />
         public bool Overlaps(IEnumerable<T> other)
         {
             foreach (var item in other)

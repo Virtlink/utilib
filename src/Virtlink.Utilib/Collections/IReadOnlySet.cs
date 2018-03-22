@@ -18,6 +18,14 @@ namespace Virtlink.Utilib.Collections
         [Pure]
         bool Contains(T item);
 
+        /// <summary>
+        /// Determines whether the set contains a specified value.
+        /// </summary>
+        /// <param name="equalValue">The value to search for.</param>
+        /// <param name="actualValue">The matching value from the set, if found;
+        /// otherwise, <paramref name="equalValue"/> if there are no matches.</param>
+        /// <returns><see langword="true"/> if a matching value was found;
+        /// otherwise, <see langword="false"/>.</returns>
         [Pure]
         bool TryGetValue(T equalValue, out T actualValue);
 

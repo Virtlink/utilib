@@ -17,21 +17,7 @@ namespace Virtlink.Utilib.Collections
         /// <returns>The read-only empty dictionary.</returns>
         public static IReadOnlyDictionary<TKey, TValue> Empty<TKey, TValue>()
         {
-            return EmptyDictionaryClass<TKey, TValue>.Instance;
-        }
-
-        /// <summary>
-        /// Generic class for an empty array instance.
-        /// </summary>
-        /// <typeparam name="TKey">The type of keys in the dictionary.</typeparam>
-        /// <typeparam name="TValue">The type of values in the dictionary.</typeparam>
-        private static class EmptyDictionaryClass<TKey, TValue>
-        {
-            /// <summary>
-            /// Gets an empty dictionary instance.
-            /// </summary>
-            /// <value>The empty dictionary instance.</value>
-            public static IReadOnlyDictionary<TKey, TValue> Instance { get; } = new EmptyDictionary<TKey, TValue>();
+            return EmptyDictionary<TKey, TValue>.Instance;
         }
 
         /// <summary>
@@ -42,7 +28,9 @@ namespace Virtlink.Utilib.Collections
         private sealed class EmptyDictionary<TKey, TValue> : IDictionary<TKey, TValue>,
             IReadOnlyDictionary<TKey, TValue>
         {
-            /// <inheritdoc />
+            public static EmptyDictionary<TKey, TValue> Instance { get; } = new EmptyDictionary<TKey, TValue>();
+
+            /// <inheritdoc cref="IReadOnlyCollection{T}.Count" />
             public int Count => 0;
 
             /// <inheritdoc />
@@ -50,15 +38,11 @@ namespace Virtlink.Utilib.Collections
 
             /// <inheritdoc />
             ICollection<TValue> IDictionary<TKey, TValue>.Values
-            {
-                get { throw new NotImplementedException(); }
-            }
+                => (ICollection<TValue>)Collection.Empty<TValue>();
 
             /// <inheritdoc />
             ICollection<TKey> IDictionary<TKey, TValue>.Keys
-            {
-                get { throw new NotImplementedException(); }
-            }
+                => (ICollection<TKey>)Collection.Empty<TKey>();
 
             /// <inheritdoc />
             TValue IDictionary<TKey, TValue>.this[TKey key]
@@ -72,6 +56,7 @@ namespace Virtlink.Utilib.Collections
 
                     throw new KeyNotFoundException("Key not found.");
                 }
+                // ReSharper disable once ValueParameterNotUsed
                 set
                 {
                     #region Contract
@@ -82,6 +67,11 @@ namespace Virtlink.Utilib.Collections
                     throw new NotSupportedException();
                 }
             }
+
+            /// <summary>
+            /// Initializes a new instance of the <see cref="EmptyDictionary{TKey,TValue}"/> class.
+            /// </summary>
+            private EmptyDictionary() { }
 
             /// <inheritdoc />
             void IDictionary<TKey, TValue>.Add(TKey key, TValue value)
@@ -96,27 +86,19 @@ namespace Virtlink.Utilib.Collections
 
             /// <inheritdoc />
             void ICollection<KeyValuePair<TKey, TValue>>.Add(KeyValuePair<TKey, TValue> item)
-            {
-                throw new NotSupportedException();
-            }
+                => throw new NotSupportedException();
 
             /// <inheritdoc />
             bool IDictionary<TKey, TValue>.Remove(TKey key)
-            {
-                throw new NotSupportedException();
-            }
+                => throw new NotSupportedException();
 
             /// <inheritdoc />
             bool ICollection<KeyValuePair<TKey, TValue>>.Remove(KeyValuePair<TKey, TValue> item)
-            {
-                throw new NotSupportedException();
-            }
+                => throw new NotSupportedException();
 
             /// <inheritdoc />
             void ICollection<KeyValuePair<TKey, TValue>>.Clear()
-            {
-                throw new NotSupportedException();
-            }
+                => throw new NotSupportedException();
 
             /// <inheritdoc />
             public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
@@ -135,11 +117,9 @@ namespace Virtlink.Utilib.Collections
 
             /// <inheritdoc />
             public bool Contains(KeyValuePair<TKey, TValue> item)
-            {
-                return false;
-            }
+                => false;
 
-            /// <inheritdoc />
+            /// <inheritdoc cref="IReadOnlyDictionary{TKey,TValue}.ContainsKey" />
             public bool ContainsKey(TKey key)
             {
                 #region Contract
@@ -150,7 +130,7 @@ namespace Virtlink.Utilib.Collections
                 return false;
             }
 
-            /// <inheritdoc />
+            /// <inheritdoc cref="IReadOnlyDictionary{TKey,TValue}.TryGetValue" />
             public bool TryGetValue(TKey key, out TValue value)
             {
                 #region Contract
@@ -164,18 +144,19 @@ namespace Virtlink.Utilib.Collections
 
             /// <inheritdoc />
             public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
-            {
-                return List.Empty<KeyValuePair<TKey, TValue>>().GetEnumerator();
-            }
+                => List.Empty<KeyValuePair<TKey, TValue>>().GetEnumerator();
 
             /// <inheritdoc />
-            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+            IEnumerator IEnumerable.GetEnumerator()
+                => GetEnumerator();
 
             /// <inheritdoc />
-            public IEnumerable<TKey> Keys => List.Empty<TKey>();
+            public IEnumerable<TKey> Keys
+                => List.Empty<TKey>();
 
             /// <inheritdoc />
-            public IEnumerable<TValue> Values => List.Empty<TValue>();
+            public IEnumerable<TValue> Values
+                => List.Empty<TValue>();
 
             /// <inheritdoc />
             public TValue this[TKey key]

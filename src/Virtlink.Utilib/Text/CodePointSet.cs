@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using Virtlink.Utilib.Collections;
+using Virtlink.Utilib.Diagnostics;
 
 namespace Virtlink.Utilib.Text
 {
@@ -15,6 +17,8 @@ namespace Virtlink.Utilib.Text
     /// <remarks>
     /// This class is not thread-safe.
     /// </remarks>
+    [DebuggerTypeProxy(typeof(CollectionDebugView<>))]
+    [DebuggerDisplay("Count = {" + nameof(Count) + "}")]
     public sealed partial class CodePointSet : ISet<CodePoint>, IReadOnlySet<CodePoint>
     {
         /// <summary>
@@ -355,6 +359,7 @@ namespace Virtlink.Utilib.Text
         /// <param name="bits">The bits array to modify.</param>
         /// <param name="c">The character to unset.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [SuppressMessage("ReSharper", "UnusedMember.Local")]
         private static void UnsetFromBits(ulong[] bits, int c)
         {
             #region Contract
@@ -425,6 +430,7 @@ namespace Virtlink.Utilib.Text
             /// This set is neither equal, nor a subset, nor a superset
             /// of the specified set.
             /// </summary>
+            [SuppressMessage("ReSharper", "UnusedMember.Local")]
             Unequal = 0,
             /// <summary>
             /// This set is a subset of the specified set.

@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using Virtlink.Utilib.Diagnostics;
 
 namespace Virtlink.Utilib.Collections
