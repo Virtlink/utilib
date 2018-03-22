@@ -4,7 +4,7 @@ configuration: Release
 
 before_build:
 - ps: dotnet --info
-- ps: dotnet restore --verbosity detailed
+- ps: dotnet restore
 
 build:
   verbosity: minimal
