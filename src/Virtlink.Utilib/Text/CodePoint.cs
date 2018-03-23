@@ -25,6 +25,22 @@ namespace Virtlink.Utilib.Text
         /// </summary>
         private const int MinSurrogate = 0x10000;
         /// <summary>
+        /// The start of the high surrogate range.
+        /// </summary>
+        private const int HighSurrogateFirst = 0xD800;
+        /// <summary>
+        /// The end of the high surrogate range.
+        /// </summary>
+        private const int HighSurrogateLast = 0xDBFF;
+        /// <summary>
+        /// The start of the low surrogate range.
+        /// </summary>
+        private const int LowSurrogateFirst = 0xDC00;
+        /// <summary>
+        /// The end of the low surrogate range.
+        /// </summary>
+        private const int LowSurrogateLast = 0xDFFF;
+        /// <summary>
         /// The minimum value of a Unicode code point.
         /// </summary>
         private const int MinCodePoint = 0;
@@ -86,18 +102,15 @@ namespace Virtlink.Utilib.Text
                     throw new InvalidOperationException("Operation is not allowed on a code point representing EOF.");
                 #endregion
 
-                var cTuple = ToChars();
-                var c0 = cTuple.Item1;
-                var c1 = cTuple.Item2;
-                if (c1 != null)
+                if (this.IsSurrogatePair)
                 {
                     // Surrogate pair.
-                    return CharUnicodeInfo.GetUnicodeCategory(new string(new[] { c0, (char)c1 }), 0);
+                    return CharUnicodeInfo.GetUnicodeCategory(Char.ConvertFromUtf32(this.Value), 0);
                 }
                 else
                 {
                     // Not a surrogate pair.
-                    return CharUnicodeInfo.GetUnicodeCategory(c0);
+                    return CharUnicodeInfo.GetUnicodeCategory(unchecked((char)this.value));
                 }
             }
         }
@@ -211,7 +224,12 @@ namespace Virtlink.Utilib.Text
                                     UnicodeCategory.ModifierSymbol,
                                     UnicodeCategory.OtherSymbol);
 
-
+        /// <summary>
+        /// Gets whether the code point would be represented as a surrogate pair of <see cref="Char"/>.
+        /// </summary>
+        /// <value><see langword="true"/> when the code point is represented as a surrogate pair
+        /// of <see cref="Char"/>; otherwise, <see langword="false"/>.</value>
+        public bool IsSurrogatePair => !this.IsEof && (MinSurrogate <= this.value && this.value <= MaxSurrogate);
 
         #region Constructors
         /// <summary>
@@ -471,35 +489,6 @@ namespace Virtlink.Utilib.Text
         #endregion
 
         /// <summary>
-        /// Returns this code point as one or two characters.
-        /// When the code points must be represented as a surrogate pair,
-        /// this method returns the surrogate pair.
-        /// </summary>
-        /// <returns>The character representation of this code point,
-        /// or the surrogate pair.</returns>
-        private Tuple<Char, Char?> ToChars()
-        {
-            if (this.IsEof)
-            {
-                throw new InvalidOperationException("Operation is not allowed on a code point representing EOF.");
-            }
-            else if (MinSurrogate <= this.value && this.value <= MaxSurrogate)
-            {
-                // Surrogate pair.
-                // Return high surrogate.
-                char c0 = (char)(0xD800 | ((this.value - 0x10000) >> 10));     // Low surrogate
-                char c1 = (char)(0xDC00 | ((this.value - 0x10000) & 0x3FF));   // High surrogate
-                return Tuple.Create(c0, (char?)c1);
-            }
-            else
-            {
-                Debug.Assert(this.value <= Char.MaxValue);
-                char c = (char)this.value;
-                return Tuple.Create(c, (char?)null);
-            }
-        }
-
-        /// <summary>
         /// Determines whether the category of this code point is one of the specified categories.
         /// </summary>
         /// <param name="categories">The categories to test.</param>
@@ -524,7 +513,16 @@ namespace Virtlink.Utilib.Text
             {
                 case null:
                 case "G":
-                    return Char.ConvertFromUtf32(this.Value);
+                    if (this.value >= CodePoint.HighSurrogateFirst && this.value <= CodePoint.LowSurrogateLast)
+                    {
+                        // High or low surrogate, displayed as their raw value.
+                        return this.Value.ToString(format, formatProvider);
+                    }
+                    else
+                    {
+                        // String representation.
+                        return Char.ConvertFromUtf32(this.Value);
+                    }
                 default:
                     return this.Value.ToString(format, formatProvider);
             }
