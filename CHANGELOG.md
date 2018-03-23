@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 - Add `CodePoint.IsSurrogatePair` property.
+- Add API documentation.
 
 ## [2.0.0] - 2018-03-22
 - **Breaking** library now targets .NET Standard 2.0.
