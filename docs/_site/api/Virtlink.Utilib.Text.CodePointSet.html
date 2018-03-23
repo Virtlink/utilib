@@ -1,0 +1,1368 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CodePointSet
+   | Virtlink Utilib library </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CodePointSet
+   | Virtlink Utilib library ">
+    <meta name="generator" content="docfx 2.33.1.0">
+    
+    <link rel="shortcut icon" href="../images/Icon16.png">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/Logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Virtlink.Utilib.Text.CodePointSet">
+  
+  
+  <h1 id="Virtlink_Utilib_Text_CodePointSet" data-uid="Virtlink.Utilib.Text.CodePointSet" class="text-break">Class CodePointSet
+  </h1>
+  <div class="markdown level0 summary"><p>A set of code points.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CodePointSet</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Collections.Generic.ISet</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</div>
+    <div><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</div>
+    <div><a class="xref" href="Virtlink.Utilib.Collections.IReadOnlySet-1.html">IReadOnlySet</a>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</div>
+    <div><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</div>
+    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Virtlink.Utilib.Text.html">Virtlink.Utilib.Text</a></h6>
+  <h6><strong>Assembly</strong>: Virtlink.Utilib.dll</h6>
+  <h5 id="Virtlink_Utilib_Text_CodePointSet_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class CodePointSet : ISet&lt;CodePoint&gt;, ICollection&lt;CodePoint&gt;, IReadOnlySet&lt;CodePoint&gt;, IReadOnlyCollection&lt;CodePoint&gt;, IEnumerable&lt;CodePoint&gt;, IEnumerable</code></pre>
+  </div>
+  <h5 id="Virtlink_Utilib_Text_CodePointSet_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This class is not thread-safe.</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet__ctor_" data-uid="Virtlink.Utilib.Text.CodePointSet.#ctor*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet__ctor" data-uid="Virtlink.Utilib.Text.CodePointSet.#ctor">CodePointSet()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Virtlink.Utilib.Text.CodePointSet.html">CodePointSet</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CodePointSet()</code></pre>
+  </div>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet__ctor_" data-uid="Virtlink.Utilib.Text.CodePointSet.#ctor*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet__ctor_System_Collections_Generic_IEnumerable_Virtlink_Utilib_Text_CodePoint__" data-uid="Virtlink.Utilib.Text.CodePointSet.#ctor(System.Collections.Generic.IEnumerable{Virtlink.Utilib.Text.CodePoint})">CodePointSet(IEnumerable&lt;CodePoint&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Virtlink.Utilib.Text.CodePointSet.html">CodePointSet</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CodePointSet(IEnumerable&lt;CodePoint&gt; characters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</td>
+        <td><span class="parametername">characters</span></td>
+        <td><p>The characters to include in the set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_Count_" data-uid="Virtlink.Utilib.Text.CodePointSet.Count*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_Count" data-uid="Virtlink.Utilib.Text.CodePointSet.Count">Count</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_Add_" data-uid="Virtlink.Utilib.Text.CodePointSet.Add*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_Add_Virtlink_Utilib_Text_CodePoint_" data-uid="Virtlink.Utilib.Text.CodePointSet.Add(Virtlink.Utilib.Text.CodePoint)">Add(CodePoint)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Add(CodePoint item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_AddRange_" data-uid="Virtlink.Utilib.Text.CodePointSet.AddRange*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_AddRange_Virtlink_Utilib_Text_CodePoint_Virtlink_Utilib_Text_CodePoint_" data-uid="Virtlink.Utilib.Text.CodePointSet.AddRange(Virtlink.Utilib.Text.CodePoint,Virtlink.Utilib.Text.CodePoint)">AddRange(CodePoint, CodePoint)</h4>
+  <div class="markdown level1 summary"><p>Adds a range of elements to this code point set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddRange(CodePoint from, CodePoint until)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a></td>
+        <td><span class="parametername">from</span></td>
+        <td><p>The inclusive start of the range.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a></td>
+        <td><span class="parametername">until</span></td>
+        <td><p>The exclusive end of the range.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_Clear_" data-uid="Virtlink.Utilib.Text.CodePointSet.Clear*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_Clear" data-uid="Virtlink.Utilib.Text.CodePointSet.Clear">Clear()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_Contains_" data-uid="Virtlink.Utilib.Text.CodePointSet.Contains*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_Contains_Virtlink_Utilib_Text_CodePoint_" data-uid="Virtlink.Utilib.Text.CodePointSet.Contains(Virtlink.Utilib.Text.CodePoint)">Contains(CodePoint)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(CodePoint c)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a></td>
+        <td><span class="parametername">c</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_CopyTo_" data-uid="Virtlink.Utilib.Text.CodePointSet.CopyTo*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_CopyTo_Virtlink_Utilib_Text_CodePoint___System_Int32_" data-uid="Virtlink.Utilib.Text.CodePointSet.CopyTo(Virtlink.Utilib.Text.CodePoint[],System.Int32)">CopyTo(CodePoint[], Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyTo(CodePoint[] array, int arrayIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>[]</td>
+        <td><span class="parametername">array</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">arrayIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_ExceptWith_" data-uid="Virtlink.Utilib.Text.CodePointSet.ExceptWith*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_ExceptWith_System_Collections_Generic_IEnumerable_Virtlink_Utilib_Text_CodePoint__" data-uid="Virtlink.Utilib.Text.CodePointSet.ExceptWith(System.Collections.Generic.IEnumerable{Virtlink.Utilib.Text.CodePoint})">ExceptWith(IEnumerable&lt;CodePoint&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExceptWith(IEnumerable&lt;CodePoint&gt; other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_ExceptWith_" data-uid="Virtlink.Utilib.Text.CodePointSet.ExceptWith*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_ExceptWith_Virtlink_Utilib_Text_CodePointSet_" data-uid="Virtlink.Utilib.Text.CodePointSet.ExceptWith(Virtlink.Utilib.Text.CodePointSet)">ExceptWith(CodePointSet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExceptWith(CodePointSet other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePointSet.html">CodePointSet</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_GetEnumerator_" data-uid="Virtlink.Utilib.Text.CodePointSet.GetEnumerator*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_GetEnumerator" data-uid="Virtlink.Utilib.Text.CodePointSet.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;CodePoint&gt; GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_IntersectWith_" data-uid="Virtlink.Utilib.Text.CodePointSet.IntersectWith*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_IntersectWith_System_Collections_Generic_IEnumerable_Virtlink_Utilib_Text_CodePoint__" data-uid="Virtlink.Utilib.Text.CodePointSet.IntersectWith(System.Collections.Generic.IEnumerable{Virtlink.Utilib.Text.CodePoint})">IntersectWith(IEnumerable&lt;CodePoint&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void IntersectWith(IEnumerable&lt;CodePoint&gt; other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_IntersectWith_" data-uid="Virtlink.Utilib.Text.CodePointSet.IntersectWith*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_IntersectWith_Virtlink_Utilib_Text_CodePointSet_" data-uid="Virtlink.Utilib.Text.CodePointSet.IntersectWith(Virtlink.Utilib.Text.CodePointSet)">IntersectWith(CodePointSet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void IntersectWith(CodePointSet other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePointSet.html">CodePointSet</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_IsProperSubsetOf_" data-uid="Virtlink.Utilib.Text.CodePointSet.IsProperSubsetOf*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_IsProperSubsetOf_System_Collections_Generic_IEnumerable_Virtlink_Utilib_Text_CodePoint__" data-uid="Virtlink.Utilib.Text.CodePointSet.IsProperSubsetOf(System.Collections.Generic.IEnumerable{Virtlink.Utilib.Text.CodePoint})">IsProperSubsetOf(IEnumerable&lt;CodePoint&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsProperSubsetOf(IEnumerable&lt;CodePoint&gt; other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_IsProperSubsetOf_" data-uid="Virtlink.Utilib.Text.CodePointSet.IsProperSubsetOf*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_IsProperSubsetOf_Virtlink_Utilib_Text_CodePointSet_" data-uid="Virtlink.Utilib.Text.CodePointSet.IsProperSubsetOf(Virtlink.Utilib.Text.CodePointSet)">IsProperSubsetOf(CodePointSet)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the current code point set is a proper subset of a specified collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsProperSubsetOf(CodePointSet other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePointSet.html">CodePointSet</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>The collection to compare to the current set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><span class="xref">true</span> if the current set is a proper subset of the specified collection;
+    otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_IsProperSupersetOf_" data-uid="Virtlink.Utilib.Text.CodePointSet.IsProperSupersetOf*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_IsProperSupersetOf_System_Collections_Generic_IEnumerable_Virtlink_Utilib_Text_CodePoint__" data-uid="Virtlink.Utilib.Text.CodePointSet.IsProperSupersetOf(System.Collections.Generic.IEnumerable{Virtlink.Utilib.Text.CodePoint})">IsProperSupersetOf(IEnumerable&lt;CodePoint&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsProperSupersetOf(IEnumerable&lt;CodePoint&gt; other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_IsProperSupersetOf_" data-uid="Virtlink.Utilib.Text.CodePointSet.IsProperSupersetOf*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_IsProperSupersetOf_Virtlink_Utilib_Text_CodePointSet_" data-uid="Virtlink.Utilib.Text.CodePointSet.IsProperSupersetOf(Virtlink.Utilib.Text.CodePointSet)">IsProperSupersetOf(CodePointSet)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the current code point set is a proper superset of a specified collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsProperSupersetOf(CodePointSet other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePointSet.html">CodePointSet</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>The collection to compare to the current set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><span class="xref">true</span> if the current set is a proper superset of the specified collection;
+    otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_IsSubsetOf_" data-uid="Virtlink.Utilib.Text.CodePointSet.IsSubsetOf*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_IsSubsetOf_System_Collections_Generic_IEnumerable_Virtlink_Utilib_Text_CodePoint__" data-uid="Virtlink.Utilib.Text.CodePointSet.IsSubsetOf(System.Collections.Generic.IEnumerable{Virtlink.Utilib.Text.CodePoint})">IsSubsetOf(IEnumerable&lt;CodePoint&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSubsetOf(IEnumerable&lt;CodePoint&gt; other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_IsSubsetOf_" data-uid="Virtlink.Utilib.Text.CodePointSet.IsSubsetOf*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_IsSubsetOf_Virtlink_Utilib_Text_CodePointSet_" data-uid="Virtlink.Utilib.Text.CodePointSet.IsSubsetOf(Virtlink.Utilib.Text.CodePointSet)">IsSubsetOf(CodePointSet)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the current code point set is a subset of a specified collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSubsetOf(CodePointSet other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePointSet.html">CodePointSet</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>The collection to compare to the current set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><span class="xref">true</span> if the current set is a subset of the specified collection;
+    otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_IsSupersetOf_" data-uid="Virtlink.Utilib.Text.CodePointSet.IsSupersetOf*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_IsSupersetOf_System_Collections_Generic_IEnumerable_Virtlink_Utilib_Text_CodePoint__" data-uid="Virtlink.Utilib.Text.CodePointSet.IsSupersetOf(System.Collections.Generic.IEnumerable{Virtlink.Utilib.Text.CodePoint})">IsSupersetOf(IEnumerable&lt;CodePoint&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSupersetOf(IEnumerable&lt;CodePoint&gt; other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_IsSupersetOf_" data-uid="Virtlink.Utilib.Text.CodePointSet.IsSupersetOf*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_IsSupersetOf_Virtlink_Utilib_Text_CodePointSet_" data-uid="Virtlink.Utilib.Text.CodePointSet.IsSupersetOf(Virtlink.Utilib.Text.CodePointSet)">IsSupersetOf(CodePointSet)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the current code point set is a superset of a specified collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSupersetOf(CodePointSet other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePointSet.html">CodePointSet</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>The collection to compare to the current set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><span class="xref">true</span> if the current set is a superset of the specified collection;
+    otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_Overlaps_" data-uid="Virtlink.Utilib.Text.CodePointSet.Overlaps*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_Overlaps_System_Collections_Generic_IEnumerable_Virtlink_Utilib_Text_CodePoint__" data-uid="Virtlink.Utilib.Text.CodePointSet.Overlaps(System.Collections.Generic.IEnumerable{Virtlink.Utilib.Text.CodePoint})">Overlaps(IEnumerable&lt;CodePoint&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Overlaps(IEnumerable&lt;CodePoint&gt; other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_Overlaps_" data-uid="Virtlink.Utilib.Text.CodePointSet.Overlaps*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_Overlaps_Virtlink_Utilib_Text_CodePointSet_" data-uid="Virtlink.Utilib.Text.CodePointSet.Overlaps(Virtlink.Utilib.Text.CodePointSet)">Overlaps(CodePointSet)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the current code point set overlaps with the specified collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Overlaps(CodePointSet other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePointSet.html">CodePointSet</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>The collection to compare to the current set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><span class="xref">true</span> if the current code point set and the specified collection
+    share at least one common element; otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_Remove_" data-uid="Virtlink.Utilib.Text.CodePointSet.Remove*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_Remove_Virtlink_Utilib_Text_CodePoint_" data-uid="Virtlink.Utilib.Text.CodePointSet.Remove(Virtlink.Utilib.Text.CodePoint)">Remove(CodePoint)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(CodePoint item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_SetEquals_" data-uid="Virtlink.Utilib.Text.CodePointSet.SetEquals*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_SetEquals_System_Collections_Generic_IEnumerable_Virtlink_Utilib_Text_CodePoint__" data-uid="Virtlink.Utilib.Text.CodePointSet.SetEquals(System.Collections.Generic.IEnumerable{Virtlink.Utilib.Text.CodePoint})">SetEquals(IEnumerable&lt;CodePoint&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SetEquals(IEnumerable&lt;CodePoint&gt; other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_SetEquals_" data-uid="Virtlink.Utilib.Text.CodePointSet.SetEquals*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_SetEquals_Virtlink_Utilib_Text_CodePointSet_" data-uid="Virtlink.Utilib.Text.CodePointSet.SetEquals(Virtlink.Utilib.Text.CodePointSet)">SetEquals(CodePointSet)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the current code point set
+and the specified collection contain the same elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SetEquals(CodePointSet other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePointSet.html">CodePointSet</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>The collection to compare to the current set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><span class="xref">true</span> if the sets are equal;
+    otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_SymmetricExceptWith_" data-uid="Virtlink.Utilib.Text.CodePointSet.SymmetricExceptWith*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_SymmetricExceptWith_System_Collections_Generic_IEnumerable_Virtlink_Utilib_Text_CodePoint__" data-uid="Virtlink.Utilib.Text.CodePointSet.SymmetricExceptWith(System.Collections.Generic.IEnumerable{Virtlink.Utilib.Text.CodePoint})">SymmetricExceptWith(IEnumerable&lt;CodePoint&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SymmetricExceptWith(IEnumerable&lt;CodePoint&gt; other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_SymmetricExceptWith_" data-uid="Virtlink.Utilib.Text.CodePointSet.SymmetricExceptWith*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_SymmetricExceptWith_Virtlink_Utilib_Text_CodePointSet_" data-uid="Virtlink.Utilib.Text.CodePointSet.SymmetricExceptWith(Virtlink.Utilib.Text.CodePointSet)">SymmetricExceptWith(CodePointSet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SymmetricExceptWith(CodePointSet other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePointSet.html">CodePointSet</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_TryGetValue_" data-uid="Virtlink.Utilib.Text.CodePointSet.TryGetValue*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_TryGetValue_Virtlink_Utilib_Text_CodePoint_Virtlink_Utilib_Text_CodePoint__" data-uid="Virtlink.Utilib.Text.CodePointSet.TryGetValue(Virtlink.Utilib.Text.CodePoint,Virtlink.Utilib.Text.CodePoint@)">TryGetValue(CodePoint, out CodePoint)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetValue(CodePoint equalValue, out CodePoint actualValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a></td>
+        <td><span class="parametername">equalValue</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a></td>
+        <td><span class="parametername">actualValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_UnionWith_" data-uid="Virtlink.Utilib.Text.CodePointSet.UnionWith*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_UnionWith_System_Collections_Generic_IEnumerable_Virtlink_Utilib_Text_CodePoint__" data-uid="Virtlink.Utilib.Text.CodePointSet.UnionWith(System.Collections.Generic.IEnumerable{Virtlink.Utilib.Text.CodePoint})">UnionWith(IEnumerable&lt;CodePoint&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnionWith(IEnumerable&lt;CodePoint&gt; other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a>&gt;</td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_UnionWith_" data-uid="Virtlink.Utilib.Text.CodePointSet.UnionWith*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_UnionWith_Virtlink_Utilib_Text_CodePointSet_" data-uid="Virtlink.Utilib.Text.CodePointSet.UnionWith(Virtlink.Utilib.Text.CodePointSet)">UnionWith(CodePointSet)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnionWith(CodePointSet other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePointSet.html">CodePointSet</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_System_Collections_Generic_ICollection_Virtlink_Utilib_Text_CodePoint__Add_" data-uid="Virtlink.Utilib.Text.CodePointSet.System#Collections#Generic#ICollection{Virtlink#Utilib#Text#CodePoint}#Add*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_System_Collections_Generic_ICollection_Virtlink_Utilib_Text_CodePoint__Add_Virtlink_Utilib_Text_CodePoint_" data-uid="Virtlink.Utilib.Text.CodePointSet.System#Collections#Generic#ICollection{Virtlink#Utilib#Text#CodePoint}#Add(Virtlink.Utilib.Text.CodePoint)">ICollection&lt;CodePoint&gt;.Add(CodePoint)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ICollection&lt;CodePoint&gt;.Add(CodePoint item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Virtlink.Utilib.Text.CodePoint.html">CodePoint</a></td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_System_Collections_Generic_ICollection_Virtlink_Utilib_Text_CodePoint__IsReadOnly_" data-uid="Virtlink.Utilib.Text.CodePointSet.System#Collections#Generic#ICollection{Virtlink#Utilib#Text#CodePoint}#IsReadOnly*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_System_Collections_Generic_ICollection_Virtlink_Utilib_Text_CodePoint__IsReadOnly" data-uid="Virtlink.Utilib.Text.CodePointSet.System#Collections#Generic#ICollection{Virtlink#Utilib#Text#CodePoint}#IsReadOnly">ICollection&lt;CodePoint&gt;.IsReadOnly</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ICollection&lt;CodePoint&gt;.IsReadOnly { get; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Virtlink_Utilib_Text_CodePointSet_System_Collections_IEnumerable_GetEnumerator_" data-uid="Virtlink.Utilib.Text.CodePointSet.System#Collections#IEnumerable#GetEnumerator*"></a>
+  <h4 id="Virtlink_Utilib_Text_CodePointSet_System_Collections_IEnumerable_GetEnumerator" data-uid="Virtlink.Utilib.Text.CodePointSet.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerator IEnumerable.GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.Collections.Generic.ISet&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>
+  </div>
+  <div>
+      <a class="xref" href="Virtlink.Utilib.Collections.IReadOnlySet-1.html">IReadOnlySet&lt;T&gt;</a>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.IReadOnlyCollection&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Virtlink.Utilib.Collections.Enumerables.html#Virtlink_Utilib_Collections_Enumerables_AsList__1_System_Collections_Generic_IEnumerable___0__">Enumerables.AsList&lt;T&gt;(IEnumerable&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Virtlink.Utilib.Collections.Enumerables.html#Virtlink_Utilib_Collections_Enumerables_OrIfEmpty__1_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___0__">Enumerables.OrIfEmpty&lt;T&gt;(IEnumerable&lt;T&gt;, IEnumerable&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Virtlink.Utilib.Collections.Enumerables.html#Virtlink_Utilib_Collections_Enumerables_ZipEqual__3_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___1__System_Func___0___1___2__">Enumerables.ZipEqual&lt;T1, T2, TResult&gt;(IEnumerable&lt;T1&gt;, IEnumerable&lt;T2&gt;, Func&lt;T1, T2, TResult&gt;)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright - Daniel Pelsmaeker
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

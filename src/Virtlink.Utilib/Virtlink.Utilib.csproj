@@ -8,7 +8,7 @@
     <Product>Utilib - Utility library</Product>
     <Description>A utility library for .NET. It contains all those little utility classes and functions that are missing from the standard .NET libraries.</Description>
     <PackageTags>virtlink;utility;library</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/Virtlink/utilib/master/doc/Icon.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/Virtlink/utilib/master/docs/images/Icon256.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/Virtlink/utilib/</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/Virtlink/utilib/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>

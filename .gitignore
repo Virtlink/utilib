@@ -8,12 +8,6 @@ project.lock.json
 /releases/
 
 
-### Sphinx ###
-/doc/_build/
-/doc/_static/
-/doc/_templates/
-
-
 ### VisualStudio ###
 *.suo
 *.user

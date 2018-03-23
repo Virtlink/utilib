@@ -1,0 +1,12 @@
+{
+  "_appTitle": "Virtlink Utilib library",
+  "_appFooter": "Copyright - Daniel Pelsmaeker",
+  "_appLogoPath": "images/Logo.png",
+  "_appFaviconPath": "images/Icon16.png",
+  "_enableSearch": true,
+  "_gitContribute": {
+	"repo": "https://github.com/virtlink/utilib",
+	"branch": "master"
+  },
+  "_gitUrlPattern": "github"
+}
