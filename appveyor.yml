@@ -50,8 +50,8 @@ after_deploy:
             git config --global user.email $env:github_username
             git config --global user.name $env:github_email
             git clone https://github.com/Virtlink/utilib.git -b gh-pages origin_site -q
-            Copy-Item origin_site/.git _site -recurse
-            CD _site
+            Copy-Item origin_site/.git ./docs/_site -recurse
+            CD ./docs/_site
             git add -A 2>&1
             git commit -m "Update documentation to $env:APPVEYOR_REPO_TAG_NAME ($env:APPVEYOR_BUILD_VERSION)" -q
             git push origin gh-pages -q
