@@ -48,7 +48,7 @@ after_deploy:
             Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
             git config --global user.email $env:github_username
             git config --global user.name $env:github_email
-            git config --global core.autocrlf true
+            git config --global core.autocrlf false
             git clone https://github.com/Virtlink/utilib.git -b gh-pages origin_site -q
             Copy-Item origin_site/.git ./docs/_site -recurse
             CD ./docs/_site
