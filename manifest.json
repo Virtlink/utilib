@@ -1,0 +1,799 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/projects/utilib/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.BinaryMath.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.BinaryMath.html",
+          "hash": "ODhMLaTUXmtjl4JJPfO27w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Chars.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Chars.html",
+          "hash": "9DCrIY7hjpCMz25L/T3mdQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Collection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Collection.html",
+          "hash": "FUMknyVS8s1qCmhS6RNnNw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Dictionary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Dictionary.html",
+          "hash": "2ZZdYR79K8+kI+csEcS1BA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Enumerables.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Enumerables.html",
+          "hash": "dpFYIN+vSXMB+OjLaBlC+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.ExtHashSet-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.ExtHashSet-1.html",
+          "hash": "iH5jIln8ZQ2lAe8CakQk8A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Graphs.BreadthFirstTraversal-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Graphs.BreadthFirstTraversal-1.html",
+          "hash": "BHtW53agQGHpHK5jztr3WQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Graphs.BreadthFirstTraversal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Graphs.BreadthFirstTraversal.html",
+          "hash": "0pLAaKOYmQOAybh7N2Kftw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Graphs.DepthFirstTraversal-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Graphs.DepthFirstTraversal-1.html",
+          "hash": "/Y25/rxFCp/PkPlyaM+mHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Graphs.DepthFirstTraversal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Graphs.DepthFirstTraversal.html",
+          "hash": "JDxfmRLiBKu11cK+YDP8Dw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Graphs.INode-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Graphs.INode-1.html",
+          "hash": "hs7k9/jBqYwJqAGuQNwcuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Graphs.ITraversal-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Graphs.ITraversal-1.html",
+          "hash": "3VJUv2BQY1yLu4xYT3C64w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Graphs.PostOrderTraversal-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Graphs.PostOrderTraversal-1.html",
+          "hash": "nLCLmnjVQleMylFSTVmNiA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Graphs.PostOrderTraversal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Graphs.PostOrderTraversal.html",
+          "hash": "8nveeR88F6BtDqHFoiqedg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Graphs.TopologicalTraversal-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Graphs.TopologicalTraversal-1.html",
+          "hash": "sTiC69aXpeKRf31GdlD+8Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Graphs.TopologicalTraversal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Graphs.TopologicalTraversal.html",
+          "hash": "znZxa918JGSgNsG/bFXIcg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Graphs.Traversal-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Graphs.Traversal-1.html",
+          "hash": "Bnrr+4K5zy3AH+z3ORFDgQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Graphs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Graphs.html",
+          "hash": "QAM/PLbbJ3KRY9qJ6ADhJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.IReadOnlySet-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.IReadOnlySet-1.html",
+          "hash": "ZElIH4DAYSn1S7OZsbakFA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.List.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.List.html",
+          "hash": "1W2I1VZAbYVCzFr+4/W1RA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.ListComparer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.ListComparer-1.html",
+          "hash": "WBl2sy6LVagVxctISDm9OA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.ListSet-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.ListSet-1.html",
+          "hash": "cGBEGCITqiXuKjdfgr6j5A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.ListSlice-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.ListSlice-1.html",
+          "hash": "mUQPDA3wFk/+Hhbx120RFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.ListSliceExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.ListSliceExtensions.html",
+          "hash": "OYtGJeqxAFl+Yv6Zw3L7hQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.MultiSetComparer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.MultiSetComparer-1.html",
+          "hash": "jAUKgPSoUDUZ+eAiAe1JIQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Queues.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Queues.html",
+          "hash": "S1m1JZnEzLk+rQ/4qrY4/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.SetComparer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.SetComparer-1.html",
+          "hash": "MUig8HUuFgzpNt4pHeJSVQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Stacks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Stacks.html",
+          "hash": "HUpFgnF/9uXhPkcZQFlUCg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.html",
+          "hash": "0GphNdbp1swYHQxyEH/5ow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Diagnostics.CollectionDebugView-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Diagnostics.CollectionDebugView-1.html",
+          "hash": "HLhrbpMxtOCyyfDySgtmJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Diagnostics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Diagnostics.html",
+          "hash": "oGnx7bz0hNoFJIvYW5VDLQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.EnumArgumentException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.EnumArgumentException.html",
+          "hash": "negWqU/qPK7YPDXERNiSnA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.IO.DataBuffer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.IO.DataBuffer.html",
+          "hash": "2QoW/7wvmjKmTZQFJ/Kl5A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.IO.IBuffer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.IO.IBuffer.html",
+          "hash": "xeSwvWq33jOvUifBh5HUCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.IO.MessageDataBuffer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.IO.MessageDataBuffer.html",
+          "hash": "YajwdFZEOE2I7jQ9p1ZeqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.IO.Streams.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.IO.Streams.html",
+          "hash": "9zlsVQPpu+6B7TMfUUXIvQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.IO.TextReaders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.IO.TextReaders.html",
+          "hash": "gW5tzuALMlkh1He7nvf6Vw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.IO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.IO.html",
+          "hash": "ZKsFc4qaY8GmSTEb8t+FCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.IntegerMath.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.IntegerMath.html",
+          "hash": "DwcytkMohypZtsR5+7JcgA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Numeric.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Numeric.html",
+          "hash": "jx0IOXGQ3cOEaPXnb+K3iQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.StringExt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.StringExt.html",
+          "hash": "JEH67hD5hTxbSf4LFOL7HA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Text.CodePoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Text.CodePoint.html",
+          "hash": "4GowxeKNsbeRLHOTHIiS2w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Text.CodePointSet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Text.CodePointSet.html",
+          "hash": "PLZPByKFKx/E6LXRFV38OA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Text.IStringEncoding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Text.IStringEncoding.html",
+          "hash": "gM/InJeCgNqiyZhR6FIfdA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Text.PathEncoding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Text.PathEncoding.html",
+          "hash": "Ac8ZhhoYSbU3aTAA4iCj4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Text.UriEncoding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Text.UriEncoding.html",
+          "hash": "e/JilmEPbeI8KfhYpQJgvQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Text.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Text.html",
+          "hash": "6jw3QEWuBGTYFrV1lDlr2w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Threading.ReaderWriterLockSlimExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Threading.ReaderWriterLockSlimExtensions.html",
+          "hash": "6QdjJPm8/Rt/UBpVjq6Xjg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Threading.Tasks.TaskExt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Threading.Tasks.TaskExt.html",
+          "hash": "sbLDIfctlgsAKglv13CrPQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Threading.Tasks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Threading.Tasks.html",
+          "hash": "WZWkpwXSNDyInTK3qE15eg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Threading.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Threading.html",
+          "hash": "iRMdpuAuIY2lkvD3lU3eyg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.html",
+          "hash": "UxrftW+19X8iIoTkpcHvXQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "4Zvs5AclktL/sSLxN3KQ+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Icon.psd",
+      "output": {
+        "resource": {
+          "relative_path": "images/Icon.psd"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Icon128.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Icon128.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Icon16.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Icon16.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Icon256.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Icon256.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Icon32.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Icon32.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Icon64.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Icon64.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "obd8QdPq5bmhKfzW6y2AHg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "6WRmlDfMZvVjO0csUF7VWQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build"
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
