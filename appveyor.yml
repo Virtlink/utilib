@@ -12,7 +12,7 @@ environment:
 
 install:
   - ps: |
-        if($env:APPVEYOR_REPO_BRANCH -eq "master" -And $env:APPVEYOR_REPO_TAG -And -Not $env:APPVEYOR_PULL_REQUEST_TITLE)
+        if(($env:APPVEYOR_REPO_BRANCH -eq "master") -And $env:APPVEYOR_REPO_TAG -And (-Not $env:APPVEYOR_PULL_REQUEST_TITLE))
         {
             git checkout $env:APPVEYOR_REPO_BRANCH -q
             #choco install docfx -y
@@ -38,7 +38,7 @@ artifacts:
   
 after_deploy:
   - ps: |
-        if($env:APPVEYOR_REPO_BRANCH -eq "master" -And $env:APPVEYOR_REPO_TAG -And -Not $env:APPVEYOR_PULL_REQUEST_TITLE)
+        if(($env:APPVEYOR_REPO_BRANCH -eq "master") -And $env:APPVEYOR_REPO_TAG -And (-Not $env:APPVEYOR_PULL_REQUEST_TITLE))
         {
             & docfx ./docs/docfx.json
             if ($lastexitcode -ne 0){
