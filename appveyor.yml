@@ -2,6 +2,23 @@ version: "#{build}"
 image: Visual Studio 2017
 configuration: Release
 
+environment:
+  github_access_token:
+    secure: gxD+NTodnQNMMljEkLwbmfQdsyBZFRIioVMM+RQSFD3+h1GEgsEGuINxcfNgVceY
+  github_username:
+    secure: w9v29CGS0U1DZAoNWV9ovw==
+  github_email:
+    secure: +dUgeucr2KGkQp9jo9VRDi/7amgZAUCKa+8oNY1pXsLTD8BpP2hqLVXmnd3LwVvr
+
+install:
+  - ps: |
+        if($env:APPVEYOR_REPO_BRANCH -eq "master" -And $env:APPVEYOR_REPO_TAG -And -Not $env:APPVEYOR_PULL_REQUEST_TITLE)
+        {
+            git checkout $env:APPVEYOR_REPO_BRANCH -q
+            #choco install docfx -y
+            cinst docfx
+        }
+
 before_build:
 - ps: dotnet --info
 - ps: dotnet restore
@@ -18,13 +35,32 @@ after_test:
 artifacts:
 - path: 'src/Virtlink.Utilib/bin/Release/*.nupkg'
   name: NuGet Packages
-
+  
+after_deploy:
+  - ps: |
+        if($env:APPVEYOR_REPO_BRANCH -eq "master" -And $env:APPVEYOR_REPO_TAG -And -Not $env:APPVEYOR_PULL_REQUEST_TITLE)
+        {
+            & docfx ./docs/docfx.json
+            if ($lastexitcode -ne 0){
+              throw [System.Exception] "docfx build failed with exit code $lastexitcode."
+            }
+            
+            git config --global credential.helper store
+            Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
+            git config --global user.email $env:github_username
+            git config --global user.name $env:github_email
+            git clone https://github.com/Virtlink/utilib.git -b gh-pages origin_site -q
+            Copy-Item origin_site/.git _site -recurse
+            CD _site
+            git add -A 2>&1
+            git commit -m "Update documentation to $env:APPVEYOR_REPO_TAG_NAME ($env:APPVEYOR_BUILD_VERSION)" -q
+            git push origin gh-pages -q
+        }
 
 deploy:
 - provider: GitHub
   description: ""
-  auth_token:
-    secure: gxD+NTodnQNMMljEkLwbmfQdsyBZFRIioVMM+RQSFD3+h1GEgsEGuINxcfNgVceY
+  auth_token: $(github_access_token)
   artifact: /.*\.nupkg/
   draft: true
   prerelease: true
