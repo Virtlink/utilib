@@ -2376,6 +2376,28 @@ references:
   fullName.vb: Virtlink.Utilib.Collections.Queues.PeekOrDefault(Of T)(System.Collections.Generic.Queue(Of T))
   nameWithType: Queues.PeekOrDefault<T>(Queue<T>)
   nameWithType.vb: Queues.PeekOrDefault(Of T)(Queue(Of T))
+- uid: Virtlink.Utilib.Collections.Set
+  name: Set
+  href: api/Virtlink.Utilib.Collections.Set.html
+  commentId: T:Virtlink.Utilib.Collections.Set
+  fullName: Virtlink.Utilib.Collections.Set
+  nameWithType: Set
+- uid: Virtlink.Utilib.Collections.Set.Empty*
+  name: Empty
+  href: api/Virtlink.Utilib.Collections.Set.html#Virtlink_Utilib_Collections_Set_Empty_
+  commentId: Overload:Virtlink.Utilib.Collections.Set.Empty
+  isSpec: "True"
+  fullName: Virtlink.Utilib.Collections.Set.Empty
+  nameWithType: Set.Empty
+- uid: Virtlink.Utilib.Collections.Set.Empty``1
+  name: Empty<T>()
+  href: api/Virtlink.Utilib.Collections.Set.html#Virtlink_Utilib_Collections_Set_Empty__1
+  commentId: M:Virtlink.Utilib.Collections.Set.Empty``1
+  name.vb: Empty(Of T)()
+  fullName: Virtlink.Utilib.Collections.Set.Empty<T>()
+  fullName.vb: Virtlink.Utilib.Collections.Set.Empty(Of T)()
+  nameWithType: Set.Empty<T>()
+  nameWithType.vb: Set.Empty(Of T)()
 - uid: Virtlink.Utilib.Collections.SetComparer`1
   name: SetComparer<T>
   href: api/Virtlink.Utilib.Collections.SetComparer-1.html

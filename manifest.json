@@ -326,6 +326,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Virtlink.Utilib.Collections.Set.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Virtlink.Utilib.Collections.Set.html",
+          "hash": "jZhdZ5yMEmWAk8+iIGJTrw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Virtlink.Utilib.Collections.SetComparer-1.yml",
       "output": {
         ".html": {
@@ -354,7 +366,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Virtlink.Utilib.Collections.html",
-          "hash": "0GphNdbp1swYHQxyEH/5ow=="
+          "hash": "sfQYkdWM68pO9TKz/7Xbuw=="
         }
       },
       "is_incremental": false,
@@ -642,7 +654,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "4Zvs5AclktL/sSLxN3KQ+A=="
+          "hash": "VFo1mkTgVAxzAYqNxoa5uw=="
         }
       },
       "is_incremental": false,
