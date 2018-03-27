@@ -71,8 +71,7 @@ deploy:
     branch: master
     appveyor_repo_tag: true
 - provider: NuGet
-  api_key:
-    secure: $(nuget_access_token)
+  api_key: $(nuget_access_token)
   skip_symbols: true
   artifact: /.*\.nupkg/
   on:
