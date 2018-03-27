@@ -218,5 +218,52 @@ namespace Virtlink.Utilib.Collections
 
             return Enumerator();
         }
+
+        /// <summary>
+        /// Creates a safety copy of the specified enumerable.
+        /// </summary>
+        /// <typeparam name="T">The type of elements.</typeparam>
+        /// <param name="source">The source enumerable.</param>
+        /// <returns>The safety copy.</returns>
+        /// <remarks>
+        /// Any changes to the source collection
+        /// are not reflected in the resulting list.
+        /// </remarks>
+        public static IReadOnlyList<T> CreateSafetyCopy<T>(this IEnumerable<T> source)
+        {
+            var copy = source.ToArray();
+            if (copy.Length == 0)
+                return List.Empty<T>();
+            return copy;
+        }
+
+        /// <summary>
+        /// Returns a dictionary from a sequence of key-value-pairs.
+        /// </summary>
+        /// <typeparam name="TKey">The type of keys.</typeparam>
+        /// <typeparam name="TElement">The type of values.</typeparam>
+        /// <param name="source">The source sequence.</param>
+        /// <param name="comparer">The comparer to use; or <see langword="null"/>.</param>
+        /// <returns>The resulting dictionary.</returns>
+        public static Dictionary<TKey, TElement> ToDictionary<TKey, TElement>(this IEnumerable<KeyValuePair<TKey, TElement>> source,
+            [CanBeNull] IEqualityComparer<TKey> comparer)
+        {
+            #region Contract
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            #endregion
+
+            return source.ToDictionary(pair => pair.Key, pair => pair.Value, comparer);
+        }
+
+        /// <summary>
+        /// Returns a dictionary from a sequence of key-value-pairs.
+        /// </summary>
+        /// <typeparam name="TKey">The type of keys.</typeparam>
+        /// <typeparam name="TElement">The type of values.</typeparam>
+        /// <param name="source">The source sequence.</param>
+        /// <returns>The resulting dictionary.</returns>
+        public static Dictionary<TKey, TElement> ToDictionary<TKey, TElement>(this IEnumerable<KeyValuePair<TKey, TElement>> source)
+            => ToDictionary(source, null);
     }
 }
