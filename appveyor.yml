@@ -9,6 +9,9 @@ environment:
     secure: w9v29CGS0U1DZAoNWV9ovw==
   github_email:
     secure: +dUgeucr2KGkQp9jo9VRDi/7amgZAUCKa+8oNY1pXsLTD8BpP2hqLVXmnd3LwVvr
+  nuget_access_token:
+    secure: 80Ifo8pBjEsFrG2mn50qSl7+uFgquQSareLS3l21DfWT49nFtb/SZsHSkR/DRDsO
+  git_repo_url: https://github.com/Virtlink/utilib.git
 
 install:
   - ps: |
@@ -49,7 +52,7 @@ after_deploy:
             git config --global user.email $env:github_username
             git config --global user.name $env:github_email
             git config --global core.autocrlf false
-            git clone https://github.com/Virtlink/utilib.git -b gh-pages origin_site -q
+            git clone $env:git_repo_url -b gh-pages origin_site -q
             Copy-Item origin_site/.git ./docs/_site -recurse
             CD ./docs/_site
             git add -A 2>&1
@@ -69,7 +72,7 @@ deploy:
     appveyor_repo_tag: true
 - provider: NuGet
   api_key:
-    secure: 80Ifo8pBjEsFrG2mn50qSl7+uFgquQSareLS3l21DfWT49nFtb/SZsHSkR/DRDsO
+    secure: $(nuget_access_token)
   skip_symbols: true
   artifact: /.*\.nupkg/
   on:
