@@ -3,7 +3,7 @@
   <PropertyGroup>    
     <TargetFramework>netcoreapp2.0</TargetFramework>    
     <RootNamespace>Virtlink.Utilib</RootNamespace>
-    <VersionPrefix>2.2.0</VersionPrefix>
+    <VersionPrefix>2.3.0</VersionPrefix>
     <VersionSuffix></VersionSuffix>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
