@@ -77,7 +77,7 @@ namespace Virtlink.Utilib.Collections
         /// This list can be cast to a <see cref="IList{T}"/> and <see cref="ICollection{T}"/>,
         /// but is read-only.
         /// </remarks>
-        private sealed class EmptyList<T> : IList<T>, IReadOnlyList<T>
+        private sealed class EmptyList<T> : IList<T>, ISet<T>, IReadOnlyList<T>, IReadOnlySet<T>
         {
             /// <summary>
             /// The empty list instance.
@@ -106,13 +106,52 @@ namespace Virtlink.Utilib.Collections
             /// </summary>
             private EmptyList() { }
 
-            /// <inheritdoc />
+            /// <inheritdoc cref="IReadOnlySet{T}.Contains" />
             public bool Contains(T item)
                 => false;
 
             /// <inheritdoc />
+            public bool TryGetValue(T equalValue, out T actualValue)
+            {
+                actualValue = equalValue;
+                return false;
+            }
+
+            /// <inheritdoc cref="IReadOnlySet{T}.IsProperSubsetOf" />
+            public bool IsProperSubsetOf(IEnumerable<T> other)
+                => other.Any();
+
+            /// <inheritdoc cref="IReadOnlySet{T}.IsProperSupersetOf" />
+            public bool IsProperSupersetOf(IEnumerable<T> other)
+                => false;
+
+            /// <inheritdoc cref="IReadOnlySet{T}.IsSubsetOf" />
+            public bool IsSubsetOf(IEnumerable<T> other)
+                => true;
+
+            /// <inheritdoc cref="IReadOnlySet{T}.IsSupersetOf" />
+            public bool IsSupersetOf(IEnumerable<T> other)
+                => !other.Any();
+
+            /// <inheritdoc cref="IReadOnlySet{T}.Overlaps" />
+            public bool Overlaps(IEnumerable<T> other)
+                => false;
+
+            /// <inheritdoc cref="IReadOnlySet{T}.SetEquals" />
+            public bool SetEquals(IEnumerable<T> other)
+                => !other.Any();
+
+            /// <inheritdoc />
             public void Add(T item)
                 => throw new NotSupportedException();
+
+            /// <inheritdoc />
+            bool ISet<T>.Add(T item)
+                => throw new NotSupportedException();
+
+            /// <inheritdoc />
+            public int IndexOf(T item)
+                => -1;
 
             /// <inheritdoc />
             public bool Remove(T item)
@@ -136,7 +175,23 @@ namespace Virtlink.Utilib.Collections
             }
 
             /// <inheritdoc />
+            public void SymmetricExceptWith(IEnumerable<T> other)
+                => throw new NotSupportedException();
+
+            /// <inheritdoc />
+            public void UnionWith(IEnumerable<T> other)
+                => throw new NotSupportedException();
+
+            /// <inheritdoc />
+            public void IntersectWith(IEnumerable<T> other)
+                => throw new NotSupportedException();
+
+            /// <inheritdoc />
             public void Clear()
+                => throw new NotSupportedException();
+
+            /// <inheritdoc />
+            public void ExceptWith(IEnumerable<T> other)
                 => throw new NotSupportedException();
 
             /// <inheritdoc />
@@ -159,10 +214,6 @@ namespace Virtlink.Utilib.Collections
             /// <inheritdoc />
             IEnumerator IEnumerable.GetEnumerator()
                 => GetEnumerator();
-
-            /// <inheritdoc />
-            public int IndexOf(T item)
-                => -1;
         }
     }
 }
